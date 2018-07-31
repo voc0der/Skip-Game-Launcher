@@ -15,4 +15,4 @@ Then runs the command to execute the game, referenced in https://github.com/dafz
 cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""
 ```
 
-The executable does not need to be run as administrator, however, windows will flag it as a 'potential threat' which is funny because I used a windows tool, called iexpress to have the command prompt launch the game. To prevent windows blocking it, simply right click properties, and there's an unblock button at the bottom right of that dialog prompt.
+The executable does not need to be run as administrator, however, windows may flag it as a potential threat due to unknown source. To prevent windows blocking it, simply right click properties, and there's an unblock button at the bottom right of that dialog prompt.
