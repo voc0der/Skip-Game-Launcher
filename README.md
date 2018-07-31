@@ -1,10 +1,9 @@
-# bnetgamelaunchers
-Literally zero fluff, makes use of the new battle.net game launcher commands to launch games. Default install path only.
+# Battle.Net.Game.Launchers
 
-For compatibility your Battle.net install base path must be: C:\Program Files (x86)\Battle.net
+For compatibility your Battle.net install base path must be: C:\Program Files (x86)\Battle.net<br />
 The games can be elsewhere.
 
-what it does: it just extracts a 0kb file that has 1 line:
+What it does: extracts a 0kb file that has 1 line for fluff so it can run:
 ```
 echo why you do this windowz
 ```
