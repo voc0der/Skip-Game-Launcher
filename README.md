@@ -7,7 +7,7 @@ C:\Program Files (x86)\Battle.net<br />
 
 *Note: Your games can be elsewhere, they will be launched from the launcher.*
 
-These executables were created using the generic IExpress Windows tool using Windows 10 x64; the executables emulate package installers with a dummy bat file:
+These executables were created using the generic IExpress Windows tool using Windows 10 x64 with hidden mode enabled; the executables emulate package installers with a dummy bat file:
 ```
 echo why you do this windowz
 ```
