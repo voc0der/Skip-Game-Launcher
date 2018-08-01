@@ -1,6 +1,6 @@
 # Battle.Net.Game.Launchers
 
-I made this so that my <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a> icons on my start menu wouldn't get confused about which Battle.Net shortcut it is. This can also be used just to launch the game, though if your goal is to have super light weight, you could create a shortcut with the information below.
+I made this so that my <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a> icons on my start menu wouldn't get confused about which Battle.Net shortcut it is. This can also be used to launch the game.
 
 **Your Battle.net Launcher Install path must be the default location**: <br />
 C:\Program Files (x86)\Battle.net<br />
