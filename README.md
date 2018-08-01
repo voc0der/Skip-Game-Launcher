@@ -10,7 +10,7 @@ What it does: extracts a 0kb file that has 1 line for fluff so it can run:
 echo why you do this windowz
 ```
 
-Then runs the command to execute the game, referenced in https://github.com/dafzor/bnetlauncher/issues/22#issuecomment-399788430 , implementation like so:
+Then runs the command to execute the game, thanks to <a href="https://github.com/dafzor/bnetlauncher/issues/22#issuecomment-399788430">Ethan-BB's post</a> , implementation like so:
 ```
 // launch overwatch
 cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""
