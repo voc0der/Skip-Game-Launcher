@@ -1,5 +1,7 @@
 # Battle.Net.Game.Launchers
 
+I made this so that my Windows 10 TileCreator wouldn't get confused about which Battle.Net shortcut I was assigning icons too. It can also be used just to launch the game.
+
 For compatibility your Battle.net install base path must be: C:\Program Files (x86)\Battle.net<br />
 The games can be elsewhere.
 
