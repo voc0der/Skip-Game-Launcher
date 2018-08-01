@@ -2,7 +2,7 @@
 
 I made this so that my <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a> icons on my start menu wouldn't get confused about which Battle.Net shortcut it is. This can also be used just to launch the game, though if your goal is to have super light weight, you could create a shortcut with the information below.
 
-For compatibility your Battle.net install base path must be: C:\Program Files (x86)\Battle.net<br />
+For compatibility your Battle.net install base path must be default: C:\Program Files (x86)\Battle.net<br />
 The games can be elsewhere.
 
 What it does: extracts a 0kb file that has 1 line for fluff so it can run:
