@@ -5,7 +5,7 @@ I made this so that my <a href="https://forum.xda-developers.com/windows-10/deve
 For compatibility your Battle.net install base path must be default: C:\Program Files (x86)\Battle.net<br />
 The games can be elsewhere.
 
-What it does: extracts a 0kb file that has 1 line for fluff so it can run:
+These executables were created using the generic IExpress Windows tool using Windows 10 x64; the executables emulate package installers with a dummy bat file:
 ```
 echo why you do this windowz
 ```
