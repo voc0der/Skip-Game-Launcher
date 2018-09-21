@@ -1,11 +1,16 @@
 # Battle.Net.Game.Launchers
 
-I made this so that my <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a> icons on my start menu wouldn't get confused about which Battle.Net shortcut it was, and so I could launch each respective game without the needless extra click in the Battle.net Launcher.
+<b>What this does?</b> Launches the respective Battle.net game its named after directly, without needing to click "Play".
 
-**Your Battle.net Launcher Install path must be the default location**: <br />
-C:\Program Files (x86)\Battle.net<br />
+**Requirement: Battle.net Launcher Install path must be the default location (below):**<br />
+
+```C:\Program Files (x86)\Battle.net```
 
 *Note: Your games can be elsewhere, they will be launched from the launcher.*
+
+<b>Side note:</b> If you use <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a>, you can make game tile shortcuts with these files easily.
+
+## Source Information
 
 These executables were created using the generic IExpress Windows tool using Windows 10 x64 with hidden mode enabled; the executables emulate package installers with a dummy bat file:
 ```
