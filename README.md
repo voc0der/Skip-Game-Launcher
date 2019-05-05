@@ -1,4 +1,4 @@
-# Battle.Net.Game.Launchers
+# Battle.Net.Steam.Game.Launchers
 
 <b>What this does?</b> Launches the respective Battle.net game its named after directly, without needing to click "Play".
 
@@ -9,6 +9,8 @@
 *Note: Your games can be elsewhere, they will be launched from the launcher.*
 
 <b>Side note:</b> If you use <a href="https://forum.xda-developers.com/windows-10/development/win10tile-native-custom-windows-10-t3248677">Win10Tile</a>, you can make game tile shortcuts with these files easily.
+
+**If using a steam game, Steam can be installed anywhere.
 
 ## Source Information
 
