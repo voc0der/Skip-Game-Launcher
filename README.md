@@ -1,5 +1,3 @@
-# Battle.Net.Steam.Game.Launchers
-
 <b>What this does?</b> Launches the respective Battle.net or Steam game its named after directly, without needing to click "Play".
 
 **Requirement: Battle.net Launcher Install path must be the default location (below):**<br />
