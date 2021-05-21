@@ -1,8 +1,6 @@
 <b>What this does?</b> Launches the respective Battle.net or Steam game its named after directly, without needing to click "Play".
 
-**Requirement: Battle.net Launcher Install path must be the default location (below):**<br />
 
-```C:\Program Files (x86)\Battle.net```
 
 *Note: Your games can be elsewhere, they will be launched from the launcher.*
 
@@ -18,6 +16,10 @@ echo 1
 ```
 
 Then runs the command to execute the game, thanks to <a href="https://github.com/dafzor/bnetlauncher/issues/22#issuecomment-399788430">Ethan-BB's post</a> , implementation like so:
+
+For Battle.Net: 
+**Requirement: Battle.net Launcher Install path must be the default location (below):**<br />
+```C:\Program Files (x86)\Battle.net```
 ```
 // launch overwatch
 cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""
