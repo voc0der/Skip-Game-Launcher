@@ -25,7 +25,7 @@ For Battle.Net:
 cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""
 ```
 
-For steam, it's suffice to do something like
+For Steam, it's suffice to do something like
 ```launch x
 explorer steam://rungameid/2760
 ```
