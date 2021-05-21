@@ -23,4 +23,14 @@ Then runs the command to execute the game, thanks to <a href="https://github.com
 cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""
 ```
 
+For steam, it's suffice to do something like
+```launch x
+explorer steam://rungameid/2760
+```
+
+For EpicGames, here's how you can launch a desktop shortcut from cmd (quotes are neccessary)
+```
+cmd "com.epicgames.launcher://apps/Albacore?action=launch&silent=true"
+```
+
 The executable does not need to be run as administrator, however, windows may flag it as a potential threat due to unknown source. To prevent windows blocking it, simply right click properties, and there's an unblock button at the bottom right of that dialog prompt.
