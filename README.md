@@ -35,4 +35,9 @@ For EpicGames, here's how you can launch a desktop shortcut from cmd (quotes are
 explorer "com.epicgames.launcher://apps/Albacore?action=launch&silent=true"
 ```
 
+For Ubisoft Connect, it's similar to steam:
+```
+explorer uplay://launch/3539/0
+```
+
 The executable does not need to be run as administrator, however, windows may flag it as a potential threat due to unknown source. To prevent windows blocking it, simply right click properties, and there's an unblock button at the bottom right of that dialog prompt.
