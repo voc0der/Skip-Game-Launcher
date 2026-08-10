@@ -767,6 +767,13 @@
     }
   },
   {
+    "name": "Stardew Valley",
+    "out": "StardewValley.exe",
+    "stores": {
+      "steam": "413150"
+    }
+  },
+  {
     "name": "Starfield",
     "out": "Starfield.exe",
     "stores": {
