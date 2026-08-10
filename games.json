@@ -732,6 +732,13 @@
     }
   },
   {
+    "name": "Warcraft III: The Frozen Throne",
+    "out": "WarcraftIIITheFrozenThrone.exe",
+    "stores": {
+      "battlenet": "W3CX"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
