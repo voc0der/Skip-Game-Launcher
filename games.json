@@ -915,6 +915,13 @@
     }
   },
   {
+    "name": "PEAK",
+    "out": "PEAK.exe",
+    "stores": {
+      "steam": "3527290"
+    }
+  },
+  {
     "name": "Phasmophobia",
     "out": "Phasmophobia.exe",
     "stores": {
