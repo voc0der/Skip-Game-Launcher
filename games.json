@@ -1369,6 +1369,14 @@
     }
   },
   {
+    "name": "Warhammer 40,000: Space Marine 2",
+    "out": "Warhammer40000SpaceMarine2.exe",
+    "stores": {
+      "epic": "bb6054d614284c39bb203ebe134e5d79",
+      "steam": "2183900"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
