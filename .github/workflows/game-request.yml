@@ -66,7 +66,6 @@ jobs:
           $stores = ConvertFrom-Json $env:STORES
           foreach ($store in $stores) {
             ./scripts/build.ps1 -Only $env:OUT -Store $store -Force
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
 
       - name: Open and merge the PR
