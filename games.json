@@ -137,6 +137,14 @@
     }
   },
   {
+    "name": "Battlefieldâ„¢ 6",
+    "out": "BattlefieldTM6.exe",
+    "stores": {
+      "epic": "Glacier",
+      "steam": "2807960"
+    }
+  },
+  {
     "name": "BioShockâ„¢ Remastered",
     "out": "BioShockTMRemastered.exe",
     "stores": {
