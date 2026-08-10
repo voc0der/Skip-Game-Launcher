@@ -16,6 +16,14 @@
     }
   },
   {
+    "name": "ARK: Survival Ascended",
+    "out": "ARKSurvivalAscended.exe",
+    "stores": {
+      "epic": "448d14019e3c496385828ec75f83e98e",
+      "steam": "2399830"
+    }
+  },
+  {
     "name": "Assassin's Creed",
     "out": "AssassinsCreed.exe",
     "stores": {
