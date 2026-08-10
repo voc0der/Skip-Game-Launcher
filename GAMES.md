@@ -9,6 +9,7 @@
 | 7 Days to Die | [Steam](Steam/7DaysToDie.exe) | — | — | — |
 | Apex Legendsâ„¢ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
 | ARC Raiders | [Steam](Steam/ARCRaiders.exe) | [Epic](Epic/ARCRaiders.exe) | — | — |
+| Arena Breakout: Infinite | [Steam](Steam/ArenaBreakoutInfinite.exe) | [Epic](Epic/ArenaBreakoutInfinite.exe) | — | — |
 | ARK: Survival Ascended | [Steam](Steam/ARKSurvivalAscended.exe) | [Epic](Epic/ARKSurvivalAscended.exe) | — | — |
 | Assassin's Creed | [Steam](Steam/AssassinsCreed.exe) | — | — | [Ubisoft](Ubisoft/AssassinsCreed.exe) |
 | Assassin's Creed Black Flag Resynced | [Steam](Steam/AssassinsCreedBlackFlagResynced.exe) | [Epic](Epic/AssassinsCreedBlackFlagResynced.exe) | — | [Ubisoft](Ubisoft/AssassinsCreedBlackFlagResynced.exe) |

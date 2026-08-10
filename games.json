@@ -23,6 +23,14 @@
     }
   },
   {
+    "name": "Arena Breakout: Infinite",
+    "out": "ArenaBreakoutInfinite.exe",
+    "stores": {
+      "epic": "74f48b0ace5c4ad2be579813b8fb5384",
+      "steam": "2073620"
+    }
+  },
+  {
     "name": "ARK: Survival Ascended",
     "out": "ARKSurvivalAscended.exe",
     "stores": {
