@@ -787,6 +787,13 @@
     }
   },
   {
+    "name": "Resident Evil 4",
+    "out": "ResidentEvil4.exe",
+    "stores": {
+      "steam": "2050650"
+    }
+  },
+  {
     "name": "Riders Republic",
     "out": "RidersRepublic.exe",
     "stores": {
