@@ -1139,6 +1139,14 @@
     }
   },
   {
+    "name": "Total War: WARHAMMER III",
+    "out": "TotalWarWARHAMMERIII.exe",
+    "stores": {
+      "epic": "37a618f3d198405ead9c48c7749b52e5",
+      "steam": "1142710"
+    }
+  },
+  {
     "name": "Tron: Evolution",
     "out": "TronEvolution.exe",
     "stores": {
