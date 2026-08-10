@@ -109,6 +109,7 @@
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |
 | War Thunder | [Steam](Steam/WarThunder.exe) | — | — | — |
 | Warcraft III | — | — | [Battle.net](BattleNet/WarcraftIII.exe) | — |
+| Warcraft III: Reign of Chaos | — | — | [Battle.net](BattleNet/WarcraftIIIReignOfChaos.exe) | — |
 | Warcraft III: The Frozen Throne | — | — | [Battle.net](BattleNet/WarcraftIIITheFrozenThrone.exe) | — |
 | World of Warcraft | — | — | [Battle.net](BattleNet/WoW.exe) | — |
 | Worms W.M.D | [Steam](Steam/Worms_WMD.exe) | — | — | — |

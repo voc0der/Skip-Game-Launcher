@@ -754,6 +754,13 @@
     }
   },
   {
+    "name": "Warcraft III: Reign of Chaos",
+    "out": "WarcraftIIIReignOfChaos.exe",
+    "stores": {
+      "battlenet": "W3C"
+    }
+  },
+  {
     "name": "Warcraft III: The Frozen Throne",
     "out": "WarcraftIIITheFrozenThrone.exe",
     "stores": {
