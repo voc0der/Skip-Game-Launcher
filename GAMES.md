@@ -109,6 +109,7 @@
 | Middle-earth: Shadow of Mordor | [Steam](Steam/MiddleEarthShadowOfMordor.exe) | — | — | — |
 | Monster Hunter Wilds | [Steam](Steam/MonsterHunterWilds.exe) | — | — | — |
 | Monster Hunter: World | [Steam](Steam/MonsterHunterWorld.exe) | — | — | — |
+| Mount & Blade II: Bannerlord | [Steam](Steam/MountBladeIIBannerlord.exe) | [Epic](Epic/MountBladeIIBannerlord.exe) | — | — |
 | NARAKA: BLADEPOINT | [Steam](Steam/NARAKABLADEPOINT.exe) | [Epic](Epic/NARAKABLADEPOINT.exe) | — | — |
 | NBA 2K26 | [Steam](Steam/NBA2K26.exe) | — | — | — |
 | Need for Speed Hot Pursuit | [Steam](Steam/NeedForSpeedHotPursuit.exe) | — | — | — |
