@@ -79,6 +79,7 @@
 | Fortnite | — | [Epic](Epic/Fortnite.exe) | — | — |
 | Forza Horizon 5 | [Steam](Steam/ForzaHorizon5.exe) | — | — | — |
 | Gamble With Your Friends | [Steam](Steam/GambleWithYourFriends.exe) | — | — | — |
+| Garry's Mod | [Steam](Steam/GarrysMod.exe) | — | — | — |
 | Genshin Impact | — | [Epic](Epic/GenshinImpact.exe) | — | — |
 | Geometry Dash | [Steam](Steam/GeometryDash.exe) | — | — | — |
 | Ghost of Tsushima DIRECTOR'S CUT | [Steam](Steam/GhostOfTsushimaDIRECTORSCUT.exe) | [Epic](Epic/GhostOfTsushimaDIRECTORSCUT.exe) | — | — |
