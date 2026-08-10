@@ -496,6 +496,14 @@
     }
   },
   {
+    "name": "Football Manager 26",
+    "out": "FootballManager26.exe",
+    "stores": {
+      "epic": "e54a251079034694b55ab6289707bfa0",
+      "steam": "3551340"
+    }
+  },
+  {
     "name": "Fortnite",
     "out": "Fortnite.exe",
     "stores": {
