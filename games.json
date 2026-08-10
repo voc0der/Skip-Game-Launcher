@@ -46,6 +46,13 @@
     }
   },
   {
+    "name": "ARK: Survival Evolved",
+    "out": "ARKSurvivalEvolved.exe",
+    "stores": {
+      "steam": "346110"
+    }
+  },
+  {
     "name": "Assassin's Creed",
     "out": "AssassinsCreed.exe",
     "stores": {
