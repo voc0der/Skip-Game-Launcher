@@ -15,10 +15,11 @@ BeforeAll {
 
 Describe 'Get-StoreDirectory' {
     It 'maps <Store> to <Expected>' -ForEach @(
-        @{ Store = 'steam';     Expected = 'Steam' }
-        @{ Store = 'battlenet'; Expected = 'BattleNet' }
-        @{ Store = 'epic';      Expected = 'Epic' }
-        @{ Store = 'ubisoft';   Expected = 'Ubisoft' }
+        @{ Store = 'steam';        Expected = 'Steam' }
+        @{ Store = 'battlenet';    Expected = 'BattleNet' }
+        @{ Store = 'battlenetuid'; Expected = 'BattleNet' }
+        @{ Store = 'epic';         Expected = 'Epic' }
+        @{ Store = 'ubisoft';      Expected = 'Ubisoft' }
     ) {
         Get-StoreDirectory -Store $Store | Should -Be $Expected
     }
@@ -49,6 +50,11 @@ Describe 'Get-LaunchCommand' {
     It 'builds the Battle.net form with its doubled quotes intact' {
         Get-LaunchCommand -Store battlenet -Id 'Pro' |
             Should -BeExactly 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""'
+    }
+
+    It 'builds the Battle.net game-version form with launch_uid' {
+        Get-LaunchCommand -Store battlenetuid -Id 'wow_classic_era' |
+            Should -BeExactly 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch_uid wow_classic_era""'
     }
 
     It 'throws on an unknown store' {
@@ -176,6 +182,13 @@ Describe 'Get-BuildTarget' {
     It 'allows one filename across two different stores' {
         $json = '[{"name":"A","out":"Same.exe","stores":{"steam":"1","epic":"Zed"}}]'
         (Get-BuildTarget -Games (New-Manifest $json)).Count | Should -Be 2
+    }
+
+    It 'rejects one entry naming two stores that share a folder' {
+        # battlenet and battlenetuid both land in BattleNet/, so the second
+        # package would silently overwrite the first.
+        $json = '[{"name":"A","out":"Same.exe","stores":{"battlenet":"WoW","battlenetuid":"wow_classic"}}]'
+        { Get-BuildTarget -Games (New-Manifest $json) } | Should -Throw '*same output path*'
     }
 }
 

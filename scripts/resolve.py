@@ -38,6 +38,7 @@ from html.parser import HTMLParser
 STORES = {
     "steam": "Steam",
     "battlenet": "Battle.net",
+    "battlenetuid": "Battle.net (game version)",
     "epic": "Epic Games",
     "ubisoft": "Ubisoft Connect",
 }
@@ -45,9 +46,18 @@ STORES = {
 STORE_DIRS = {
     "steam": "Steam",
     "battlenet": "BattleNet",
+    # Same folder as `battlenet` - these are Battle.net games, they just need a
+    # different launch verb. One folder plus one `out` is one executable, so a
+    # single entry can never carry both keys; `_folder_conflict` enforces that.
+    "battlenetuid": "BattleNet",
     "epic": "Epic",
     "ubisoft": "Ubisoft",
 }
+
+# Stores a request can seed. A Battle.net uid only exists inside an installed
+# client - there is no catalogue to resolve it from and nothing to check it
+# against - so those entries are added by hand in a PR. See CONTRIBUTING.md.
+PR_ONLY_STORES = frozenset({"battlenetuid"})
 
 # Every ID is interpolated into a shell command that gets baked into a
 # distributed .exe, so the charset is a security boundary, not cosmetics: a
@@ -57,6 +67,7 @@ ID_PATTERNS = {
     "steam": re.compile(r"\d+"),
     "ubisoft": re.compile(r"\d+"),
     "battlenet": re.compile(r"[A-Za-z0-9_]+"),   # Pro, D3, S2, WoW, VIPR
+    "battlenetuid": re.compile(r"[a-z0-9_]+"),   # wow_classic_era, wowt
     "epic": re.compile(r"[A-Za-z0-9_]+"),        # Petunia, Speedwell, Calluna
 }
 
@@ -64,6 +75,7 @@ ID_DESCRIPTIONS = {
     "steam": "numeric",
     "ubisoft": "numeric",
     "battlenet": "letters, digits and underscores only",
+    "battlenetuid": "lowercase letters, digits and underscores only",
     "epic": "letters, digits and underscores only",
 }
 
@@ -457,6 +469,11 @@ def discover_store_id(store: str, name: str) -> tuple[str, str] | None:
             return None
     if store == "battlenet":
         return resolve_battlenet_id(name)
+    if store in PR_ONLY_STORES:
+        # Game versions (WoW Classic, Classic Era, PTR) are not products in any
+        # catalogue - they only exist as uids inside an installed client, so
+        # there is nothing to search. These are added by hand in a PR.
+        return None
     raise AssertionError(f"unknown store {store}")
 
 
@@ -491,6 +508,7 @@ def launch_command(store: str, app_id: str) -> str:
         "ubisoft": f"explorer uplay://launch/{app_id}/0",
         "epic": f'explorer "com.epicgames.launcher://apps/{app_id}?action=launch&silent=true"',
         "battlenet": f'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch {app_id}""',
+        "battlenetuid": f'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch_uid {app_id}""',
     }[store]
 
 
@@ -507,22 +525,62 @@ def single_line(value: str, label: str, limit: int = 120) -> str:
     return value
 
 
-def resolve(fields: dict[str, str], games: list[dict]) -> dict:
-    """Work out what to add. Returns a plan dict, or raises Rejected."""
-    name = single_line(fields.get("game name", "").strip(), "Game name")
-    if not name:
-        raise Rejected("The request has no game name in it.")
-
+def _select_store(fields: dict[str, str]) -> str:
+    """Map the issue's Store field onto a store key a request can actually use."""
     raw_store = single_line(fields.get("store", "").strip(), "Store", 40).lower()
     store = next(
         (key for key, label in STORES.items() if raw_store in (key, label.lower())),
         None,
     )
     if store is None:
-        raise Rejected(
-            f"Unrecognised store `{raw_store or '(blank)'}`. "
-            f"Supported: {', '.join(STORES.values())}."
+        requestable = ", ".join(
+            label for key, label in STORES.items() if key not in PR_ONLY_STORES
         )
+        raise Rejected(
+            f"Unrecognised store `{raw_store or '(blank)'}`. Supported: {requestable}."
+        )
+    if store in PR_ONLY_STORES:
+        raise Rejected(
+            f"{STORES[store]} entries can't be requested. A uid only exists inside an "
+            "installed Battle.net client, so there is nothing to look it up in and "
+            "nothing to check it against - these are added by hand in a PR "
+            "(see CONTRIBUTING.md)."
+        )
+    return store
+
+
+def _folder_conflict(store: str, present) -> str | None:
+    """The already-present store whose launcher would be the very same file.
+
+    `battlenet` and `battlenetuid` both build into `BattleNet/`, so one manifest
+    entry cannot carry both: the two targets share `BattleNet/<out>`, the second
+    build overwrites the first and `Get-BuildTarget` rejects the manifest.
+    """
+    return next(
+        (
+            other
+            for other in present
+            if other != store and STORE_DIRS.get(other) == STORE_DIRS[store]
+        ),
+        None,
+    )
+
+
+def _folder_conflict_rejection(name: str, out: str, store: str, clash: str) -> Rejected:
+    return Rejected(
+        f"**{name}** already builds {STORES[clash]} into `{STORE_DIRS[clash]}/{out}`, "
+        f"and {STORES[store]} writes that same file. These two can't share one "
+        "manifest entry - the version needs an entry and a filename of its own."
+    )
+
+
+def resolve(fields: dict[str, str], games: list[dict]) -> dict:
+    """Work out what to add. Returns a plan dict, or raises Rejected."""
+    name = single_line(fields.get("game name", "").strip(), "Game name")
+    if not name:
+        raise Rejected("The request has no game name in it.")
+
+    store = _select_store(fields)
 
     given_id = single_line(fields.get("app id / product code", "").strip(), "App ID", 200)
     if store == "epic":
@@ -564,6 +622,9 @@ def resolve(fields: dict[str, str], games: list[dict]) -> dict:
                 f"**{existing['name']}** is already built for {STORES[store]} "
                 f"(`{STORE_DIRS[store]}/{out}`, ID `{existing['stores'][store]}`)."
             )
+        clash = _folder_conflict(store, existing["stores"])
+        if clash is not None:
+            raise _folder_conflict_rejection(existing["name"], out, store, clash)
         action = "merge"
     else:
         out = single_line(fields.get("output filename", "").strip(), "Output filename") or derive_out_name(name)
@@ -628,16 +689,7 @@ def _request_identity(fields: dict[str, str], games: list[dict]) -> tuple[str, s
     if not name:
         raise Rejected("The request has no game name in it.")
 
-    raw_store = single_line(fields.get("store", "").strip(), "Store", 40).lower()
-    store = next(
-        (key for key, label in STORES.items() if raw_store in (key, label.lower())),
-        None,
-    )
-    if store is None:
-        raise Rejected(
-            f"Unrecognised store `{raw_store or '(blank)'}`. "
-            f"Supported: {', '.join(STORES.values())}."
-        )
+    store = _select_store(fields)
 
     existing = next(
         (game for game in games if normalise(game["name"]) == normalise(name)),
@@ -706,6 +758,11 @@ def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
     current = dict(existing.get("stores", {})) if existing else {}
     found: dict[str, tuple[str, str]] = {}
 
+    if requested_store not in current:
+        clash = _folder_conflict(requested_store, current)
+        if clash is not None:
+            raise _folder_conflict_rejection(name, out, requested_store, clash)
+
     # The issue's selected store anchors a new title. For an existing title its
     # manifest entry is already a trustworthy anchor, so even a request that
     # selects an existing store can trigger discovery of missing stores.
@@ -733,6 +790,11 @@ def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
 
     for store in STORES:
         if store == requested_store or store in current:
+            continue
+        # An opportunistic extra store that would write over a launcher this
+        # entry already has is simply not discovered - the entry keeps the one
+        # it was asked for rather than the request failing outright.
+        if _folder_conflict(store, [*current, *found]) is not None:
             continue
         match = discover_store_id(store, name)
         if match is not None:

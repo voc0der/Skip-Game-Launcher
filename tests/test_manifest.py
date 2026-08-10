@@ -11,9 +11,13 @@ import pathlib
 import re
 
 import pytest
+from helpers import load_script
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-STORE_DIRS = {"steam": "Steam", "battlenet": "BattleNet", "epic": "Epic", "ubisoft": "Ubisoft"}
+# Borrowed rather than copied: test_consistency.py pins verify.py's map against
+# resolve.py and Launcher.psm1, so a fourth hand-maintained copy here would be
+# the one thing free to drift.
+STORE_DIRS = load_script("verify").STORE_DIRS
 SAFE_FILENAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\.exe")
 WINDOWS_DEVICE_NAME = re.compile(
     r"(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)", re.IGNORECASE
@@ -103,6 +107,27 @@ def test_epic_ids_are_app_names_not_store_slugs(manifest):
             assert "-" not in app_id and "/" not in app_id, (
                 f"{game['out']}: epic id {app_id!r} looks like a store slug"
             )
+
+
+def test_ids_match_the_charset_the_resolver_enforces(resolve_mod, targets):
+    """The id is interpolated into the command baked into a shipped .exe, so the
+    charset is a security boundary. `battlenetuid` entries are added by hand and
+    never pass through resolve.py, so pin it on the manifest itself."""
+    for game, store, app_id in targets:
+        assert resolve_mod.ID_PATTERNS[store].fullmatch(app_id), (
+            f"{game['out']}: {store} id {app_id!r} is not "
+            f"{resolve_mod.ID_DESCRIPTIONS[store]}"
+        )
+
+
+def test_no_entry_declares_two_stores_that_share_a_folder(manifest):
+    """`battlenet` and `battlenetuid` both build into BattleNet/, so an entry
+    carrying both names one file twice - the second build overwrites the first
+    and Get-BuildTarget rejects the manifest outright."""
+    for game in manifest:
+        folders = collections.Counter(STORE_DIRS[store] for store in game["stores"])
+        clashes = sorted(folder for folder, count in folders.items() if count > 1)
+        assert not clashes, f"{game['out']}: more than one launcher in {clashes}"
 
 
 def test_no_id_is_reused_across_games(targets):

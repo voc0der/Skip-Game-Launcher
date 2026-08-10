@@ -8,11 +8,14 @@ import pathlib
 import sys
 
 
+# A column can be served by more than one store key: a Battle.net game version
+# launches by uid rather than by product code, but it is still a Battle.net
+# launcher sitting in BattleNet/.
 STORE_COLUMNS = (
-    ("steam", "Steam", "Steam"),
-    ("epic", "Epic", "Epic"),
-    ("battlenet", "Battle.net", "BattleNet"),
-    ("ubisoft", "Ubisoft", "Ubisoft"),
+    (("steam",), "Steam", "Steam"),
+    (("epic",), "Epic", "Epic"),
+    (("battlenet", "battlenetuid"), "Battle.net", "BattleNet"),
+    (("ubisoft",), "Ubisoft", "Ubisoft"),
 )
 
 
@@ -34,8 +37,8 @@ def render(games: list[dict]) -> str:
     ]
     for game in sorted(games, key=lambda item: item["name"].lower()):
         cells = []
-        for key, label, directory in STORE_COLUMNS:
-            if key in game["stores"]:
+        for keys, label, directory in STORE_COLUMNS:
+            if any(key in game["stores"] for key in keys):
                 cells.append(f"[{label}]({directory}/{game['out']})")
             else:
                 cells.append("—")
