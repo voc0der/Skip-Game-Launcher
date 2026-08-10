@@ -143,6 +143,13 @@
     }
   },
   {
+    "name": "Blizzard Arcade Collection",
+    "out": "BlizzardArcadeCollection.exe",
+    "stores": {
+      "battlenet": "RTRO"
+    }
+  },
+  {
     "name": "Call of Duty: Black Ops Cold War",
     "out": "CallOfDutyBlackOpsColdWar.exe",
     "stores": {
