@@ -817,6 +817,14 @@
     }
   },
   {
+    "name": "Marvel's Spider-Man 2",
+    "out": "MarvelsSpiderMan2.exe",
+    "stores": {
+      "epic": "0c6db5941ac8420aabbd8510e94e7d9a",
+      "steam": "2651280"
+    }
+  },
+  {
     "name": "Mass Effect™ Legendary Edition",
     "out": "MassEffectTMLegendaryEdition.exe",
     "stores": {
