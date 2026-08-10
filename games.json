@@ -254,6 +254,13 @@
     }
   },
   {
+    "name": "Diablo II",
+    "out": "DiabloII.exe",
+    "stores": {
+      "battlenet": "D2"
+    }
+  },
+  {
     "name": "DiRT Rally",
     "out": "DiRT_Rally.exe",
     "stores": {
