@@ -518,6 +518,13 @@
     }
   },
   {
+    "name": "eFootball",
+    "out": "eFootball.exe",
+    "stores": {
+      "steam": "1665460"
+    }
+  },
+  {
     "name": "ELDEN RING",
     "out": "ELDENRING.exe",
     "stores": {
