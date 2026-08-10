@@ -479,6 +479,14 @@
     }
   },
   {
+    "name": "PUBG: BATTLEGROUNDS",
+    "out": "PUBGBATTLEGROUNDS.exe",
+    "stores": {
+      "epic": "9361c8c6d2f34b42b5f2f61093eedf48",
+      "steam": "578080"
+    }
+  },
+  {
     "name": "Red Dead Redemption 2",
     "out": "RedDeadRedemption2.exe",
     "stores": {
