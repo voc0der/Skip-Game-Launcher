@@ -326,6 +326,14 @@
     }
   },
   {
+    "name": "Horizon Zero Dawnâ„¢ Complete Edition",
+    "out": "HorizonZeroDawnCompleteEdition.exe",
+    "stores": {
+      "epic": "Grunion",
+      "steam": "1151640"
+    }
+  },
+  {
     "name": "Heroes of the Storm",
     "out": "HoTS.exe",
     "stores": {
