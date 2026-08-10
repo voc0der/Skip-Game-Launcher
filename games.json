@@ -1476,6 +1476,14 @@
     }
   },
   {
+    "name": "World of Warships",
+    "out": "WorldOfWarships.exe",
+    "stores": {
+      "epic": "a79746038c6948558274065d24f3faa3",
+      "steam": "552990"
+    }
+  },
+  {
     "name": "Worms W.M.D",
     "out": "Worms_WMD.exe",
     "stores": {
