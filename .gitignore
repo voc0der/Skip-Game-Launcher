@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Scratch output from scripts/build.ps1 -OutDir / -SedDir
+/out/
+*.sed

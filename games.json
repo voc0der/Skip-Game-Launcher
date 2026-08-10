@@ -1,0 +1,459 @@
+[
+  {
+    "name": "Assassin's Creed",
+    "out": "AssassinsCreed.exe",
+    "stores": {
+      "steam": "15100"
+    }
+  },
+  {
+    "name": "Assassin's Creed Brotherhood",
+    "out": "AssassinsCreedBrotherhood.exe",
+    "stores": {
+      "steam": "48190"
+    }
+  },
+  {
+    "name": "Assassin's Creed II",
+    "out": "AssassinsCreedII.exe",
+    "stores": {
+      "steam": "33230"
+    }
+  },
+  {
+    "name": "Assassin's Creed III",
+    "out": "AssassinsCreedIII.exe",
+    "stores": {
+      "steam": "208480"
+    }
+  },
+  {
+    "name": "Assassin's Creed Revelations",
+    "out": "AssassinsCreedRevelations.exe",
+    "stores": {
+      "steam": "201870"
+    }
+  },
+  {
+    "name": "Assassin's Creed Unity",
+    "out": "AssassinsCreedUnity.exe",
+    "stores": {
+      "steam": "289650"
+    }
+  },
+  {
+    "name": "Batman Arkham Asylum GOTY Edition",
+    "out": "BatmanArkhamAslyum.exe",
+    "stores": {
+      "steam": "35140"
+    }
+  },
+  {
+    "name": "Batman Arkham City GOTY",
+    "out": "BatmanArkhamCity.exe",
+    "stores": {
+      "steam": "200260"
+    }
+  },
+  {
+    "name": "Batman Arkham Knight",
+    "out": "BatmanArkhamKnight.exe",
+    "stores": {
+      "steam": "208650"
+    }
+  },
+  {
+    "name": "Batman Arkham Origins",
+    "out": "BatmanArkhamOrigins.exe",
+    "stores": {
+      "steam": "209000"
+    }
+  },
+  {
+    "name": "Batman Arkham Origins Blackgate",
+    "out": "BatmanArkhamOriginsBlackgate.exe",
+    "stores": {
+      "steam": "267490"
+    }
+  },
+  {
+    "name": "Black Mesa",
+    "out": "BlackMesa.exe",
+    "stores": {
+      "steam": "362890"
+    }
+  },
+  {
+    "name": "Civilization IV",
+    "out": "Civilization_IV.exe",
+    "stores": {
+      "steam": "8800"
+    }
+  },
+  {
+    "name": "Civilization V",
+    "out": "Civilization_V.exe",
+    "stores": {
+      "steam": "8930"
+    }
+  },
+  {
+    "name": "Civilization VI",
+    "out": "Civilization_VI.exe",
+    "stores": {
+      "steam": "289070"
+    }
+  },
+  {
+    "name": "Call of Duty: Black Ops 4",
+    "out": "CoDBlackOps4.exe",
+    "stores": {
+      "battlenet": "VIPR"
+    }
+  },
+  {
+    "name": "Control",
+    "out": "Control.exe",
+    "stores": {
+      "steam": "870780"
+    }
+  },
+  {
+    "name": "Crysis",
+    "out": "Crysis.exe",
+    "stores": {
+      "steam": "17300"
+    }
+  },
+  {
+    "name": "Crysis Warhead",
+    "out": "CrysisWarhead.exe",
+    "stores": {
+      "steam": "17330"
+    }
+  },
+  {
+    "name": "Counter-Strike: Global Offensive",
+    "out": "CSGO.exe",
+    "stores": {
+      "steam": "730"
+    }
+  },
+  {
+    "name": "Cyberpunk 2077",
+    "out": "Cyberpunk2077.exe",
+    "stores": {
+      "steam": "1091500"
+    }
+  },
+  {
+    "name": "DayZ",
+    "out": "DayZ.exe",
+    "stores": {
+      "steam": "221100"
+    }
+  },
+  {
+    "name": "Destiny 2",
+    "out": "Destiny2.exe",
+    "stores": {
+      "battlenet": "DST2"
+    }
+  },
+  {
+    "name": "Diablo III",
+    "out": "Diablo3.exe",
+    "stores": {
+      "battlenet": "D3"
+    }
+  },
+  {
+    "name": "DiRT Rally",
+    "out": "DiRT_Rally.exe",
+    "stores": {
+      "steam": "310560"
+    }
+  },
+  {
+    "name": "Doom 2016",
+    "out": "Doom2016.exe",
+    "stores": {
+      "steam": "379720"
+    }
+  },
+  {
+    "name": "Doom Eternal",
+    "out": "DoomEternal.exe",
+    "stores": {
+      "steam": "782330"
+    }
+  },
+  {
+    "name": "Far Cry 5",
+    "out": "FarCry5.exe",
+    "stores": {
+      "steam": "552520"
+    }
+  },
+  {
+    "name": "Grand Theft Auto V",
+    "out": "GrandTheftAutoV.exe",
+    "stores": {
+      "steam": "271590"
+    }
+  },
+  {
+    "name": "Half Life 2",
+    "out": "HalfLife2.exe",
+    "stores": {
+      "steam": "220"
+    }
+  },
+  {
+    "name": "Half Life 2 Episode 1",
+    "out": "HalfLife2Episode1.exe",
+    "stores": {
+      "steam": "380"
+    }
+  },
+  {
+    "name": "Half Life 2 Episode 2",
+    "out": "HalfLife2Episode2.exe",
+    "stores": {
+      "steam": "420"
+    }
+  },
+  {
+    "name": "Halo Master Chief Collection",
+    "out": "HaloMasterChiefCollection.exe",
+    "stores": {
+      "steam": "976730"
+    }
+  },
+  {
+    "name": "Hellblade Senua's Sacrifice",
+    "out": "HellbladeSenuasSacrifice.exe",
+    "stores": {
+      "steam": "414340"
+    }
+  },
+  {
+    "name": "Heroes of the Storm",
+    "out": "HoTS.exe",
+    "stores": {
+      "battlenet": "Hero"
+    }
+  },
+  {
+    "name": "It Takes Two",
+    "out": "ItTakesTwo.exe",
+    "stores": {
+      "steam": "1426210"
+    }
+  },
+  {
+    "name": "Just Cause 3",
+    "out": "JustCause3.exe",
+    "stores": {
+      "steam": "225540"
+    }
+  },
+  {
+    "name": "Left 4 Dead",
+    "out": "Left4Dead.exe",
+    "stores": {
+      "steam": "500"
+    }
+  },
+  {
+    "name": "Left 4 Dead 2",
+    "out": "Left4Dead2.exe",
+    "stores": {
+      "steam": "550"
+    }
+  },
+  {
+    "name": "Metro 2033 Last Light Redux",
+    "out": "Metro2033LastLightRedux.exe",
+    "stores": {
+      "epic": "Speedwell",
+      "steam": "287390"
+    }
+  },
+  {
+    "name": "Metro 2033 Redux",
+    "out": "Metro2033Redux.exe",
+    "stores": {
+      "epic": "Petunia",
+      "steam": "286690"
+    }
+  },
+  {
+    "name": "Middle-earth: Shadow of Mordor",
+    "out": "MiddleEarthShadowOfMordor.exe",
+    "stores": {
+      "steam": "241930"
+    }
+  },
+  {
+    "name": "Need for Speed Hot Pursuit",
+    "out": "NeedForSpeedHotPursuit.exe",
+    "stores": {
+      "steam": "47870"
+    }
+  },
+  {
+    "name": "Neverwinter Nights 2",
+    "out": "NeverwinterNights2.exe",
+    "stores": {
+      "steam": "2760"
+    }
+  },
+  {
+    "name": "Overwatch",
+    "out": "Overwatch.exe",
+    "stores": {
+      "battlenet": "Pro"
+    }
+  },
+  {
+    "name": "Portal",
+    "out": "Portal.exe",
+    "stores": {
+      "steam": "400"
+    }
+  },
+  {
+    "name": "Portal 2",
+    "out": "Portal2.exe",
+    "stores": {
+      "steam": "620"
+    }
+  },
+  {
+    "name": "Riders Republic",
+    "out": "RidersRepublic.exe",
+    "stores": {
+      "steam": "2290180"
+    }
+  },
+  {
+    "name": "Rise of the Tomb Raider",
+    "out": "RiseOfTheTombRaider.exe",
+    "stores": {
+      "steam": "391220"
+    }
+  },
+  {
+    "name": "Rocket League",
+    "out": "RocketLeague.exe",
+    "stores": {
+      "steam": "252950"
+    }
+  },
+  {
+    "name": "Shadow of the Tomb Raider",
+    "out": "ShadowOfTheTombRaider.exe",
+    "stores": {
+      "steam": "750920"
+    }
+  },
+  {
+    "name": "Skyrim SKSE",
+    "out": "Skyrim_SKSE.exe",
+    "stores": {
+      "steam": "365720"
+    }
+  },
+  {
+    "name": "StarCraft II",
+    "out": "StarCraft2.exe",
+    "stores": {
+      "battlenet": "S2"
+    }
+  },
+  {
+    "name": "Star Wars Jedi Fallen Order",
+    "out": "StarWarsJediFallenOrder.exe",
+    "stores": {
+      "steam": "1172380"
+    }
+  },
+  {
+    "name": "Tom Clancy's Ghost Recon Breakpoint",
+    "out": "TCGhostReconBreakpoint.exe",
+    "stores": {
+      "steam": "2231380"
+    }
+  },
+  {
+    "name": "The Talos Principle",
+    "out": "TheTalosPrinciple.exe",
+    "stores": {
+      "steam": "257510"
+    }
+  },
+  {
+    "name": "Tomb Raider",
+    "out": "TombRaider.exe",
+    "stores": {
+      "steam": "203160"
+    }
+  },
+  {
+    "name": "Tomb Raider Underworld",
+    "out": "TombRaiderUnderworld.exe",
+    "stores": {
+      "steam": "8140"
+    }
+  },
+  {
+    "name": "Tools Up!",
+    "out": "ToolsUp.exe",
+    "stores": {
+      "steam": "1004490"
+    }
+  },
+  {
+    "name": "Tron: Evolution",
+    "out": "TronEvolution.exe",
+    "stores": {
+      "steam": "315440"
+    }
+  },
+  {
+    "name": "Warcraft III",
+    "out": "WarcraftIII.exe",
+    "stores": {
+      "battlenet": "W3"
+    }
+  },
+  {
+    "name": "The Witcher 2: Assassins of Kings",
+    "out": "Witcher2.exe",
+    "stores": {
+      "steam": "20920"
+    }
+  },
+  {
+    "name": "The Witcher 3: Wild Hunt",
+    "out": "Witcher3.exe",
+    "stores": {
+      "steam": "292030"
+    }
+  },
+  {
+    "name": "Worms W.M.D",
+    "out": "Worms_WMD.exe",
+    "stores": {
+      "steam": "327030"
+    }
+  },
+  {
+    "name": "World of Warcraft",
+    "out": "WoW.exe",
+    "stores": {
+      "battlenet": "WoW"
+    }
+  }
+]

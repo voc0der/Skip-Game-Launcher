@@ -1,0 +1,68 @@
+name: Game request
+description: Ask for a launcher for a game that isn't here yet
+title: "[Game] "
+labels: ["game-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this in and a maintainer will apply the **approved** label, which
+        builds the launcher and opens a PR automatically.
+
+        Steam titles are looked up from the name. Epic is attempted too, but
+        Epic leaves the needed field blank on a lot of products, so it often
+        has to be supplied. Battle.net and Ubisoft always need an ID.
+
+        A game that's already here on one store can be requested again for
+        another; you'll get a second executable in that store's folder.
+
+  - type: input
+    id: name
+    attributes:
+      label: Game name
+      description: As it appears on the store page. Spelling matters for the Steam lookup.
+      placeholder: Portal 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: store
+    attributes:
+      label: Store
+      options:
+        - Steam
+        - Battle.net
+        - Epic Games
+        - Ubisoft Connect
+    validations:
+      required: true
+
+  - type: input
+    id: appid
+    attributes:
+      label: App ID / product code
+      description: |
+        - **Steam** — optional. The number from the store URL or [SteamDB](https://steamdb.info), e.g. `620`
+        - **Epic** — optional, but usually needed. Paste the store page URL and we'll try
+          to resolve it; if that fails you'll be asked for the launcher app name — an
+          internal codename like `Petunia`, found in
+          `C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests\*.item` under `AppName`.
+          It is **not** the slug in the store URL.
+        - **Battle.net** — required. The short product code, e.g. `Pro`, `D3`, `S2`, `WoW`
+        - **Ubisoft** — required. The number from `uplay://launch/<id>/0`
+      placeholder: "620"
+
+  - type: input
+    id: filename
+    attributes:
+      label: Output filename
+      description: Optional. Defaults to the game name with the punctuation stripped.
+      placeholder: Portal2.exe
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I checked `games.json` and this game isn't already built for this store
+          required: true

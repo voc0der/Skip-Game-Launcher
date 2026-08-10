@@ -1,0 +1,56 @@
+name: Verify
+
+# Rebuilds every launcher from scratch into a scratch directory and reads the
+# launch command back out of each one. This is what proves the generated .sed
+# actually produces working executables - IExpress reports success even when it
+# has packaged the wrong thing.
+on:
+  pull_request:
+    paths:
+      - games.json
+      - scripts/**
+      - .github/workflows/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Committed executables match games.json
+        run: python scripts/verify.py
+
+  rebuild:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check IExpress is present
+        shell: pwsh
+        run: |
+          $p = "$env:SystemRoot\System32\iexpress.exe"
+          if (-not (Test-Path $p)) { throw "iexpress.exe missing from this runner image" }
+          Write-Host "found $p"
+
+      - name: Rebuild everything into a scratch directory
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path out | Out-Null
+          ./scripts/build.ps1 -OutDir out -Force
+
+      - name: Rebuilt executables carry the right launch commands
+        shell: bash
+        # --strict: a fresh build has no excuse for emitting a legacy command
+        # form, so anything but the canonical one is a bug in build.ps1.
+        run: python scripts/verify.py --dir out --strict
+
+      - name: Upload for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuilt-launchers
+          path: out/
+          retention-days: 7

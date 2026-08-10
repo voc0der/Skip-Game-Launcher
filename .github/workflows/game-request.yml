@@ -1,0 +1,108 @@
+name: Game request
+
+# A maintainer applies the "approved" label to a game request; from there this
+# resolves the store ID, builds the launcher, and opens a PR that closes the
+# issue on merge. If it can't work out the ID it says so on the issue and drops
+# the label, so re-applying retries.
+#
+# Everything derived from the issue reaches the shell through env vars rather
+# than ${{ }} interpolation - the issue body is written by strangers, and
+# inlining it would let them run commands on the runner.
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: game-request-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  fulfil:
+    if: github.event.label.name == 'approved'
+    runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve the request
+        id: resolve
+        shell: bash
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: python scripts/resolve.py --body "$BODY" --apply
+
+      - name: Report back and stand down
+        if: steps.resolve.outputs.ok != 'true'
+        shell: bash
+        env:
+          COMMENT: ${{ steps.resolve.outputs.comment }}
+        run: |
+          gh issue comment "$ISSUE" --body "$COMMENT"
+          gh issue edit "$ISSUE" --remove-label approved
+          echo "::warning::could not resolve request #$ISSUE - label removed"
+
+      - name: Acknowledge on the issue
+        if: steps.resolve.outputs.ok == 'true'
+        shell: bash
+        env:
+          COMMENT: ${{ steps.resolve.outputs.comment }}
+        run: gh issue comment "$ISSUE" --body "$COMMENT"
+
+      - name: Build the launcher
+        if: steps.resolve.outputs.ok == 'true'
+        shell: pwsh
+        env:
+          OUT: ${{ steps.resolve.outputs.out }}
+          STORE: ${{ steps.resolve.outputs.store }}
+        run: ./scripts/build.ps1 -Only $env:OUT -Store $env:STORE -Force
+
+      - name: Open the PR
+        if: steps.resolve.outputs.ok == 'true'
+        shell: bash
+        env:
+          NAME: ${{ steps.resolve.outputs.name }}
+          # Not PATH, for reasons that would be tedious to debug.
+          EXE_PATH: ${{ steps.resolve.outputs.path }}
+          ENTRY: ${{ steps.resolve.outputs.entry }}
+        run: |
+          set -euo pipefail
+          BRANCH="game-request/${ISSUE}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add -- games.json "$EXE_PATH"
+          git commit -m "Add ${NAME} (${EXE_PATH})" -m "Requested in #${ISSUE}."
+          git push --force origin "$BRANCH"
+
+          # Built out here rather than inline so the markdown keeps column 0.
+          {
+            printf 'Built from #%s.\n\n' "$ISSUE"
+            printf '| | |\n|---|---|\n'
+            printf '| Game | %s |\n' "$NAME"
+            printf '| File | `%s` |\n\n' "$EXE_PATH"
+            printf 'Manifest entry:\n```json\n%s\n```\n\n' "$ENTRY"
+            printf 'The executable is unsigned, so SmartScreen will want an unblock on\n'
+            printf 'first run - same as every other launcher here.\n\n'
+            printf 'Closes #%s\n' "$ISSUE"
+          } > pr-body.md
+
+          # Only an *open* PR can be updated; `gh pr view` would also return a
+          # merged one, and editing that fails the job.
+          URL=$(gh pr list --head "$BRANCH" --state open --json url -q '.[0].url')
+          if [ -n "$URL" ]; then
+            gh pr edit "$BRANCH" --title "Add ${NAME}" --body-file pr-body.md
+          else
+            URL=$(gh pr create --base master --head "$BRANCH" \
+                               --title "Add ${NAME}" --body-file pr-body.md)
+          fi
+          rm -f pr-body.md
+
+          gh issue comment "$ISSUE" --body "Opened ${URL} - merging it closes this issue."

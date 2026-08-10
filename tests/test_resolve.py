@@ -1,0 +1,548 @@
+"""Tests for scripts/resolve.py - the gate deciding whether CI can build a request."""
+from __future__ import annotations
+
+import json
+import re
+
+import pytest
+from helpers import (
+    NOT_FOUND,
+    epic_product,
+    fake_urlopen,
+    steam_results,
+    urlopen_raises,
+)
+
+
+# --- issue form parsing -----------------------------------------------------
+
+def test_parses_headings_and_values(resolve_mod):
+    body = "### Game name\n\nPortal 2\n\n### Store\n\nSteam\n"
+    assert resolve_mod.parse_issue_form(body) == {"game name": "Portal 2", "store": "Steam"}
+
+
+def test_treats_no_response_as_blank(resolve_mod):
+    fields = resolve_mod.parse_issue_form("### App ID / product code\n\n_No response_\n")
+    assert fields["app id / product code"] == ""
+
+
+def test_handles_crlf(resolve_mod):
+    """GitHub delivers issue bodies with CRLF; splitting on \\n alone strands \\r."""
+    fields = resolve_mod.parse_issue_form("### Game name\r\n\r\nPortal 2\r\n")
+    assert fields["game name"] == "Portal 2"
+
+
+def test_ignores_preamble_before_first_heading(resolve_mod):
+    fields = resolve_mod.parse_issue_form("chatter\n\n### Game name\n\nPortal 2\n")
+    assert fields == {"game name": "Portal 2"}
+
+
+# --- store normalisation ----------------------------------------------------
+
+@pytest.mark.parametrize(
+    "given,expected",
+    [
+        ("Steam", "steam"),
+        ("steam", "steam"),
+        ("Battle.net", "battlenet"),
+        ("battlenet", "battlenet"),
+        ("Epic Games", "epic"),
+        ("Ubisoft Connect", "ubisoft"),
+    ],
+)
+def test_accepts_store_labels_and_keys(resolve_mod, form, games, given, expected):
+    # Epic treats a lowercase/numeric value as a slug and resolves it, so the
+    # lookup is stubbed; the other stores never reach the network here.
+    with fake_urlopen(lambda url: epic_product(("home", "Zed"))):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="X", store=given, app_id="123")), games
+        )
+    assert plan["store"] == expected
+
+
+def test_rejects_unknown_store(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="Unrecognised store"):
+        resolve_mod.resolve(resolve_mod.parse_issue_form(form(store="GOG", app_id="1")), games)
+
+
+def test_rejects_missing_name(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="no game name"):
+        resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="", app_id="1")), games)
+
+
+# --- Steam lookup -----------------------------------------------------------
+
+def test_steam_exact_match(resolve_mod, form, games):
+    with fake_urlopen(lambda url: steam_results((1145360, "Hades"), (99, "Hades II"))):
+        plan = resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="Hades")), games)
+    assert plan["id"] == "1145360"
+
+
+def test_steam_match_ignores_punctuation_and_case(resolve_mod, form, games):
+    with fake_urlopen(lambda url: steam_results((7, "Tom Clancy's Ghost Recon"))):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="tom clancys ghost recon")), games
+        )
+    assert plan["id"] == "7"
+
+
+def test_steam_ambiguous_is_rejected_with_candidates(resolve_mod, form, games):
+    """Steam's search returns DLC alongside base games; guessing would ship a broken exe."""
+    payload = steam_results(
+        (412020, "Metro Exodus"), (286690, "Metro 2033 Redux"), (287980, "Mini Metro")
+    )
+    with fake_urlopen(lambda url: payload):
+        with pytest.raises(resolve_mod.Rejected) as exc:
+            resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="Metro")), games)
+    assert "412020" in str(exc.value) and "Mini Metro" in str(exc.value)
+
+
+def test_steam_no_results_is_rejected(resolve_mod, form, games):
+    with fake_urlopen(lambda url: {"items": []}):
+        with pytest.raises(resolve_mod.Rejected, match="No Steam app matched"):
+            resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="Nonsuch")), games)
+
+
+def test_steam_network_failure_is_rejected_not_raised(resolve_mod, form, games):
+    """A flaky API should comment on the issue, not crash the workflow."""
+    with urlopen_raises(NOT_FOUND):
+        with pytest.raises(resolve_mod.Rejected, match="Couldn't reach the Steam store API"):
+            resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="Hades")), games)
+
+
+def test_steam_rejects_non_numeric_id(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="numeric"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="X", store="Steam", app_id="Petunia")), games
+        )
+
+
+def test_steam_skips_lookup_when_id_supplied(resolve_mod, form, games):
+    with urlopen_raises(AssertionError("must not hit the network")):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="X", app_id="12345")), games
+        )
+    assert plan["id"] == "12345"
+
+
+# --- Epic lookup ------------------------------------------------------------
+
+def test_epic_resolves_slug_to_app_name(resolve_mod, form, games):
+    """The store slug is not the launch-URI name: metro-2033-redux serves Petunia."""
+    with fake_urlopen(lambda url: epic_product(("home", "Boga"))):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Death Stranding", store="Epic Games")), games
+        )
+    assert plan["id"] == "Boga"
+
+
+def test_epic_prefers_home_page_over_dlc_pages(resolve_mod, form, games):
+    """Regression: page[0] is often a DLC sub-page carrying its own wrong app name."""
+    payload = epic_product(("awe", "WrongDlcName"), ("season-pass", "AlsoWrong"), ("home", "Calluna"))
+    with fake_urlopen(lambda url: payload):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Control", store="Epic Games")), games
+        )
+    assert plan["id"] == "Calluna"
+
+
+def test_epic_falls_back_to_any_page_with_a_name(resolve_mod, form, games):
+    with fake_urlopen(lambda url: epic_product(("ultimate-edition", "Onyx"))):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Some Game", store="Epic Games")), games
+        )
+    assert plan["id"] == "Onyx"
+
+
+def test_epic_empty_app_name_is_rejected(resolve_mod, form, games):
+    """Epic leaves the field blank on many products - that must not become an empty id."""
+    with fake_urlopen(lambda url: epic_product(("home", ""))):
+        with pytest.raises(resolve_mod.Rejected, match="doesn't publish a launcher app name"):
+            resolve_mod.resolve(
+                resolve_mod.parse_issue_form(form(name="Alan Wake 2", store="Epic Games")), games
+            )
+
+
+def test_epic_accepts_store_url(resolve_mod, form, games):
+    seen = {}
+
+    def handler(url):
+        seen["url"] = url
+        return epic_product(("home", "Wren"))
+
+    with fake_urlopen(handler):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(name="Alan Wake 2", store="Epic Games",
+                     app_id="https://store.epicgames.com/en-US/p/alan-wake-2")
+            ),
+            games,
+        )
+    assert plan["id"] == "Wren"
+    assert seen["url"].endswith("alan-wake-2")
+
+
+def test_epic_strips_query_and_fragment_from_store_url(resolve_mod, form, games):
+    seen = {}
+
+    def handler(url):
+        seen["url"] = url
+        return epic_product(("home", "Wren"))
+
+    with fake_urlopen(handler):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(
+                    name="Alan Wake 2",
+                    store="Epic Games",
+                    app_id="https://store.epicgames.com/en-US/p/alan-wake-2?lang=en-US#details",
+                )
+            ),
+            games,
+        )
+    assert plan["id"] == "Wren"
+    assert seen["url"].endswith("alan-wake-2")
+
+
+def test_epic_passes_through_explicit_codename(resolve_mod, form, games):
+    """A capitalised codename is already the answer and must not be re-resolved."""
+    with urlopen_raises(AssertionError("must not hit the network")):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(name="Alan Wake 2", store="Epic Games", app_id="Wren")
+            ),
+            games,
+        )
+    assert plan["id"] == "Wren"
+
+
+def test_epic_network_failure_is_rejected(resolve_mod, form, games):
+    with urlopen_raises(NOT_FOUND):
+        with pytest.raises(resolve_mod.Rejected, match="Couldn't read the Epic store page"):
+            resolve_mod.resolve(
+                resolve_mod.parse_issue_form(form(name="Nonsuch", store="Epic Games")), games
+            )
+
+
+@pytest.mark.parametrize(
+    "name,slug",
+    [
+        ("Metro 2033 Redux", "metro-2033-redux"),
+        ("Assassin's Creed Valhalla", "assassins-creed-valhalla"),
+        ("Tom Clancy's Rainbow Six: Siege", "tom-clancys-rainbow-six-siege"),
+        ("Sam & Max", "sam-and-max"),
+    ],
+)
+def test_epic_slugify(resolve_mod, name, slug):
+    assert resolve_mod.epic_slugify(name) == slug
+
+
+# --- stores without a catalogue ---------------------------------------------
+
+@pytest.mark.parametrize("store", ["Battle.net", "Ubisoft Connect"])
+def test_uncatalogued_stores_require_an_id(resolve_mod, form, games, store):
+    with pytest.raises(resolve_mod.Rejected, match="no public catalogue API"):
+        resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="X", store=store)), games)
+
+
+def test_battlenet_accepts_product_code(resolve_mod, form, games):
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(form(name="Diablo IV", store="Battle.net", app_id="Fen")),
+        games,
+    )
+    assert (plan["store"], plan["id"], plan["out"]) == ("battlenet", "Fen", "DiabloIV.exe")
+
+
+def test_ubisoft_rejects_non_numeric_id(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="numeric"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(name="X", store="Ubisoft Connect", app_id="not-a-number")
+            ),
+            games,
+        )
+
+
+# --- duplicate and merge handling -------------------------------------------
+
+def test_rejects_game_already_built_for_that_store(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="already built for Steam"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Portal 2", app_id="620")), games
+        )
+
+
+def test_merges_a_second_store_into_an_existing_game(resolve_mod, form, games):
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(form(name="Overwatch", store="Steam", app_id="2357570")),
+        games,
+    )
+    assert plan["action"] == "merge"
+    assert plan["out"] == "Overwatch.exe"
+
+
+def test_merge_matches_name_ignoring_punctuation(resolve_mod, form, games):
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(form(name="portal 2!", store="Battle.net", app_id="X")),
+        games,
+    )
+    assert plan["action"] == "merge" and plan["out"] == "Portal2.exe"
+
+
+def test_rejects_filename_collision_with_a_different_game(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected, match="already taken by"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(name="Something Else", app_id="1", filename="Portal2.exe")
+            ),
+            games,
+        )
+
+
+def test_rejects_id_already_used_by_another_game(resolve_mod, form, games):
+    """Two entries pointing at one app would build two identical executables."""
+    with pytest.raises(resolve_mod.Rejected, match="already used by"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Portal Two", app_id="620")), games
+        )
+
+
+# --- id charset -------------------------------------------------------------
+
+@pytest.mark.parametrize(
+    "store,evil",
+    [
+        ("Battle.net", 'Fen" & start calc & rem '),
+        ("Battle.net", "Pro`whoami`"),
+        ("Battle.net", "Pro&calc"),
+        ("Epic Games", 'Petunia" onerror="x'),
+        ("Epic Games", "Petunia&calc"),
+    ],
+)
+def test_rejects_ids_that_would_inject_into_the_launch_command(
+    resolve_mod, form, games, store, evil
+):
+    """The ID is interpolated into a shell command baked into a shipped .exe.
+
+    `cmd /s /c` strips the outer quote pair, so a Battle.net code carrying a
+    quote plus `&` escapes the quoted run and executes arbitrary commands on
+    every machine that runs the launcher.
+    """
+    with pytest.raises(resolve_mod.Rejected, match="isn't a valid"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="Evil", store=store, app_id=evil)), games
+        )
+
+
+@pytest.mark.parametrize(
+    "store,app_id",
+    [("Battle.net", "VIPR"), ("Battle.net", "D3"), ("Battle.net", "WoW"),
+     ("Epic Games", "Calluna"), ("Epic Games", "Boga")],
+)
+def test_accepts_real_world_ids(resolve_mod, form, games, store, app_id):
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(form(name="Fresh Game", store=store, app_id=app_id)), games
+    )
+    assert plan["id"] == app_id
+
+
+def test_validates_ids_that_came_from_the_api_too(resolve_mod, form, games):
+    """Defence in depth: a hostile or confused API response is still untrusted."""
+    with fake_urlopen(lambda url: epic_product(("home", 'Evil" & calc'))):
+        with pytest.raises(resolve_mod.Rejected, match="isn't a valid"):
+            resolve_mod.resolve(
+                resolve_mod.parse_issue_form(form(name="Fresh Game", store="Epic Games")), games
+            )
+
+
+# --- filenames --------------------------------------------------------------
+
+@pytest.mark.parametrize(
+    "name,out",
+    [
+        ("Portal 2", "Portal2.exe"),
+        ("Assassin's Creed", "AssassinsCreed.exe"),
+        ("It Takes Two", "ItTakesTwo.exe"),
+        ("Warcraft III", "WarcraftIII.exe"),
+        ("Tools Up!", "ToolsUp.exe"),
+        ("portal 2", "Portal2.exe"),
+    ],
+)
+def test_derives_output_filename(resolve_mod, name, out):
+    assert resolve_mod.derive_out_name(name) == out
+
+
+@pytest.mark.parametrize("name", ["巨影都市", "!!!", "———"])
+def test_rejects_names_that_yield_no_filename(resolve_mod, form, games, name):
+    """A name with no latin characters used to derive the filename ".exe",
+    which passes the charset check and produces an unnameable file."""
+    with pytest.raises(resolve_mod.Rejected, match="Couldn't work out a filename"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name=name, store="Battle.net", app_id="D3")), games
+        )
+
+
+@pytest.mark.parametrize(
+    "name,out",
+    [("Pokémon Go", "PokemonGo.exe"), ("Brütal Legend", "BrutalLegend.exe")],
+)
+def test_strips_diacritics_rather_than_dropping_letters(resolve_mod, name, out):
+    assert resolve_mod.derive_out_name(name) == out
+
+
+@pytest.mark.parametrize("given", ["ToolsUp2.EXE", "ToolsUp2.Exe", "ToolsUp2.exe"])
+def test_normalises_the_extension_case(resolve_mod, form, games, given):
+    """games.json invariants require a lowercase .exe; accepting .EXE here
+    would open a PR that fails the repo's own manifest tests."""
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(
+            form(name="Fresh Game", store="Battle.net", app_id="D3", filename=given)
+        ),
+        games,
+    )
+    assert plan["out"] == "ToolsUp2.exe"
+
+
+def test_appends_exe_to_supplied_filename(resolve_mod, form, games):
+    plan = resolve_mod.resolve(
+        resolve_mod.parse_issue_form(form(name="X", app_id="1", filename="Custom")), games
+    )
+    assert plan["out"] == "Custom.exe"
+
+
+@pytest.mark.parametrize(
+    "bad",
+    [
+        "../evil.exe",
+        "sub/dir.exe",
+        "a b.exe",
+        "we;rd.exe",
+        ".exe",
+        "-hidden.exe",
+        "CON.exe",
+        "lpt1.backup.exe",
+    ],
+)
+def test_rejects_unsafe_filenames(resolve_mod, form, games, bad):
+    """`out` reaches git add and a filesystem path, so path separators are a real hazard."""
+    with pytest.raises(resolve_mod.Rejected, match="isn't a usable filename"):
+        resolve_mod.resolve(
+            resolve_mod.parse_issue_form(form(name="X", app_id="1", filename=bad)), games
+        )
+
+
+# --- manifest mutation ------------------------------------------------------
+
+def test_apply_adds_new_entry_in_sorted_position(resolve_mod, games):
+    plan = {"name": "Aaa", "out": "Aaa.exe", "store": "steam", "id": "1", "action": "new", "note": ""}
+    entry = resolve_mod.apply_to_manifest(plan, games)
+    assert entry == {"name": "Aaa", "out": "Aaa.exe", "stores": {"steam": "1"}}
+    assert [g["out"] for g in games] == sorted((g["out"] for g in games), key=str.lower)
+
+
+def test_apply_merges_without_adding_an_entry(resolve_mod, games):
+    before = len(games)
+    plan = {"name": "Portal 2", "out": "Portal2.exe", "store": "epic", "id": "Zed",
+            "action": "merge", "note": ""}
+    entry = resolve_mod.apply_to_manifest(plan, games)
+    assert len(games) == before
+    assert entry["stores"] == {"epic": "Zed", "steam": "620"}
+
+
+def test_apply_is_case_insensitive_on_filename(resolve_mod, games):
+    plan = {"name": "Portal 2", "out": "portal2.EXE", "store": "epic", "id": "Zed",
+            "action": "merge", "note": ""}
+    resolve_mod.apply_to_manifest(plan, games)
+    assert len(games) == 3
+
+
+# --- launch commands --------------------------------------------------------
+
+@pytest.mark.parametrize(
+    "store,app_id,expected",
+    [
+        ("steam", "620", "explorer steam://rungameid/620"),
+        ("ubisoft", "3539", "explorer uplay://launch/3539/0"),
+        ("epic", "Petunia",
+         'explorer "com.epicgames.launcher://apps/Petunia?action=launch&silent=true"'),
+        ("battlenet", "Pro",
+         'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch Pro""'),
+    ],
+)
+def test_launch_command_matches_the_hand_built_form(resolve_mod, store, app_id, expected):
+    """These strings are copied from the original executables; quoting is load-bearing."""
+    assert resolve_mod.launch_command(store, app_id) == expected
+
+
+# --- GitHub Actions output --------------------------------------------------
+
+def test_emit_uses_heredoc_for_multiline_values(resolve_mod, tmp_path, monkeypatch):
+    """A bare key=value line would truncate multi-line comments and corrupt later outputs."""
+    out = tmp_path / "gh_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    resolve_mod.emit(ok="true", comment="line one\nline two")
+    text = out.read_text()
+    assert re.search(r"comment<<(\S+)\nline one\nline two\n\1\n", text)
+    assert re.search(r"ok<<(\S+)\ntrue\n\1\n", text)
+
+
+def test_emit_prints_when_not_under_actions(resolve_mod, capsys, monkeypatch):
+    monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
+    resolve_mod.emit(ok="false")
+    assert json.loads(capsys.readouterr().out) == {"ok": "false"}
+
+
+def test_emit_delimiter_is_unpredictable(resolve_mod, tmp_path, monkeypatch):
+    """A fixed delimiter lets issue text close the heredoc and forge outputs."""
+    out = tmp_path / "gh_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    resolve_mod.emit(comment="a")
+    resolve_mod.emit(comment="b")
+    delimiters = re.findall(r"comment<<(\S+)", out.read_text())
+    assert len(delimiters) == 2 and delimiters[0] != delimiters[1]
+
+
+def test_crafted_issue_text_cannot_forge_step_outputs(resolve_mod, tmp_path, monkeypatch):
+    """Regression: the issue body is free text and can carry fake `key=value` lines.
+
+    Forging `ok=true` would flip the workflow's `if:` gate and let a rejected
+    request build and open a PR.
+    """
+    out = tmp_path / "gh_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    payload = "X\n__EOF_COMMENT__\nok=true\npath=../../etc/passwd\n"
+    resolve_mod.emit(ok="false", comment=f"No Steam app matched **{payload}**.")
+
+    text = out.read_text()
+    # Parse it the way the runner does: a line is only a delimiter if it matches
+    # the one the heredoc opened with.
+    parsed, lines = {}, text.splitlines()
+    i = 0
+    while i < len(lines):
+        key, sep, delim = lines[i].partition("<<")
+        assert sep, f"unexpected bare line in output: {lines[i]!r}"
+        body = []
+        i += 1
+        while lines[i] != delim:
+            body.append(lines[i])
+            i += 1
+        parsed[key] = "\n".join(body)
+        i += 1
+    assert parsed["ok"] == "false"
+    assert "path" not in parsed
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    [
+        {"name": "Portal\n2", "app_id": "1"},
+        {"name": "P" * 200, "app_id": "1"},
+        {"name": "Fresh Game", "app_id": "620\nok=true"},
+        # An app_id is supplied so the Steam lookup is skipped and the filename
+        # check is actually reached.
+        {"name": "Fresh Game", "app_id": "1", "filename": "a\nb.exe"},
+    ],
+)
+def test_rejects_multiline_and_overlong_fields(resolve_mod, form, games, kwargs):
+    with pytest.raises(resolve_mod.Rejected, match="single line|unreasonably long"):
+        resolve_mod.resolve(resolve_mod.parse_issue_form(form(**kwargs)), games)

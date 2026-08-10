@@ -1,0 +1,77 @@
+name: Build launchers
+
+on:
+  push:
+    branches: [master]
+    # Windows runners bill at 2x, and a README edit can't make a launcher go
+    # missing. Any change to an .exe or to games.json still triggers a run,
+    # since paths-ignore only skips when *every* changed file matches.
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - .gitignore
+      - tests/**
+      - pytest.ini
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild every launcher, not just the missing ones
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Two builds racing to commit executables would just conflict.
+concurrency:
+  group: build-launchers
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check IExpress is present
+        shell: pwsh
+        run: |
+          $p = "$env:SystemRoot\System32\iexpress.exe"
+          if (-not (Test-Path $p)) { throw "iexpress.exe missing from this runner image" }
+          Write-Host "found $p"
+
+      - name: Build missing launchers
+        id: build
+        shell: pwsh
+        env:
+          FORCE: ${{ inputs.force }}
+        run: |
+          $buildArgs = @{ Manifest = 'games.json' }
+          if ($env:FORCE -eq 'true') { $buildArgs.Force = $true }
+          ./scripts/build.ps1 @buildArgs
+
+      - name: Verify built launchers
+        if: steps.build.outputs.built != '0'
+        shell: bash
+        run: python scripts/verify.py --strict
+
+      - name: Commit built launchers
+        if: steps.build.outputs.built != '0'
+        shell: bash
+        env:
+          NAMES: ${{ steps.build.outputs.names }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- '*.exe'
+          if git diff --cached --quiet; then
+            echo "no executable changes to commit"
+            exit 0
+          fi
+          git commit -m "Build launchers: ${NAMES}"
+          # Pushing with GITHUB_TOKEN does not retrigger workflows, so this
+          # cannot loop back into itself.
+          git push
