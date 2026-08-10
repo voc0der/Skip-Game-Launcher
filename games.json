@@ -480,6 +480,13 @@
     }
   },
   {
+    "name": "R.E.P.O.",
+    "out": "REPO.exe",
+    "stores": {
+      "steam": "3241660"
+    }
+  },
+  {
     "name": "Riders Republic",
     "out": "RidersRepublic.exe",
     "stores": {
