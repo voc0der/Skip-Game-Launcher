@@ -366,6 +366,13 @@
     }
   },
   {
+    "name": "Split Fiction",
+    "out": "SplitFiction.exe",
+    "stores": {
+      "steam": "2001120"
+    }
+  },
+  {
     "name": "StarCraft II",
     "out": "StarCraft2.exe",
     "stores": {
