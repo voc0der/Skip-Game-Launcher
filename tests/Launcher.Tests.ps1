@@ -85,7 +85,11 @@ Describe 'New-SedContent' {
     }
 
     It 'points SourceFiles at the work directory' {
-        $script:Sed | Should -Match ([regex]::Escape('SourceFiles0=C:\work'))
+        $script:Sed | Should -Match ([regex]::Escape('SourceFiles0=C:\work\'))
+    }
+
+    It 'enables long filenames for generated launcher names' {
+        $script:Sed | Should -Match 'UseLongFileName=1'
     }
 
     It 'uses CRLF throughout - IExpress is an ANSI-era tool' {

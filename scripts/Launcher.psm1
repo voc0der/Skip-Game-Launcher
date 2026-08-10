@@ -69,6 +69,14 @@ function New-SedContent {
         [Parameter(Mandatory)][string]$WorkDir
     )
 
+    # IExpress treats SourceFiles entries as directory prefixes rather than
+    # paths to resolve. Its generated .sed files always include the trailing
+    # separator; without it, the filename is appended directly to the directory
+    # name and package creation exits with code 1.
+    $sourceDir = $WorkDir.TrimEnd([IO.Path]::DirectorySeparatorChar,
+                                  [IO.Path]::AltDirectorySeparatorChar) +
+                 [IO.Path]::DirectorySeparatorChar
+
     $sed = @"
 [Version]
 Class=IEXPRESS
@@ -77,7 +85,7 @@ SEDVersion=3
 PackagePurpose=InstallApp
 ShowInstallProgramWindow=0
 HideExtractAnimation=1
-UseLongFileName=0
+UseLongFileName=1
 InsideCompressed=0
 CAB_FixedSize=0
 CAB_ResvCodeSigning=0
@@ -104,7 +112,7 @@ AdminQuietInstCmd=
 UserQuietInstCmd=
 FILE0="dummy.bat"
 [SourceFiles]
-SourceFiles0=$WorkDir
+SourceFiles0=$sourceDir
 [SourceFiles0]
 %FILE0%=
 "@

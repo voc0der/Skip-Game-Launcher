@@ -89,7 +89,12 @@ function Build-Launcher {
         # iexpress is a GUI-subsystem binary, so it returns immediately unless waited on.
         $p = Start-Process -FilePath $IExpress -ArgumentList '/N', '/Q', '/M', "`"$sedPath`"" `
                            -Wait -PassThru -NoNewWindow
-        if ($p.ExitCode -ne 0) { throw "iexpress exited $($p.ExitCode) building $($Target.Path)" }
+        if ($p.ExitCode -ne 0) {
+            Write-Host '--- IExpress directive that failed ---'
+            Get-Content $sedPath | Write-Host
+            Write-Host '--- end directive ---'
+            throw "iexpress exited $($p.ExitCode) building $($Target.Path)"
+        }
         if (-not (Test-Path $targetPath)) { throw "iexpress reported success but produced no $targetPath" }
 
         $size = (Get-Item $targetPath).Length

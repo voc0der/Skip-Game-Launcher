@@ -87,8 +87,8 @@ jobs:
             printf 'Built from #%s.\n\n' "$ISSUE"
             printf '| | |\n|---|---|\n'
             printf '| Game | %s |\n' "$NAME"
-            printf '| File | `%s` |\n\n' "$EXE_PATH"
-            printf 'Manifest entry:\n```json\n%s\n```\n\n' "$ENTRY"
+            printf "| File | \`%s\` |\n\n" "$EXE_PATH"
+            printf "Manifest entry:\n\`\`\`json\n%s\n\`\`\`\n\n" "$ENTRY"
             printf 'The executable is unsigned, so SmartScreen will want an unblock on\n'
             printf 'first run - same as every other launcher here.\n\n'
             printf 'Closes #%s\n' "$ISSUE"
