@@ -678,6 +678,14 @@
     }
   },
   {
+    "name": "NARAKA: BLADEPOINT",
+    "out": "NARAKABLADEPOINT.exe",
+    "stores": {
+      "epic": "eb6f87ce571445c087a872366efc70d3",
+      "steam": "1203220"
+    }
+  },
+  {
     "name": "NBA 2K26",
     "out": "NBA2K26.exe",
     "stores": {
