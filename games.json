@@ -304,6 +304,14 @@
     }
   },
   {
+    "name": "Hogwarts Legacy",
+    "out": "HogwartsLegacy.exe",
+    "stores": {
+      "epic": "fa4240e57a3c46b39f169041b7811293",
+      "steam": "990080"
+    }
+  },
+  {
     "name": "Heroes of the Storm",
     "out": "HoTS.exe",
     "stores": {
