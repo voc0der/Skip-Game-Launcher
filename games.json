@@ -414,6 +414,13 @@
     }
   },
   {
+    "name": "PICO PARK 2",
+    "out": "PICOPARK2.exe",
+    "stores": {
+      "steam": "2644470"
+    }
+  },
+  {
     "name": "Portal",
     "out": "Portal.exe",
     "stores": {
