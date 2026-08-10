@@ -1027,6 +1027,14 @@
     }
   },
   {
+    "name": "Windrose",
+    "out": "Windrose.exe",
+    "stores": {
+      "epic": "d08157fbe22d45fcba452680857ac58d",
+      "steam": "3041230"
+    }
+  },
+  {
     "name": "The Witcher 2: Assassins of Kings",
     "out": "Witcher2.exe",
     "stores": {
