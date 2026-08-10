@@ -818,6 +818,13 @@
     }
   },
   {
+    "name": "Warcraft: Remastered",
+    "out": "WarcraftRemastered.exe",
+    "stores": {
+      "battlenet": "W1R"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
