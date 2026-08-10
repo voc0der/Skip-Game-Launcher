@@ -215,6 +215,14 @@
     }
   },
   {
+    "name": "Delta Force",
+    "out": "DeltaForce.exe",
+    "stores": {
+      "epic": "6f73f8ed06a74026a84af9c66c4f345f",
+      "steam": "2507950"
+    }
+  },
+  {
     "name": "Destiny 2",
     "out": "Destiny2.exe",
     "stores": {
