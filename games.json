@@ -283,6 +283,13 @@
     }
   },
   {
+    "name": "Diablo II: Lord of Destruction",
+    "out": "DiabloIILordOfDestruction.exe",
+    "stores": {
+      "battlenet": "D2X"
+    }
+  },
+  {
     "name": "Diablo II: Resurrected",
     "out": "DiabloIIResurrected.exe",
     "stores": {
