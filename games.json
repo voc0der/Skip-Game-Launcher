@@ -634,6 +634,13 @@
     }
   },
   {
+    "name": "War Thunder",
+    "out": "WarThunder.exe",
+    "stores": {
+      "steam": "236390"
+    }
+  },
+  {
     "name": "The Witcher 2: Assassins of Kings",
     "out": "Witcher2.exe",
     "stores": {
