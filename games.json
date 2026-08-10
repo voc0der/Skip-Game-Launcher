@@ -750,6 +750,13 @@
     }
   },
   {
+    "name": "Project Zomboid",
+    "out": "ProjectZomboid.exe",
+    "stores": {
+      "steam": "108600"
+    }
+  },
+  {
     "name": "PUBG: BATTLEGROUNDS",
     "out": "PUBGBATTLEGROUNDS.exe",
     "stores": {
