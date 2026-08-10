@@ -1027,6 +1027,15 @@
     }
   },
   {
+    "name": "Tom Clancy's The Division 2",
+    "out": "TomClancysTheDivision2.exe",
+    "stores": {
+      "epic": "Impala",
+      "steam": "2221490",
+      "ubisoft": "4932"
+    }
+  },
+  {
     "name": "Tony Hawk's Pro Skater 3 + 4",
     "out": "TonyHawksProSkater34.exe",
     "stores": {
