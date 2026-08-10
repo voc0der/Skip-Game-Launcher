@@ -494,6 +494,13 @@
     }
   },
   {
+    "name": "Genshin Impact",
+    "out": "GenshinImpact.exe",
+    "stores": {
+      "epic": "41869934302e4b8cafac2d3c0e7c293d"
+    }
+  },
+  {
     "name": "Geometry Dash",
     "out": "GeometryDash.exe",
     "stores": {
