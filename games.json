@@ -395,6 +395,14 @@
     }
   },
   {
+    "name": "EA SPORTS FCâ„¢ 26",
+    "out": "EASPORTSFCTM26.exe",
+    "stores": {
+      "epic": "Monkey",
+      "steam": "3405690"
+    }
+  },
+  {
     "name": "ELDEN RING",
     "out": "ELDENRING.exe",
     "stores": {
