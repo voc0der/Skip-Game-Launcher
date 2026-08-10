@@ -269,6 +269,13 @@
     }
   },
   {
+    "name": "Halo Infinite",
+    "out": "HaloInfinite.exe",
+    "stores": {
+      "steam": "1240440"
+    }
+  },
+  {
     "name": "Halo Master Chief Collection",
     "out": "HaloMasterChiefCollection.exe",
     "stores": {
