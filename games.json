@@ -257,6 +257,14 @@
     }
   },
   {
+    "name": "Crimson Desert",
+    "out": "CrimsonDesert.exe",
+    "stores": {
+      "epic": "0230d0150e9f45d49dce401e1103c9fc",
+      "steam": "3321460"
+    }
+  },
+  {
     "name": "Crysis",
     "out": "Crysis.exe",
     "stores": {
