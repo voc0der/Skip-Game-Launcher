@@ -49,6 +49,7 @@
 | DiRT Rally | [Steam](Steam/DiRT_Rally.exe) | — | — | — |
 | Doom 2016 | [Steam](Steam/Doom2016.exe) | — | — | — |
 | Doom Eternal | [Steam](Steam/DoomEternal.exe) | [Epic](Epic/DoomEternal.exe) | — | — |
+| Doom: The Dark Ages | [Steam](Steam/DoomTheDarkAges.exe) | — | [Battle.net](BattleNet/DoomTheDarkAges.exe) | — |
 | Dota 2 | [Steam](Steam/Dota2.exe) | — | — | — |
 | ELDEN RING | [Steam](Steam/ELDENRING.exe) | — | — | — |
 | Far Cry 5 | [Steam](Steam/FarCry5.exe) | [Epic](Epic/FarCry5.exe) | — | [Ubisoft](Ubisoft/FarCry5.exe) |
