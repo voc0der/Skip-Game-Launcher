@@ -707,6 +707,13 @@
     }
   },
   {
+    "name": "Hunt: Showdown 1896",
+    "out": "HuntShowdown1896.exe",
+    "stores": {
+      "steam": "594650"
+    }
+  },
+  {
     "name": "It Takes Two",
     "out": "ItTakesTwo.exe",
     "stores": {
