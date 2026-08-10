@@ -11,6 +11,9 @@ executable with the wrong payload - so this reads the command back out of each
 
 Without --strict, executables that launch the right game by an older command
 form (there are several in the original hand-built set) pass with a note.
+Strict mode also rejects packages that execute the dummy payload before the
+real command, because IExpress's hidden-window setting would apply to the dummy
+rather than the launcher command.
 """
 from __future__ import annotations
 
@@ -38,6 +41,7 @@ DIALECTS = [
 ]
 
 HARDCODED_STEAM = re.compile(rb"Program Files \(x86\)\\Steam")
+DUMMY_APP_LAUNCH = re.compile(rb"cmd(?:\.exe)? /c dummy\.bat", re.IGNORECASE)
 
 
 def inspect(path: str) -> tuple[str | None, str | None, str]:
@@ -51,6 +55,8 @@ def inspect(path: str) -> tuple[str | None, str | None, str]:
         ident = match.group(1).decode() if match.groups() else None
         if store == "steam" and HARDCODED_STEAM.search(data):
             note += "; hardcoded Steam install path"
+        if DUMMY_APP_LAUNCH.search(data):
+            note += "; dummy payload is executed instead of using the hidden launch slot"
         return store, ident, note
     return None, None, "no recognisable launch command"
 
@@ -59,8 +65,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", default=".", help="directory holding the store folders")
     ap.add_argument("--manifest", default="games.json")
-    ap.add_argument("--strict", action="store_true",
-                    help="fail on legacy command forms, not just wrong ones")
+    ap.add_argument(
+        "--strict",
+        action="store_true",
+        help="fail on legacy commands or non-canonical package layout",
+    )
     args = ap.parse_args()
 
     with open(args.manifest, encoding="utf-8") as fh:
@@ -99,7 +108,7 @@ def main() -> int:
     if missing:
         print(f"\nnot built yet ({len(missing)}): {', '.join(missing)}")
     if notes:
-        print(f"\nlegacy command forms ({len(notes)}):")
+        print(f"\nnon-canonical packages ({len(notes)}):")
         for line in notes:
             print(f"  {line}")
     if failures:
@@ -108,7 +117,7 @@ def main() -> int:
             print(f"  {line}", file=sys.stderr)
         return 1
     if notes and args.strict:
-        print("\nlegacy forms present and --strict given", file=sys.stderr)
+        print("\nnon-canonical packages present and --strict given", file=sys.stderr)
         return 1
 
     print("\nall good")

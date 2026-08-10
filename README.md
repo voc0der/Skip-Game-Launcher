@@ -53,12 +53,14 @@ CI builds anything in the manifest that isn't on disk yet and commits it.
 }
 ```
 
-The executables emulate package installers with a dummy bat file:
+The executables carry an unused dummy batch file because IExpress requires a
+payload to package:
 ```
 echo 1
 ```
 
-Then runs the command to execute the game, thanks to <a href="https://github.com/dafzor/bnetlauncher/issues/22#issuecomment-399788430">Ethan-BB's post</a> , implementation like so:
+The hidden install-program step runs the command that starts the game, thanks to
+<a href="https://github.com/dafzor/bnetlauncher/issues/22#issuecomment-399788430">Ethan-BB's post</a>, implementation like so:
 
 For Battle.Net: 
 **Requirement: Battle.net Launcher Install path must be the default location (below):**<br />

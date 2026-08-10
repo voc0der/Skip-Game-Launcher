@@ -3,9 +3,9 @@
     Builds Skip-Game-Launcher executables from games.json using IExpress.
 
 .DESCRIPTION
-    Each launcher is an IExpress self-extracting package that ships a dummy .bat
-    (so IExpress has something to "install") and runs the real store launch
-    command as its post-install step, with the progress window hidden.
+    Each launcher is an IExpress self-extracting package that ships an unused
+    dummy .bat (so IExpress has something to package) and runs the real store
+    launch command as its hidden install-program step.
 
     A game listed under several stores gets one executable per store, each in
     that store's folder - Steam/Portal2.exe, Epic/Portal2.exe and so on.

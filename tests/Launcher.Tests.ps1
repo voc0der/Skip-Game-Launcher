@@ -64,16 +64,24 @@ Describe 'New-SedContent' {
                                      -WorkDir 'C:\work'
     }
 
-    It 'runs the dummy payload as the installed app' {
-        $script:Sed | Should -Match 'AppLaunched=cmd /c dummy\.bat'
+    It 'runs the real launch command as the installed app' {
+        $script:Sed | Should -Match ([regex]::Escape('AppLaunched=explorer steam://rungameid/620'))
     }
 
-    It 'puts the real launch command in PostInstallCmd' {
-        $script:Sed | Should -Match ([regex]::Escape('PostInstallCmd=explorer steam://rungameid/620'))
+    It 'does not run a second post-install command' {
+        $script:Sed | Should -Match 'PostInstallCmd=<None>'
     }
 
-    It 'hides the installer window' {
+    It 'starts the launch command in a hidden window' {
         $script:Sed | Should -Match 'ShowInstallProgramWindow=0'
+    }
+
+    It 'hides the extraction animation' {
+        $script:Sed | Should -Match 'HideExtractAnimation=1'
+    }
+
+    It 'does not request a reboot' {
+        $script:Sed | Should -Match 'RebootMode=N'
     }
 
     It 'uses the absolute target path' {
@@ -107,7 +115,8 @@ Describe 'New-SedContent' {
         $bnet = 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""'
         $sed = New-SedContent -FriendlyName 'Overwatch' -Launch $bnet `
                               -TargetPath 'C:\out\BattleNet\Overwatch.exe' -WorkDir 'C:\work'
-        $sed | Should -Match ([regex]::Escape("PostInstallCmd=$bnet"))
+        $sed | Should -Match ([regex]::Escape("AppLaunched=$bnet"))
+        $sed | Should -Match 'PostInstallCmd=<None>'
     }
 }
 

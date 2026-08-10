@@ -46,6 +46,15 @@ def test_canonical_command_has_no_note(verify_mod, tmp_path):
     assert verify_mod.inspect(str(exe))[2] == "canonical"
 
 
+def test_flags_executed_dummy_payload(verify_mod, tmp_path):
+    """The hidden-window flag applies to AppLaunched, so putting the dummy
+    command there makes the real post-install launch visible."""
+    exe = tmp_path / "x.exe"
+    exe.write_bytes(fake_exe(STEAM_CANON) + b"cmd /c dummy.bat\x00")
+    _, _, note = verify_mod.inspect(str(exe))
+    assert "dummy payload is executed" in note
+
+
 def test_reports_unrecognisable_payload(verify_mod, tmp_path):
     exe = tmp_path / "x.exe"
     exe.write_bytes(b"MZ" + b"\x00" * 200)
@@ -140,5 +149,16 @@ def test_legacy_form_fails_under_strict(verify_mod, tmp_path, monkeypatch):
         tmp_path,
         [{"name": "Half Life 2", "out": "HalfLife2.exe", "stores": {"steam": "220"}}],
         {"Steam/HalfLife2.exe": 'cmd /s /c ""C:\\Program Files (x86)\\Steam\\steam.exe"" -gameidlaunch 220'},
+    )
+    assert _run(verify_mod, tmp_path, monkeypatch, "--strict") == 1
+
+
+def test_executed_dummy_payload_fails_under_strict(
+    verify_mod, tmp_path, monkeypatch
+):
+    write_tree(
+        tmp_path,
+        [{"name": "Portal 2", "out": "Portal2.exe", "stores": {"steam": "620"}}],
+        {"Steam/Portal2.exe": STEAM_CANON + "\x00cmd /c dummy.bat"},
     )
     assert _run(verify_mod, tmp_path, monkeypatch, "--strict") == 1

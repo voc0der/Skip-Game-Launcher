@@ -58,9 +58,10 @@ function New-SedContent {
     .SYNOPSIS
         The IExpress directive file, as a CRLF string.
     .DESCRIPTION
-        AppLaunched runs the dummy payload so IExpress believes it installed
-        something; PostInstallCmd is what actually starts the game.
-        ShowInstallProgramWindow=0 keeps the extraction window off screen.
+        IExpress requires a packaged file, so the dummy payload is included but
+        never run. AppLaunched starts the game and PostInstallCmd remains empty,
+        matching the original launchers. ShowInstallProgramWindow=0 therefore
+        applies hidden-window handling to the actual launch command.
     #>
     param(
         [Parameter(Mandatory)][string]$FriendlyName,
@@ -106,8 +107,8 @@ DisplayLicense=
 FinishMessage=
 TargetName=$TargetPath
 FriendlyName=$FriendlyName
-AppLaunched=cmd /c dummy.bat
-PostInstallCmd=$Launch
+AppLaunched=$Launch
+PostInstallCmd=<None>
 AdminQuietInstCmd=
 UserQuietInstCmd=
 FILE0="dummy.bat"
