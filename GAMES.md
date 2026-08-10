@@ -92,6 +92,7 @@
 | Tools Up! | [Steam](Steam/ToolsUp.exe) | [Epic](Epic/ToolsUp.exe) | — | — |
 | Tron: Evolution | [Steam](Steam/TronEvolution.exe) | — | — | — |
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |
+| War Thunder | [Steam](Steam/WarThunder.exe) | — | — | — |
 | Warcraft III | — | — | [Battle.net](BattleNet/WarcraftIII.exe) | — |
 | World of Warcraft | — | — | [Battle.net](BattleNet/WoW.exe) | — |
 | Worms W.M.D | [Steam](Steam/Worms_WMD.exe) | — | — | — |
