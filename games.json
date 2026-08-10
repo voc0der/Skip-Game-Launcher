@@ -458,6 +458,13 @@
     }
   },
   {
+    "name": "Gamble With Your Friends",
+    "out": "GambleWithYourFriends.exe",
+    "stores": {
+      "steam": "3892270"
+    }
+  },
+  {
     "name": "Geometry Dash",
     "out": "GeometryDash.exe",
     "stores": {
