@@ -1,6 +1,6 @@
 # Contributing
 
-For setup and local run instructions, see [DEVELOPMENT.md](./DEVELOPMENT.md).
+See [README.md](./README.md) for build and test instructions.
 
 ## Rules
 
@@ -15,13 +15,13 @@ For setup and local run instructions, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ## Before Opening a PR
 
-- Run `npm run lint`
-- Run `npx tsc -p src/tsconfig.app.json --noEmit`
-- Run `npx tsc -p src/tsconfig.spec.json --noEmit`
-- Run `CHROMIUM_BIN="$(command -v chromium || command -v chromium-browser)" npm run test:headless`
-- Run `npx ng build --configuration production`
-- If backend JavaScript changed, run `node --check` on each touched backend file
+- Run `python -m pytest`
+- On Windows, run `Invoke-Pester tests/Launcher.Tests.ps1`
+- If launcher binaries changed, run `python scripts/verify.py`
+- If a workflow changed, run `actionlint` when available
 
 ## Notes
 
-- The repo test defaults use `Chromium` / `ChromiumHeadless` instead of Chrome-branded launchers.
+- `games.json` is the source of truth for launcher definitions.
+- Building launchers requires Windows because `scripts/build.ps1` uses IExpress.
+- Do not hand-edit generated `.exe` files.
