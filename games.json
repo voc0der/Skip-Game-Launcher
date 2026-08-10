@@ -1,5 +1,13 @@
 [
   {
+    "name": "ARC Raiders",
+    "out": "ARCRaiders.exe",
+    "stores": {
+      "epic": "20f01ab5e0fa4e798c6d58eeb8d86989",
+      "steam": "1808500"
+    }
+  },
+  {
     "name": "Assassin's Creed",
     "out": "AssassinsCreed.exe",
     "stores": {
