@@ -46,6 +46,7 @@
 | Civilization IV | [Steam](Steam/Civilization_IV.exe) | — | — | — |
 | Civilization V | [Steam](Steam/Civilization_V.exe) | — | — | — |
 | Civilization VI | [Steam](Steam/Civilization_VI.exe) | [Epic](Epic/Civilization_VI.exe) | — | — |
+| Clair Obscur: Expedition 33 | [Steam](Steam/ClairObscurExpedition33.exe) | [Epic](Epic/ClairObscurExpedition33.exe) | — | — |
 | Control | [Steam](Steam/Control.exe) | [Epic](Epic/Control.exe) | — | — |
 | Counter-Strike: Global Offensive | [Steam](Steam/CSGO.exe) | — | — | — |
 | Crash Bandicoot 4 | — | — | [Battle.net](BattleNet/CrashBandicoot4.exe) | — |
