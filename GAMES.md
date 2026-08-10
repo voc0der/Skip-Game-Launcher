@@ -68,6 +68,7 @@
 | ELDEN RING | [Steam](Steam/ELDENRING.exe) | — | — | — |
 | Euro Truck Simulator 2 | [Steam](Steam/EuroTruckSimulator2.exe) | — | — | — |
 | Far Cry 5 | [Steam](Steam/FarCry5.exe) | [Epic](Epic/FarCry5.exe) | — | [Ubisoft](Ubisoft/FarCry5.exe) |
+| Fortnite | — | [Epic](Epic/Fortnite.exe) | — | — |
 | Gamble With Your Friends | [Steam](Steam/GambleWithYourFriends.exe) | — | — | — |
 | Geometry Dash | [Steam](Steam/GeometryDash.exe) | — | — | — |
 | Ghost of Tsushima DIRECTOR'S CUT | [Steam](Steam/GhostOfTsushimaDIRECTORSCUT.exe) | [Epic](Epic/GhostOfTsushimaDIRECTORSCUT.exe) | — | — |
