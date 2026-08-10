@@ -244,6 +244,13 @@
     }
   },
   {
+    "name": "Dota 2",
+    "out": "Dota2.exe",
+    "stores": {
+      "steam": "570"
+    }
+  },
+  {
     "name": "ELDEN RING",
     "out": "ELDENRING.exe",
     "stores": {
