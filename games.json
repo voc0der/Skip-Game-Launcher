@@ -509,6 +509,13 @@
     }
   },
   {
+    "name": "Factorio",
+    "out": "Factorio.exe",
+    "stores": {
+      "steam": "427520"
+    }
+  },
+  {
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {
