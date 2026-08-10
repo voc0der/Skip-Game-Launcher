@@ -1280,6 +1280,13 @@
     }
   },
   {
+    "name": "THE FINALS",
+    "out": "THEFINALS.exe",
+    "stores": {
+      "steam": "2073850"
+    }
+  },
+  {
     "name": "The Outer Worlds 2",
     "out": "TheOuterWorlds2.exe",
     "stores": {
