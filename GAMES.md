@@ -24,6 +24,7 @@
 | Batman Arkham Origins Blackgate | [Steam](Steam/BatmanArkhamOriginsBlackgate.exe) | — | — | — |
 | BioShockâ„¢ Remastered | [Steam](Steam/BioShockTMRemastered.exe) | — | — | — |
 | Black Mesa | [Steam](Steam/BlackMesa.exe) | — | — | — |
+| Blizzard Arcade Collection | — | — | [Battle.net](BattleNet/BlizzardArcadeCollection.exe) | — |
 | Call of Duty: Black Ops 4 | — | — | [Battle.net](BattleNet/CoDBlackOps4.exe) | — |
 | Call of Duty: Black Ops Cold War | [Steam](Steam/CallOfDutyBlackOpsColdWar.exe) | — | [Battle.net](BattleNet/CallOfDutyBlackOpsColdWar.exe) | — |
 | Call of Duty: Modern Warfare II | [Steam](Steam/CallOfDutyModernWarfareII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareII.exe) | — |
