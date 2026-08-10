@@ -404,6 +404,13 @@
     }
   },
   {
+    "name": "Don't Starve Together",
+    "out": "DontStarveTogether.exe",
+    "stores": {
+      "steam": "322330"
+    }
+  },
+  {
     "name": "Doom 2016",
     "out": "Doom2016.exe",
     "stores": {
