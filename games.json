@@ -907,6 +907,14 @@
     }
   },
   {
+    "name": "PAYDAY 2",
+    "out": "PAYDAY2.exe",
+    "stores": {
+      "epic": "7d6b8784bab94d6cac5fea5ab7bb07a4",
+      "steam": "218620"
+    }
+  },
+  {
     "name": "Phasmophobia",
     "out": "Phasmophobia.exe",
     "stores": {
