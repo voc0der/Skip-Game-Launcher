@@ -1189,6 +1189,15 @@
     }
   },
   {
+    "name": "Tom Clancy's Ghost Recon Wildlands",
+    "out": "TomClancysGhostReconWildlands.exe",
+    "stores": {
+      "epic": "Hyacinth",
+      "steam": "460930",
+      "ubisoft": "1771"
+    }
+  },
+  {
     "name": "Tom Clancy's Rainbow Six Siege",
     "out": "TomClancysRainbowSixSiege.exe",
     "stores": {
