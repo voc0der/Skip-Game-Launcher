@@ -107,6 +107,7 @@
 | Tom Clancy's Rainbow Six Siege | [Steam](Steam/TomClancysRainbowSixSiege.exe) | — | — | [Ubisoft](Ubisoft/TomClancysRainbowSixSiege.exe) |
 | Tomb Raider | [Steam](Steam/TombRaider.exe) | [Epic](Epic/TombRaider.exe) | — | — |
 | Tomb Raider Underworld | [Steam](Steam/TombRaiderUnderworld.exe) | — | — | — |
+| Tony Hawk's Pro Skater 3 + 4 | — | — | [Battle.net](BattleNet/TonyHawksProSkater34.exe) | — |
 | Tools Up! | [Steam](Steam/ToolsUp.exe) | [Epic](Epic/ToolsUp.exe) | — | — |
 | Tron: Evolution | [Steam](Steam/TronEvolution.exe) | — | — | — |
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |

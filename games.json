@@ -746,6 +746,13 @@
     }
   },
   {
+    "name": "Tony Hawk's Pro Skater 3 + 4",
+    "out": "TonyHawksProSkater34.exe",
+    "stores": {
+      "battlenet": "LBRA"
+    }
+  },
+  {
     "name": "Tools Up!",
     "out": "ToolsUp.exe",
     "stores": {
