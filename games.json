@@ -242,6 +242,13 @@
     }
   },
   {
+    "name": "Crash Bandicoot 4",
+    "out": "CrashBandicoot4.exe",
+    "stores": {
+      "battlenet": "WLBY"
+    }
+  },
+  {
     "name": "Crysis",
     "out": "Crysis.exe",
     "stores": {
