@@ -95,6 +95,7 @@
 | Metro 2033 Last Light Redux | [Steam](Steam/Metro2033LastLightRedux.exe) | [Epic](Epic/Metro2033LastLightRedux.exe) | — | — |
 | Metro 2033 Redux | [Steam](Steam/Metro2033Redux.exe) | [Epic](Epic/Metro2033Redux.exe) | — | — |
 | Middle-earth: Shadow of Mordor | [Steam](Steam/MiddleEarthShadowOfMordor.exe) | — | — | — |
+| NBA 2K26 | [Steam](Steam/NBA2K26.exe) | — | — | — |
 | Need for Speed Hot Pursuit | [Steam](Steam/NeedForSpeedHotPursuit.exe) | — | — | — |
 | Neverwinter Nights 2 | [Steam](Steam/NeverwinterNights2.exe) | — | — | — |
 | Neverwinter Nights: Enhanced Edition | [Steam](Steam/NeverwinterNightsEnhancedEdition.exe) | — | — | — |
