@@ -496,6 +496,13 @@
     }
   },
   {
+    "name": "FINAL FANTASY XIV Online",
+    "out": "FINALFANTASYXIVOnline.exe",
+    "stores": {
+      "steam": "39210"
+    }
+  },
+  {
     "name": "Football Manager 26",
     "out": "FootballManager26.exe",
     "stores": {
