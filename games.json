@@ -472,6 +472,13 @@
     }
   },
   {
+    "name": "Fortnite",
+    "out": "Fortnite.exe",
+    "stores": {
+      "epic": "Fortnite"
+    }
+  },
+  {
     "name": "Gamble With Your Friends",
     "out": "GambleWithYourFriends.exe",
     "stores": {
