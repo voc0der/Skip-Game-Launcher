@@ -565,6 +565,13 @@
     }
   },
   {
+    "name": "Limbus Company",
+    "out": "LimbusCompany.exe",
+    "stores": {
+      "steam": "1973530"
+    }
+  },
+  {
     "name": "Marvel Rivals",
     "out": "MarvelRivals.exe",
     "stores": {
