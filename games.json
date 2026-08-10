@@ -552,6 +552,13 @@
     }
   },
   {
+    "name": "Valheim",
+    "out": "Valheim.exe",
+    "stores": {
+      "steam": "892970"
+    }
+  },
+  {
     "name": "Warcraft III",
     "out": "WarcraftIII.exe",
     "stores": {
