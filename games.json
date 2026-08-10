@@ -1186,6 +1186,14 @@
     }
   },
   {
+    "name": "Squad",
+    "out": "Squad.exe",
+    "stores": {
+      "epic": "11def232c94b4f349d9477b67ee05389",
+      "steam": "393380"
+    }
+  },
+  {
     "name": "StarCraft",
     "out": "StarCraft.exe",
     "stores": {
