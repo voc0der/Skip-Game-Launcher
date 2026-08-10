@@ -38,6 +38,7 @@
 | Civilization VI | [Steam](Steam/Civilization_VI.exe) | [Epic](Epic/Civilization_VI.exe) | — | — |
 | Control | [Steam](Steam/Control.exe) | [Epic](Epic/Control.exe) | — | — |
 | Counter-Strike: Global Offensive | [Steam](Steam/CSGO.exe) | — | — | — |
+| Crash Bandicoot 4 | — | — | [Battle.net](BattleNet/CrashBandicoot4.exe) | — |
 | Crysis | [Steam](Steam/Crysis.exe) | — | — | — |
 | Crysis Warhead | [Steam](Steam/CrysisWarhead.exe) | — | — | — |
 | Cyberpunk 2077 | [Steam](Steam/Cyberpunk2077.exe) | [Epic](Epic/Cyberpunk2077.exe) | — | — |
