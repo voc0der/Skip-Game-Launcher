@@ -487,6 +487,13 @@
     }
   },
   {
+    "name": "Forza Horizon 5",
+    "out": "ForzaHorizon5.exe",
+    "stores": {
+      "steam": "1551360"
+    }
+  },
+  {
     "name": "Gamble With Your Friends",
     "out": "GambleWithYourFriends.exe",
     "stores": {
