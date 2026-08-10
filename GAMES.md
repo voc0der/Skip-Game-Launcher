@@ -99,6 +99,7 @@
 | Riders Republic | [Steam](Steam/RidersRepublic.exe) | [Epic](Epic/RidersRepublic.exe) | — | [Ubisoft](Ubisoft/RidersRepublic.exe) |
 | Rise of the Tomb Raider | [Steam](Steam/RiseOfTheTombRaider.exe) | [Epic](Epic/RiseOfTheTombRaider.exe) | — | — |
 | Rocket League | [Steam](Steam/RocketLeague.exe) | [Epic](Epic/RocketLeague.exe) | — | — |
+| Rust | [Steam](Steam/Rust.exe) | — | — | — |
 | Sea of Thieves | — | — | [Battle.net](BattleNet/SeaOfThieves.exe) | — |
 | Shadow of the Tomb Raider | [Steam](Steam/ShadowOfTheTombRaider.exe) | [Epic](Epic/ShadowOfTheTombRaider.exe) | — | — |
 | Skyrim SKSE | [Steam](Steam/Skyrim_SKSE.exe) | — | — | — |

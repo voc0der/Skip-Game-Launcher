@@ -701,6 +701,13 @@
     }
   },
   {
+    "name": "Rust",
+    "out": "Rust.exe",
+    "stores": {
+      "steam": "252490"
+    }
+  },
+  {
     "name": "Sea of Thieves",
     "out": "SeaOfThieves.exe",
     "stores": {
