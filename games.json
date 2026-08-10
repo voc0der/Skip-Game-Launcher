@@ -104,6 +104,15 @@
     }
   },
   {
+    "name": "Assassin's Creed Odyssey",
+    "out": "AssassinsCreedOdyssey.exe",
+    "stores": {
+      "epic": "Clary",
+      "steam": "812140",
+      "ubisoft": "5059"
+    }
+  },
+  {
     "name": "Assassin's Creed Revelations",
     "out": "AssassinsCreedRevelations.exe",
     "stores": {
