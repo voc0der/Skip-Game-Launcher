@@ -11,7 +11,9 @@
     "name": "Assassin's Creed Black Flag Resynced",
     "out": "AssassinsCreedBlackFlagResynced.exe",
     "stores": {
-      "steam": "3751950"
+      "epic": "c3558faeb23046e7af99c673bc8ce740",
+      "steam": "3751950",
+      "ubisoft": "65043"
     }
   },
   {
@@ -43,7 +45,9 @@
     "name": "Assassin's Creed Mirage",
     "out": "AssassinsCreedMirage.exe",
     "stores": {
-      "steam": "3035570"
+      "epic": "645e8d556dc540e8b7c35d7cd0cc68c8",
+      "steam": "3035570",
+      "ubisoft": "6100"
     }
   },
   {
@@ -408,6 +412,7 @@
     "name": "Split Fiction",
     "out": "SplitFiction.exe",
     "stores": {
+      "epic": "prokofiev",
       "steam": "2001120"
     }
   },
