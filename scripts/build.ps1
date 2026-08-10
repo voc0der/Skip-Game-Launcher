@@ -87,7 +87,10 @@ function Build-Launcher {
         if (Test-Path $targetPath) { Remove-Item $targetPath -Force }
 
         # iexpress is a GUI-subsystem binary, so it returns immediately unless waited on.
-        $p = Start-Process -FilePath $IExpress -ArgumentList '/N', '/Q', '/M', "`"$sedPath`"" `
+        # The generated temp path has no spaces. Supplying embedded quotes here
+        # makes Start-Process pass them literally, and IExpress then reports an
+        # unreadable directive file with its otherwise opaque exit code 1.
+        $p = Start-Process -FilePath $IExpress -ArgumentList '/N', '/Q', '/M', $sedPath `
                            -Wait -PassThru -NoNewWindow
         # The hosted runner's GUI process can report 1 even after creating the
         # package. The artifact is the authoritative postcondition, and CI reads
