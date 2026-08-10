@@ -1162,5 +1162,13 @@
       "epic": "a5faf668dbaf499c8dc2917bf1c346e5",
       "steam": "3513350"
     }
+  },
+  {
+    "name": "Zenless Zone Zero",
+    "out": "ZenlessZoneZero.exe",
+    "stores": {
+      "epic": "525aa0efd70f4399b9f64bcd2a5b38c7",
+      "steam": "4162040"
+    }
   }
 ]
