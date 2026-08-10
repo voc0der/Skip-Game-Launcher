@@ -915,6 +915,14 @@
     }
   },
   {
+    "name": "Warframe",
+    "out": "Warframe.exe",
+    "stores": {
+      "epic": "398965b67f314d31b0683b8ea11c93a4",
+      "steam": "230410"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
