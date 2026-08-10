@@ -664,6 +664,13 @@
     }
   },
   {
+    "name": "NBA 2K26",
+    "out": "NBA2K26.exe",
+    "stores": {
+      "steam": "3472040"
+    }
+  },
+  {
     "name": "Need for Speed Hot Pursuit",
     "out": "NeedForSpeedHotPursuit.exe",
     "stores": {
