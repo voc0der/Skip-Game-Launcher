@@ -364,6 +364,13 @@
     }
   },
   {
+    "name": "Hearthstone",
+    "out": "Hearthstone.exe",
+    "stores": {
+      "battlenet": "WTCG"
+    }
+  },
+  {
     "name": "Hellblade Senua's Sacrifice",
     "out": "HellbladeSenuasSacrifice.exe",
     "stores": {
