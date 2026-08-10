@@ -937,6 +937,14 @@
     }
   },
   {
+    "name": "RimWorld",
+    "out": "RimWorld.exe",
+    "stores": {
+      "epic": "12915f06bb3442eeb414813e74af7df3",
+      "steam": "294100"
+    }
+  },
+  {
     "name": "Rise of the Tomb Raider",
     "out": "RiseOfTheTombRaider.exe",
     "stores": {
