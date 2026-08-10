@@ -791,6 +791,13 @@
     }
   },
   {
+    "name": "Terraria",
+    "out": "Terraria.exe",
+    "stores": {
+      "steam": "105600"
+    }
+  },
+  {
     "name": "The Elder Scrolls IV: Oblivion Remastered",
     "out": "TheElderScrollsIVOblivionRemastered.exe",
     "stores": {
