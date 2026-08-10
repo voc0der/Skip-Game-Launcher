@@ -68,6 +68,13 @@
     }
   },
   {
+    "name": "Baldur's Gate 3",
+    "out": "BaldursGate3.exe",
+    "stores": {
+      "steam": "1086940"
+    }
+  },
+  {
     "name": "Batman Arkham Asylum GOTY Edition",
     "out": "BatmanArkhamAslyum.exe",
     "stores": {
