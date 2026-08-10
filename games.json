@@ -237,6 +237,13 @@
     }
   },
   {
+    "name": "ELDEN RING",
+    "out": "ELDENRING.exe",
+    "stores": {
+      "steam": "1245620"
+    }
+  },
+  {
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {
