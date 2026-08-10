@@ -1011,6 +1011,14 @@
     }
   },
   {
+    "name": "Satisfactory",
+    "out": "Satisfactory.exe",
+    "stores": {
+      "epic": "CrabEA",
+      "steam": "526870"
+    }
+  },
+  {
     "name": "Sea of Thieves",
     "out": "SeaOfThieves.exe",
     "stores": {
