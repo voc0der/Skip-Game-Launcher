@@ -35,6 +35,7 @@
 | Call of Duty: Modern Warfare II | [Steam](Steam/CallOfDutyModernWarfareII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareII.exe) | — |
 | Call of Duty: Modern Warfare III | [Steam](Steam/CallOfDutyModernWarfareIII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareIII.exe) | — |
 | Call of Duty: Vanguard | [Steam](Steam/CallOfDutyVanguard.exe) | — | [Battle.net](BattleNet/CallOfDutyVanguard.exe) | — |
+| Call of DutyÂ® | [Steam](Steam/CallOfDuty.exe) | — | — | — |
 | Civilization IV | [Steam](Steam/Civilization_IV.exe) | — | — | — |
 | Civilization V | [Steam](Steam/Civilization_V.exe) | — | — | — |
 | Civilization VI | [Steam](Steam/Civilization_VI.exe) | [Epic](Epic/Civilization_VI.exe) | — | — |
