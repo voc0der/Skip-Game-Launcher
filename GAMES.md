@@ -70,6 +70,7 @@
 | Euro Truck Simulator 2 | [Steam](Steam/EuroTruckSimulator2.exe) | — | — | — |
 | Far Cry 5 | [Steam](Steam/FarCry5.exe) | [Epic](Epic/FarCry5.exe) | — | [Ubisoft](Ubisoft/FarCry5.exe) |
 | Fortnite | — | [Epic](Epic/Fortnite.exe) | — | — |
+| Forza Horizon 5 | [Steam](Steam/ForzaHorizon5.exe) | — | — | — |
 | Gamble With Your Friends | [Steam](Steam/GambleWithYourFriends.exe) | — | — | — |
 | Genshin Impact | — | [Epic](Epic/GenshinImpact.exe) | — | — |
 | Geometry Dash | [Steam](Steam/GeometryDash.exe) | — | — | — |
