@@ -553,6 +553,14 @@
     }
   },
   {
+    "name": "Fallout 4",
+    "out": "Fallout4.exe",
+    "stores": {
+      "epic": "61d52ce4d09d41e48800c22784d13ae8",
+      "steam": "377160"
+    }
+  },
+  {
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {
