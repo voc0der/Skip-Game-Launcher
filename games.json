@@ -297,6 +297,14 @@
     }
   },
   {
+    "name": "Clair Obscur: Expedition 33",
+    "out": "ClairObscurExpedition33.exe",
+    "stores": {
+      "epic": "f18fc860e6b4419e89147983bf769723",
+      "steam": "1903340"
+    }
+  },
+  {
     "name": "Call of Duty: Black Ops 4",
     "out": "CoDBlackOps4.exe",
     "stores": {
