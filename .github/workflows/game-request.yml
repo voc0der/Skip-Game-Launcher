@@ -1,9 +1,9 @@
 name: Game request
 
 # A maintainer applies the "approved" label to a game request; from there this
-# resolves the store ID, builds the launcher, and opens a PR that closes the
-# issue on merge. If it can't work out the ID it says so on the issue and drops
-# the label, so re-applying retries.
+# resolves the store ID, builds the launcher, opens a PR, and merges it
+# immediately. The merge closes the issue. If it can't work out the ID it says
+# so on the issue and drops the label, so re-applying retries.
 #
 # Everything derived from the issue reaches the shell through env vars rather
 # than ${{ }} interpolation - the issue body is written by strangers, and
@@ -63,7 +63,7 @@ jobs:
           STORE: ${{ steps.resolve.outputs.store }}
         run: ./scripts/build.ps1 -Only $env:OUT -Store $env:STORE -Force
 
-      - name: Open the PR
+      - name: Open and merge the PR
         if: steps.resolve.outputs.ok == 'true'
         shell: bash
         env:
@@ -105,4 +105,5 @@ jobs:
           fi
           rm -f pr-body.md
 
-          gh issue comment "$ISSUE" --body "Opened ${URL} - merging it closes this issue."
+          gh pr merge "$URL" --merge
+          gh issue comment "$ISSUE" --body "Built and merged ${URL}."

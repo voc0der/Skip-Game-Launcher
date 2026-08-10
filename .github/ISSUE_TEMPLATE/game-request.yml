@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Fill this in and a maintainer will apply the **approved** label, which
-        builds the launcher and opens a PR automatically.
+        builds the launcher, opens a PR and merges it automatically.
 
         Steam titles are looked up from the name. Epic is attempted too, but
         Epic leaves the needed field blank on a lot of products, so it often

@@ -24,7 +24,7 @@ one matching where you actually own it — `Steam/Metro2033Redux.exe` and
 
 Open a [game request](../../issues/new?template=game-request.yml). Once a
 maintainer applies the **approved** label, CI resolves the store ID, builds the
-launcher and opens a PR that closes the request when merged.
+launcher, then opens and immediately merges a PR. The merge closes the request.
 
 Steam titles are looked up from the name automatically. Epic is attempted too,
 but the string its launch URI needs is an internal codename — `Petunia` serves

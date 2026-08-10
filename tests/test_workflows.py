@@ -168,6 +168,16 @@ def test_game_request_is_gated_on_a_label():
     assert "github.event.label.name ==" in job["if"], "request builds must require a label"
 
 
+def test_game_request_merges_generated_pr():
+    doc = yaml.safe_load((REPO / ".github" / "workflows" / "game-request.yml").read_text())
+    steps = doc["jobs"]["fulfil"]["steps"]
+    publish = next(step for step in steps if step.get("name") == "Open and merge the PR")
+    script = publish["run"]
+    assert "gh pr create" in script
+    assert "gh pr merge" in script
+    assert script.index("gh pr create") < script.index("gh pr merge")
+
+
 def test_build_workflow_verifies_before_committing():
     doc = yaml.safe_load((REPO / ".github" / "workflows" / "build.yml").read_text())
     steps = doc["jobs"]["build"]["steps"]
