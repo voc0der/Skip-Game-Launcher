@@ -512,6 +512,13 @@
     }
   },
   {
+    "name": "Starfield",
+    "out": "Starfield.exe",
+    "stores": {
+      "steam": "1716740"
+    }
+  },
+  {
     "name": "Star Wars Jedi Fallen Order",
     "out": "StarWarsJediFallenOrder.exe",
     "stores": {
