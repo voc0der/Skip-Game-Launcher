@@ -589,6 +589,13 @@
     }
   },
   {
+    "name": "StarCraft",
+    "out": "StarCraft.exe",
+    "stores": {
+      "battlenet": "S1"
+    }
+  },
+  {
     "name": "StarCraft II",
     "out": "StarCraft2.exe",
     "stores": {
