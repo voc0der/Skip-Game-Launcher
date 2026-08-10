@@ -285,6 +285,14 @@
     }
   },
   {
+    "name": "Dead by Daylight",
+    "out": "DeadByDaylight.exe",
+    "stores": {
+      "epic": "Brill",
+      "steam": "381210"
+    }
+  },
+  {
     "name": "Deep Rock Galactic",
     "out": "DeepRockGalactic.exe",
     "stores": {
