@@ -772,6 +772,14 @@
     }
   },
   {
+    "name": "Path of Exile",
+    "out": "PathOfExile.exe",
+    "stores": {
+      "epic": "9a05967bb86f48278f8626be42548985",
+      "steam": "238960"
+    }
+  },
+  {
     "name": "Path of Exile 2",
     "out": "PathOfExile2.exe",
     "stores": {
