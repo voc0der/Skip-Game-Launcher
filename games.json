@@ -319,6 +319,14 @@
     }
   },
   {
+    "name": "Doom: The Dark Ages",
+    "out": "DoomTheDarkAges.exe",
+    "stores": {
+      "battlenet": "ARIS",
+      "steam": "3017860"
+    }
+  },
+  {
     "name": "Dota 2",
     "out": "Dota2.exe",
     "stores": {
