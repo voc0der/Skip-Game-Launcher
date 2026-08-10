@@ -737,6 +737,13 @@
     }
   },
   {
+    "name": "Monster Hunter: World",
+    "out": "MonsterHunterWorld.exe",
+    "stores": {
+      "steam": "582010"
+    }
+  },
+  {
     "name": "NARAKA: BLADEPOINT",
     "out": "NARAKABLADEPOINT.exe",
     "stores": {
