@@ -542,6 +542,14 @@
     }
   },
   {
+    "name": "Subnautica",
+    "out": "Subnautica.exe",
+    "stores": {
+      "epic": "Jaguar",
+      "steam": "264710"
+    }
+  },
+  {
     "name": "Tom Clancy's Ghost Recon Breakpoint",
     "out": "TCGhostReconBreakpoint.exe",
     "stores": {
