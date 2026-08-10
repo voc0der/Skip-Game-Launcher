@@ -2,8 +2,8 @@ name: Game request
 
 # A maintainer applies the "approved" label to a game request; from there this
 # resolves the store ID, builds the launcher, opens a PR, and merges it
-# immediately. The merge closes the issue. If it can't work out the ID it says
-# so on the issue and drops the label, so re-applying retries.
+# immediately, then explicitly closes the issue. If it can't work out the ID it
+# says so on the issue and drops the label, so re-applying retries.
 #
 # Everything derived from the issue reaches the shell through env vars rather
 # than ${{ }} interpolation - the issue body is written by strangers, and
@@ -106,4 +106,5 @@ jobs:
           rm -f pr-body.md
 
           gh pr merge "$URL" --merge
+          gh issue close "$ISSUE" --reason completed
           gh issue comment "$ISSUE" --body "Built and merged ${URL}."

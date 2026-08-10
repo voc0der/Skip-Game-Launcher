@@ -175,7 +175,9 @@ def test_game_request_merges_generated_pr():
     script = publish["run"]
     assert "gh pr create" in script
     assert "gh pr merge" in script
+    assert 'gh issue close "$ISSUE" --reason completed' in script
     assert script.index("gh pr create") < script.index("gh pr merge")
+    assert script.index("gh pr merge") < script.index("gh issue close")
 
 
 def test_build_workflow_verifies_before_committing():
