@@ -7,6 +7,13 @@
     }
   },
   {
+    "name": "Assassin's Creed Black Flag Resynced",
+    "out": "AssassinsCreedBlackFlagResynced.exe",
+    "stores": {
+      "steam": "3751950"
+    }
+  },
+  {
     "name": "Assassin's Creed Brotherhood",
     "out": "AssassinsCreedBrotherhood.exe",
     "stores": {
