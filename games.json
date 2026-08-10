@@ -450,6 +450,14 @@
     }
   },
   {
+    "name": "Grand Theft Auto V Enhanced",
+    "out": "GrandTheftAutoVEnhanced.exe",
+    "stores": {
+      "epic": "8769e24080ea413b8ebca3f1b8c50951",
+      "steam": "3240220"
+    }
+  },
+  {
     "name": "Half Life 2",
     "out": "HalfLife2.exe",
     "stores": {
