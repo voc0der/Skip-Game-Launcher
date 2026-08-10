@@ -180,6 +180,18 @@ def test_game_request_merges_generated_pr():
     assert script.index("gh pr merge") < script.index("gh issue close")
 
 
+def test_game_request_builds_and_stages_every_resolved_store():
+    doc = yaml.safe_load((REPO / ".github" / "workflows" / "game-request.yml").read_text())
+    steps = doc["jobs"]["fulfil"]["steps"]
+    build = next(step for step in steps if step.get("name") == "Build the launcher")
+    publish = next(step for step in steps if step.get("name") == "Open and merge the PR")
+    assert "ConvertFrom-Json $env:STORES" in build["run"]
+    assert "foreach ($store in $stores)" in build["run"]
+    assert "-Store $store" in build["run"]
+    assert 'done <<< "$EXE_PATHS"' in publish["run"]
+    assert 'git add -- "$exe_path"' in publish["run"]
+
+
 def test_build_workflow_verifies_before_committing():
     doc = yaml.safe_load((REPO / ".github" / "workflows" / "build.yml").read_text())
     steps = doc["jobs"]["build"]["steps"]

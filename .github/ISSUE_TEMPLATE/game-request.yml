@@ -1,5 +1,5 @@
 name: Game request
-description: Ask for a launcher for a game that isn't here yet
+description: Ask for every supported-store launcher for a game
 title: "[Game] "
 labels: ["game-request"]
 body:
@@ -7,14 +7,13 @@ body:
     attributes:
       value: |
         Fill this in and a maintainer will apply the **approved** label, which
-        builds the launcher, opens a PR and merges it automatically.
+        uses the selected store as a seed, finds the same game on every
+        supported storefront, builds all matching launchers, opens a PR and
+        merges it automatically.
 
-        Steam titles are looked up from the name. Epic is attempted too, but
-        Epic leaves the needed field blank on a lot of products, so it often
-        has to be supplied. Battle.net and Ubisoft always need an ID.
-
-        A game that's already here on one store can be requested again for
-        another; you'll get a second executable in that store's folder.
+        Pick any store where you know the game exists. That choice does not
+        limit the result to one store. Existing games are also scanned again
+        for any storefronts they are missing.
 
   - type: input
     id: name
@@ -29,6 +28,7 @@ body:
     id: store
     attributes:
       label: Store
+      description: A known store used to anchor the title; CI will scan all four stores.
       options:
         - Steam
         - Battle.net
@@ -42,14 +42,10 @@ body:
     attributes:
       label: App ID / product code
       description: |
-        - **Steam** — optional. The number from the store URL or [SteamDB](https://steamdb.info), e.g. `620`
-        - **Epic** — optional, but usually needed. Paste the store page URL and we'll try
-          to resolve it; if that fails you'll be asked for the launcher app name — an
-          internal value like `Petunia`, `nonagon`, or a 32-character artifact ID, found in
-          `C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests\*.item` under `AppName`.
-          It is **not** the slug in the store URL.
-        - **Battle.net** — required. The short product code, e.g. `Pro`, `D3`, `S2`, `WoW`
-        - **Ubisoft** — required. The number from `uplay://launch/<id>/0`
+        Optional override for the selected seed store. Normally CI resolves it
+        from the title, then searches Steam, Epic, Battle.net and Ubisoft
+        automatically. Steam and Ubisoft use numeric IDs; Epic uses an internal
+        app/artifact name; Battle.net uses a short product code.
       placeholder: "620"
 
   - type: input
@@ -64,5 +60,5 @@ body:
     attributes:
       label: Before you submit
       options:
-        - label: I checked `games.json` and this game isn't already built for this store
+        - label: I checked `games.json`; this game is missing entirely or is missing a store
           required: true

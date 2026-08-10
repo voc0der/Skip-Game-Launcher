@@ -23,18 +23,14 @@ one matching where you actually own it — `Steam/Metro2033Redux.exe` and
 ## Requesting a game
 
 Open a [game request](../../issues/new?template=game-request.yml). Once a
-maintainer applies the **approved** label, CI resolves the store ID, builds the
-launcher, then opens and immediately merges a PR. The merge closes the request.
+maintainer applies the **approved** label, CI uses the selected store as a seed,
+searches every supported storefront, builds every exact match, then opens and
+immediately merges one PR. The workflow explicitly closes the request after
+the merge.
 
-Steam titles are looked up from the name automatically. Epic is attempted too,
-but the string its launch URI needs is an internal artifact ID — sometimes a
-codename such as `Petunia`, sometimes an opaque hash — and Epic publishes it for
-only some products, so Epic requests often have to carry it. Battle.net and
-Ubisoft have no public catalogue at all and always need the ID. The form
-explains where to find each.
-
-Already have the game here on Steam and want the Epic build too? Request it
-again with the other store; that adds a second executable rather than a
+The selected store does not limit the build. Steam, Epic, Battle.net and
+Ubisoft are all searched automatically. If the game already exists, approving
+another request fills every missing exact store match rather than creating a
 duplicate entry.
 
 ## Source Information

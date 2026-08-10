@@ -1,8 +1,9 @@
 name: Game request
 
 # A maintainer applies the "approved" label to a game request; from there this
-# resolves the store ID, builds the launcher, opens a PR, and merges it
-# immediately, then explicitly closes the issue. If it can't work out the ID it
+# uses the selected store as a seed, discovers every supported storefront,
+# builds all matching launchers, opens a PR, and merges it immediately, then
+# explicitly closes the issue. If it can't work out the seed ID it
 # says so on the issue and drops the label, so re-applying retries.
 #
 # Everything derived from the issue reaches the shell through env vars rather
@@ -60,16 +61,20 @@ jobs:
         shell: pwsh
         env:
           OUT: ${{ steps.resolve.outputs.out }}
-          STORE: ${{ steps.resolve.outputs.store }}
-        run: ./scripts/build.ps1 -Only $env:OUT -Store $env:STORE -Force
+          STORES: ${{ steps.resolve.outputs.stores }}
+        run: |
+          $stores = ConvertFrom-Json $env:STORES
+          foreach ($store in $stores) {
+            ./scripts/build.ps1 -Only $env:OUT -Store $store -Force
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
 
       - name: Open and merge the PR
         if: steps.resolve.outputs.ok == 'true'
         shell: bash
         env:
           NAME: ${{ steps.resolve.outputs.name }}
-          # Not PATH, for reasons that would be tedious to debug.
-          EXE_PATH: ${{ steps.resolve.outputs.path }}
+          EXE_PATHS: ${{ steps.resolve.outputs.paths }}
           ENTRY: ${{ steps.resolve.outputs.entry }}
         run: |
           set -euo pipefail
@@ -78,8 +83,11 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B "$BRANCH"
-          git add -- games.json "$EXE_PATH"
-          git commit -m "Add ${NAME} (${EXE_PATH})" -m "Requested in #${ISSUE}."
+          git add -- games.json
+          while IFS= read -r exe_path; do
+            [ -n "$exe_path" ] && git add -- "$exe_path"
+          done <<< "$EXE_PATHS"
+          git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
           git push --force origin "$BRANCH"
 
           # Built out here rather than inline so the markdown keeps column 0.
@@ -87,7 +95,10 @@ jobs:
             printf 'Built from #%s.\n\n' "$ISSUE"
             printf '| | |\n|---|---|\n'
             printf '| Game | %s |\n' "$NAME"
-            printf "| File | \`%s\` |\n\n" "$EXE_PATH"
+            while IFS= read -r exe_path; do
+              [ -n "$exe_path" ] && printf "| File | \`%s\` |\n" "$exe_path"
+            done <<< "$EXE_PATHS"
+            printf '\n'
             printf "Manifest entry:\n\`\`\`json\n%s\n\`\`\`\n\n" "$ENTRY"
             printf 'The executable is unsigned, so SmartScreen will want an unblock on\n'
             printf 'first run - same as every other launcher here.\n\n'

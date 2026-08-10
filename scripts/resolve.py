@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Resolve a game request into a games.json entry.
+"""Resolve a game request into every matching games.json store entry.
 
 Reads a GitHub issue-form body, works out whether we can actually build the
 launcher, and either emits the new manifest entry or explains why not.
 
-A game already in the manifest can still be requested for a second store - that
-merges a new store ID into the existing entry rather than creating a duplicate,
-and produces an extra executable in that store's folder.
+The store selected on the issue is a seed, not the scope of the request. Once
+that seed is resolved, every supported storefront is searched by title and all
+confident matches are added in one pass. A game already in the manifest is
+enriched the same way.
 
 Outputs are written to $GITHUB_OUTPUT when running under Actions:
     ok      - "true" / "false"
     out     - the exe filename        (only when ok)
-    path    - Store/Name.exe          (only when ok)
+    paths   - newline-separated paths (only when ok)
     name    - the game's display name (only when ok)
-    store   - the resolved store key  (only when ok)
+    stores  - JSON array of new stores (only when ok)
     entry   - the resulting manifest entry as JSON (only when ok)
     comment - markdown to post back on the issue
 
@@ -23,6 +24,7 @@ script itself broke, which is a different problem.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -31,6 +33,7 @@ import urllib.parse
 import urllib.request
 import unicodedata
 import uuid
+from html.parser import HTMLParser
 
 STORES = {
     "steam": "Steam",
@@ -69,13 +72,41 @@ WINDOWS_DEVICE_NAME = re.compile(
     r"(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)", re.IGNORECASE
 )
 
-# Steam and Epic have queryable public catalogues; Battle.net and Ubisoft don't,
-# so those requests must carry the ID.
+# `resolve()` remains as the single-store compatibility API used by older
+# callers. The workflow uses `resolve_all()`, whose catalog adapters cover all
+# four stores.
 LOOKUP_CAPABLE = {"steam", "epic"}
 
 SEARCH_URL = "https://store.steampowered.com/api/storesearch/"
 EPIC_CONTENT_URL = "https://store-content.ak.epicgames.com/api/en-US/content/products/{slug}"
+EPIC_SEARCH_URL = "https://api.egdata.app/search/v2/search?country=US"
+EPIC_HYDRATE_URL = "https://api.egdata.app/catalog/hydrate"
+UBISOFT_SEARCH_URL = "https://store.ubisoft.com/us/search"
+BATTLE_NET_CATALOG_URL = (
+    "https://raw.githubusercontent.com/playlite-app/playlite/main/"
+    "src-tauri/src/data/battle_net_games.json"
+)
 UA = "Skip-Game-Launcher-CI (+https://github.com/voc0der/Skip-Game-Launcher)"
+
+# A network fallback for the Battle.net titles already shipped by this repo.
+# Battle.net's own web catalogue doesn't expose launcher product codes. The
+# live catalogue above covers new releases; this keeps existing/common titles
+# resolvable if GitHub is briefly unavailable.
+BATTLE_NET_FALLBACK = {
+    "Call of Duty: Black Ops 4": "VIPR",
+    "Diablo II: Resurrected": "OSI",
+    "Diablo III": "D3",
+    "Diablo IV": "Fen",
+    "Hearthstone": "WTCG",
+    "Heroes of the Storm": "Hero",
+    "Overwatch": "Pro",
+    "Overwatch 2": "Pro",
+    "StarCraft": "S1",
+    "StarCraft II": "S2",
+    "Warcraft III": "W3",
+    "Warcraft III: Reforged": "W3",
+    "World of Warcraft": "WoW",
+}
 
 EPIC_MANUAL_HINT = (
     "If you own it, the app name is in the launcher's own manifests — open "
@@ -115,6 +146,35 @@ def steam_search(term: str) -> list[dict]:
 
 def normalise(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", s.lower())
+
+
+def catalogue_title_key(s: str) -> str:
+    """Normalise a store title while ignoring base-edition boilerplate."""
+    value = html.unescape(s).replace("®", "").replace("™", "").strip()
+    value = re.sub(r"\s*[-–—:]?\s*standard edition\s*$", "", value, flags=re.I)
+    return normalise(value)
+
+
+def read_json_url(url: str) -> object:
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
+def read_text_url(url: str) -> str:
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def post_json(url: str, payload: object) -> bytes:
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"User-Agent": UA, "Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read()
 
 
 def resolve_steam_id(name: str) -> tuple[str, str]:
@@ -213,6 +273,191 @@ def resolve_epic_id(name: str, given: str) -> tuple[str, str]:
             + EPIC_MANUAL_HINT
         )
     return app, f"read from Epic's {source}"
+
+
+def epic_catalog_app_name(name: str) -> tuple[str, str] | None:
+    """Resolve Epic's Windows launch artifact from its current catalogue.
+
+    Epic's public product-page endpoint often omits ``appName``. EGData mirrors
+    the Epic catalogue graph, including the Windows asset/release-app records
+    that contain the value accepted by Epic's launch URI. Only an exact base
+    game title and an exact executable item title are accepted.
+    """
+    search = json.loads(
+        post_json(EPIC_SEARCH_URL, {"title": name, "page": 1, "limit": 30})
+    )
+    target = catalogue_title_key(name)
+    offers = [
+        offer
+        for offer in search.get("offers", [])
+        if offer.get("offerType") == "BASE_GAME"
+        and catalogue_title_key(str(offer.get("title", ""))) == target
+    ]
+    if not offers:
+        return None
+
+    identifiers: list[dict[str, str]] = []
+    seen_items: set[tuple[str, str]] = set()
+    for offer in offers:
+        for item in offer.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            key = (str(item.get("namespace", "")), str(item.get("id", "")))
+            if not all(key) or key in seen_items:
+                continue
+            seen_items.add(key)
+            identifiers.append({"type": "item", "namespace": key[0], "id": key[1]})
+
+    if not identifiers:
+        return None
+    # The hydrate endpoint accepts at most 25 roots per request. Exact base-game
+    # results are normally one or two roots, but cap explicitly rather than
+    # letting a polluted search result make the request fail.
+    raw = post_json(
+        EPIC_HYDRATE_URL,
+        {
+            "schemaVersion": 2,
+            "identifiers": identifiers[:25],
+            "knownRoots": [],
+            "knownRecords": [],
+        },
+    ).decode("utf-8", errors="replace")
+    records: list[dict] = []
+    for line in raw.splitlines():
+        if line.strip():
+            records.extend(
+                row.get("record", {})
+                for row in json.loads(line).get("records", [])
+                if isinstance(row, dict)
+            )
+
+    items = {
+        (str(record.get("namespace", "")), str(record.get("id", ""))): record
+        for record in records
+        if record.get("type") == "item"
+    }
+    offer_ids = {str(offer.get("id", "")) for offer in offers}
+    matches: set[str] = set()
+    for record in records:
+        if record.get("type") not in {"asset", "release-app"}:
+            continue
+        if str(record.get("platform", "")).lower() != "windows":
+            continue
+        if str(record.get("primaryOfferId", "")) not in offer_ids:
+            continue
+        item = items.get(
+            (str(record.get("itemNamespace", "")), str(record.get("itemId", ""))),
+            {},
+        )
+        categories = {str(c).lower() for c in item.get("categories") or []}
+        if item.get("entitlementType") != "EXECUTABLE" or "games" not in categories:
+            continue
+        if "digitalextras" in categories or "addons" in categories:
+            continue
+        if catalogue_title_key(str(item.get("title", ""))) != target:
+            continue
+        app = str(record.get("artifactId") or record.get("appId") or "")
+        if app:
+            matches.add(app)
+
+    if len(matches) == 1:
+        return matches.pop(), "exact Windows game match in Epic's catalogue"
+    return None
+
+
+class _UbisoftSearchParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.products: list[tuple[str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "a":
+            return
+        values = {key.lower(): value or "" for key, value in attrs}
+        if "thumb-link" not in values.get("class", "").split():
+            return
+        prefix = "Go to product:"
+        title = values.get("title", "")
+        href = values.get("href", "")
+        if title.startswith(prefix) and href:
+            self.products.append((html.unescape(title[len(prefix):].strip()), href))
+
+
+def resolve_ubisoft_id(name: str) -> tuple[str, str] | None:
+    """Search Ubisoft's own storefront and read uplayGameID from an exact hit."""
+    url = UBISOFT_SEARCH_URL + "?" + urllib.parse.urlencode({"q": name})
+    parser = _UbisoftSearchParser()
+    parser.feed(read_text_url(url))
+    target = catalogue_title_key(name)
+    links: list[str] = []
+    for title, href in parser.products:
+        if catalogue_title_key(title) == target:
+            absolute = urllib.parse.urljoin("https://store.ubisoft.com", href)
+            if absolute not in links:
+                links.append(absolute)
+
+    ids: set[str] = set()
+    for link in links:
+        product = read_text_url(link)
+        ids.update(re.findall(r'"uplayGameID"\s*:\s*"(\d+)"', product))
+    if len(ids) == 1:
+        return ids.pop(), "exact title match on Ubisoft's store"
+    return None
+
+
+def resolve_battlenet_id(name: str) -> tuple[str, str] | None:
+    """Resolve a Battle.net title from a maintained launcher product catalogue."""
+    target = catalogue_title_key(name)
+    catalogue: list[dict] = []
+    try:
+        payload = read_json_url(BATTLE_NET_CATALOG_URL)
+        if isinstance(payload, list):
+            catalogue = [row for row in payload if isinstance(row, dict)]
+    except Exception:
+        # Known titles remain available when the live catalogue is unreachable.
+        pass
+
+    matches = {
+        str(row.get("ProductId", ""))
+        for row in catalogue
+        if catalogue_title_key(str(row.get("Name", ""))) == target
+    }
+    matches.update(
+        product
+        for title, product in BATTLE_NET_FALLBACK.items()
+        if catalogue_title_key(title) == target
+    )
+    if len(matches) == 1:
+        return matches.pop(), "exact title match in the Battle.net product catalogue"
+    return None
+
+
+def discover_store_id(store: str, name: str) -> tuple[str, str] | None:
+    """Return a confident exact catalogue match, or None when not sold there."""
+    if store == "steam":
+        try:
+            return resolve_steam_id(name)
+        except Rejected:
+            return None
+    if store == "epic":
+        try:
+            found = epic_catalog_app_name(name)
+        except Exception:
+            found = None
+        if found:
+            return found
+        try:
+            return resolve_epic_id(name, "")
+        except Rejected:
+            return None
+    if store == "ubisoft":
+        try:
+            return resolve_ubisoft_id(name)
+        except Exception:
+            return None
+    if store == "battlenet":
+        return resolve_battlenet_id(name)
+    raise AssertionError(f"unknown store {store}")
 
 
 def derive_out_name(name: str) -> str:
@@ -377,6 +622,152 @@ def apply_to_manifest(plan: dict, games: list[dict]) -> dict:
     return entry
 
 
+def _request_identity(fields: dict[str, str], games: list[dict]) -> tuple[str, str, str, dict | None]:
+    """Validate the request fields shared by automatic multi-store resolution."""
+    name = single_line(fields.get("game name", "").strip(), "Game name")
+    if not name:
+        raise Rejected("The request has no game name in it.")
+
+    raw_store = single_line(fields.get("store", "").strip(), "Store", 40).lower()
+    store = next(
+        (key for key, label in STORES.items() if raw_store in (key, label.lower())),
+        None,
+    )
+    if store is None:
+        raise Rejected(
+            f"Unrecognised store `{raw_store or '(blank)'}`. "
+            f"Supported: {', '.join(STORES.values())}."
+        )
+
+    existing = next(
+        (game for game in games if normalise(game["name"]) == normalise(name)),
+        None,
+    )
+    if existing is not None:
+        return existing["name"], existing["out"], store, existing
+
+    out = (
+        single_line(fields.get("output filename", "").strip(), "Output filename")
+        or derive_out_name(name)
+    )
+    if not out:
+        raise Rejected(
+            f"Couldn't work out a filename from **{name}** - it has no latin letters "
+            "or digits. Put an explicit output filename in the request."
+        )
+    if out.lower().endswith(".exe"):
+        out = out[:-4] + ".exe"
+    else:
+        out += ".exe"
+    if not SAFE_FILENAME.fullmatch(out) or WINDOWS_DEVICE_NAME.match(out):
+        raise Rejected(
+            f"`{out}` isn't a usable filename on Windows - start with a letter or digit "
+            "and stick to letters, digits, dot, dash and underscore."
+        )
+    clash = next((game for game in games if game["out"].lower() == out.lower()), None)
+    if clash is not None:
+        raise Rejected(
+            f"`{out}` is already taken by **{clash['name']}**. "
+            "Pick a different output filename in the request."
+        )
+    return name, out, store, None
+
+
+def _validate_store_id(store: str, app_id: str) -> None:
+    if not ID_PATTERNS[store].fullmatch(app_id):
+        raise Rejected(
+            f"`{app_id}` isn't a valid {STORES[store]} ID "
+            f"({ID_DESCRIPTIONS[store]})."
+        )
+
+
+def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
+    """Resolve the request seed, then discover every other supported store."""
+    name, out, requested_store, existing = _request_identity(fields, games)
+    given_id = single_line(fields.get("app id / product code", "").strip(), "App ID", 200)
+    current = dict(existing.get("stores", {})) if existing else {}
+    found: dict[str, tuple[str, str]] = {}
+
+    # The issue's selected store anchors a new title. For an existing title its
+    # manifest entry is already a trustworthy anchor, so even a request that
+    # selects an existing store can trigger discovery of missing stores.
+    if given_id:
+        if requested_store == "epic":
+            seed_id, seed_note = resolve_epic_id(name, given_id)
+        else:
+            seed_id, seed_note = given_id, "using the ID from the request"
+        _validate_store_id(requested_store, seed_id)
+        if requested_store in current and current[requested_store] != seed_id:
+            raise Rejected(
+                f"**{name}** already has {STORES[requested_store]} ID "
+                f"`{current[requested_store]}`; the request supplied conflicting ID `{seed_id}`."
+            )
+        found[requested_store] = (seed_id, seed_note)
+    elif requested_store not in current:
+        seed = discover_store_id(requested_store, name)
+        if seed is None:
+            raise Rejected(
+                f"Couldn't find one exact {STORES[requested_store]} catalogue match for "
+                f"**{name}**. Correct the store title or supply that store's ID as the seed."
+            )
+        found[requested_store] = seed
+
+    for store in STORES:
+        if store == requested_store or store in current:
+            continue
+        match = discover_store_id(store, name)
+        if match is not None:
+            found[store] = match
+
+    additions: dict[str, str] = {}
+    notes: dict[str, str] = {}
+    for store, (app_id, note) in found.items():
+        _validate_store_id(store, app_id)
+        if store in current:
+            continue
+        for game in games:
+            if game is not existing and game.get("stores", {}).get(store) == app_id:
+                raise Rejected(
+                    f"{STORES[store]} ID `{app_id}` is already used by **{game['name']}** "
+                    f"(`{STORE_DIRS[store]}/{game['out']}`)."
+                )
+        additions[store] = app_id
+        notes[store] = note
+
+    if not additions:
+        stores = ", ".join(STORES[store] for store in current)
+        raise Rejected(
+            f"**{name}** is already built for every exact store match found"
+            f"{f' ({stores})' if stores else ''}."
+        )
+
+    return {
+        "name": name,
+        "out": out,
+        "ids": dict(sorted(additions.items())),
+        "notes": notes,
+        "action": "merge" if existing else "new",
+    }
+
+
+def apply_all_to_manifest(plan: dict, games: list[dict]) -> dict:
+    """Apply every store mapping in a multi-store plan."""
+    for game in games:
+        if game["out"].lower() == plan["out"].lower():
+            game["stores"].update(plan["ids"])
+            game["stores"] = dict(sorted(game["stores"].items()))
+            return game
+
+    entry = {
+        "name": plan["name"],
+        "out": plan["out"],
+        "stores": dict(sorted(plan["ids"].items())),
+    }
+    games.append(entry)
+    games.sort(key=lambda game: game["out"].lower())
+    return entry
+
+
 def emit(**outputs: str) -> None:
     path = os.environ.get("GITHUB_OUTPUT")
     if not path:
@@ -409,44 +800,47 @@ def main() -> int:
     fields = parse_issue_form(body)
 
     try:
-        plan = resolve(fields, games)
+        plan = resolve_all(fields, games)
     except Rejected as exc:
         emit(ok="false", comment=f"### Can't build this one automatically\n\n{exc}")
         print(f"REJECTED: {exc}", file=sys.stderr)
         return 0
 
-    entry = apply_to_manifest(plan, games)
+    entry = apply_all_to_manifest(plan, games)
     if args.apply:
         with open(args.manifest, "w", encoding="utf-8") as fh:
             json.dump(games, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
 
-    path = f"{STORE_DIRS[plan['store']]}/{plan['out']}"
-    headline = (
-        f"### Building `{path}`"
-        if plan["action"] == "new"
-        else f"### Adding a {STORES[plan['store']]} build of **{plan['name']}**"
+    new_stores = list(plan["ids"])
+    paths = [f"{STORE_DIRS[store]}/{plan['out']}" for store in new_stores]
+    rows = "\n".join(
+        f"| {STORES[store]} | `{plan['ids'][store]}` | `{paths[index]}` |"
+        for index, store in enumerate(new_stores)
     )
-    extra = (
-        ""
+    commands = "\n".join(
+        f"{STORES[store]}: `{launch_command(store, plan['ids'][store])}`"
+        for store in new_stores
+    )
+    headline = (
+        f"### Building **{plan['name']}** for every matched store"
         if plan["action"] == "new"
-        else f"\n**{plan['name']}** is already here for "
-             f"{', '.join(STORES[s] for s in entry['stores'] if s != plan['store'])}; "
-             f"this adds `{path}` alongside it.\n"
+        else f"### Adding every missing store build of **{plan['name']}**"
     )
 
     emit(
         ok="true",
         out=plan["out"],
-        path=path,
+        paths="\n".join(paths),
         name=plan["name"],
-        store=plan["store"],
+        stores=json.dumps(new_stores),
         entry=json.dumps(entry, ensure_ascii=False),
         comment=(
-            f"{headline}\n{extra}\n"
-            f"Resolved to {STORES[plan['store']]} ID `{plan['id']}` ({plan['note']}).\n\n"
-            f"Launch command:\n```\n{launch_command(plan['store'], plan['id'])}\n```\n\n"
-            "Opening a PR with the manifest entry and the built executable."
+            f"{headline}\n\n"
+            "| Store | Resolved ID | File |\n|---|---|---|\n"
+            f"{rows}\n\n"
+            f"Launch commands:\n\n{commands}\n\n"
+            "Opening one PR with the complete manifest entry and all matched executables."
         ),
     )
     print(f"OK ({plan['action']}): {entry}", file=sys.stderr)

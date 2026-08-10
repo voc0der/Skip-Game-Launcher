@@ -23,5 +23,6 @@ See [README.md](./README.md) for build and test instructions.
 ## Notes
 
 - `games.json` is the source of truth for launcher definitions.
+- Game requests use one store only as a seed; the resolver must discover and build every exact supported-store match.
 - Building launchers requires Windows because `scripts/build.ps1` uses IExpress.
 - Do not hand-edit generated `.exe` files.

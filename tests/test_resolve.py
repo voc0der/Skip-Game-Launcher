@@ -250,6 +250,94 @@ def test_epic_slugify(resolve_mod, name, slug):
     assert resolve_mod.epic_slugify(name) == slug
 
 
+def test_epic_catalog_resolves_exact_windows_game_item(resolve_mod, monkeypatch):
+    offer = {
+        "title": "Cyberpunk 2077",
+        "offerType": "BASE_GAME",
+        "id": "offer-1",
+        "items": [{"namespace": "ns", "id": "root-item"}],
+    }
+    hydrated = {
+        "records": [
+            {
+                "record": {
+                    "type": "item",
+                    "namespace": "ns",
+                    "id": "game-item",
+                    "title": "Cyberpunk 2077",
+                    "entitlementType": "EXECUTABLE",
+                    "categories": ["applications", "games"],
+                }
+            },
+            {
+                "record": {
+                    "type": "item",
+                    "namespace": "ns",
+                    "id": "bonus-item",
+                    "title": "Cyberpunk 2077 Bonus Content",
+                    "entitlementType": "EXECUTABLE",
+                    "categories": ["applications", "games"],
+                }
+            },
+            {
+                "record": {
+                    "type": "release-app",
+                    "platform": "Windows",
+                    "primaryOfferId": "offer-1",
+                    "itemNamespace": "ns",
+                    "itemId": "game-item",
+                    "appId": "Ginger",
+                }
+            },
+            {
+                "record": {
+                    "type": "asset",
+                    "platform": "Windows",
+                    "primaryOfferId": "offer-1",
+                    "itemNamespace": "ns",
+                    "itemId": "bonus-item",
+                    "artifactId": "WrongBonus",
+                }
+            },
+        ]
+    }
+
+    def post(url, payload):
+        if url == resolve_mod.EPIC_SEARCH_URL:
+            return json.dumps({"offers": [offer]}).encode()
+        return (json.dumps(hydrated) + "\n").encode()
+
+    monkeypatch.setattr(resolve_mod, "post_json", post)
+    assert resolve_mod.epic_catalog_app_name("Cyberpunk 2077")[0] == "Ginger"
+
+
+def test_ubisoft_catalog_reads_uplay_id_from_exact_product(resolve_mod, monkeypatch):
+    search = '''
+      <a class="thumb-link" href="/us/far-cry-5/base.html"
+         title="Go to product: Far Cry 5"></a>
+      <a class="thumb-link" href="/us/far-cry-5-gold/gold.html"
+         title="Go to product: Far Cry 5 Gold Edition"></a>
+    '''
+
+    def read(url):
+        return search if "search?" in url else '{"uplayGameID":"1803"}'
+
+    monkeypatch.setattr(resolve_mod, "read_text_url", read)
+    assert resolve_mod.resolve_ubisoft_id("Far Cry 5")[0] == "1803"
+
+
+def test_battlenet_catalog_matches_title_not_position(resolve_mod, monkeypatch):
+    monkeypatch.setattr(
+        resolve_mod,
+        "read_json_url",
+        lambda url: [
+            {"ProductId": "Pro", "Name": "Overwatch 2"},
+            {"ProductId": "Fen", "Name": "Diablo IV"},
+        ],
+    )
+    assert resolve_mod.resolve_battlenet_id("Diablo IV")[0] == "Fen"
+
+
 # --- stores without a catalogue ---------------------------------------------
 
 @pytest.mark.parametrize("store", ["Battle.net", "Ubisoft Connect"])
@@ -467,6 +555,59 @@ def test_apply_is_case_insensitive_on_filename(resolve_mod, games):
             "action": "merge", "note": ""}
     resolve_mod.apply_to_manifest(plan, games)
     assert len(games) == 3
+
+
+# --- automatic multi-store requests ----------------------------------------
+
+def test_resolve_all_uses_selected_store_only_as_seed(resolve_mod, form, games, monkeypatch):
+    discovered = {
+        "battlenet": ("Fresh", "Battle.net exact match"),
+        "epic": ("Artifact", "Epic exact match"),
+        "ubisoft": ("987", "Ubisoft exact match"),
+    }
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda store, name: discovered.get(store),
+    )
+    plan = resolve_mod.resolve_all(
+        resolve_mod.parse_issue_form(form(name="Fresh Game", store="Steam", app_id="123")),
+        games,
+    )
+    assert plan["ids"] == {
+        "battlenet": "Fresh",
+        "epic": "Artifact",
+        "steam": "123",
+        "ubisoft": "987",
+    }
+
+
+def test_resolve_all_enriches_existing_game_when_seed_store_exists(
+    resolve_mod, form, games, monkeypatch
+):
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda store, name: ("Zed", "exact") if store == "epic" else None,
+    )
+    plan = resolve_mod.resolve_all(
+        resolve_mod.parse_issue_form(form(name="Portal 2", store="Steam")), games
+    )
+    assert plan["action"] == "merge"
+    assert plan["ids"] == {"epic": "Zed"}
+    assert plan["out"] == "Portal2.exe"
+
+
+def test_apply_all_adds_every_resolved_store(resolve_mod, games):
+    plan = {
+        "name": "Fresh Game",
+        "out": "FreshGame.exe",
+        "ids": {"epic": "Artifact", "steam": "123", "ubisoft": "987"},
+        "notes": {},
+        "action": "new",
+    }
+    entry = resolve_mod.apply_all_to_manifest(plan, games)
+    assert entry["stores"] == {"epic": "Artifact", "steam": "123", "ubisoft": "987"}
 
 
 # --- launch commands --------------------------------------------------------
