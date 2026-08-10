@@ -517,6 +517,14 @@
     }
   },
   {
+    "name": "Dying Light 2 Stay Human: Reloaded Edition",
+    "out": "DyingLight2StayHumanReloadedEdition.exe",
+    "stores": {
+      "epic": "Redstart",
+      "steam": "534380"
+    }
+  },
+  {
     "name": "EA SPORTS FCâ„¢ 26",
     "out": "EASPORTSFCTM26.exe",
     "stores": {
