@@ -143,6 +143,14 @@
     }
   },
   {
+    "name": "Call of Duty: Black Ops Cold War",
+    "out": "CallOfDutyBlackOpsColdWar.exe",
+    "stores": {
+      "battlenet": "ZEUS",
+      "steam": "1985810"
+    }
+  },
+  {
     "name": "Civilization IV",
     "out": "Civilization_IV.exe",
     "stores": {
