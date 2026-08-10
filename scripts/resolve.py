@@ -773,7 +773,10 @@ def emit(**outputs: str) -> None:
     if not path:
         print(json.dumps(outputs, indent=2))
         return
-    with open(path, "a", encoding="utf-8") as fh:
+    # GitHub preserves carriage returns inside multiline output values. Force
+    # LF even on the Windows runner, otherwise every path except the last one
+    # reaches Bash as `Store/Game.exe\r` and cannot be staged.
+    with open(path, "a", encoding="utf-8", newline="\n") as fh:
         for key, value in outputs.items():
             # Multi-line values need heredoc syntax in $GITHUB_OUTPUT. The
             # delimiter is randomised per call because these values quote text

@@ -640,6 +640,22 @@ def test_emit_uses_heredoc_for_multiline_values(resolve_mod, tmp_path, monkeypat
     assert re.search(r"ok<<(\S+)\ntrue\n\1\n", text)
 
 
+def test_emit_forces_lf_on_windows_outputs(resolve_mod, tmp_path, monkeypatch):
+    """Embedded CRs become part of multiline path values in Git Bash."""
+    out = tmp_path / "gh_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    calls = []
+    real_open = open
+
+    def recording_open(*args, **kwargs):
+        calls.append(kwargs)
+        return real_open(*args, **kwargs)
+
+    monkeypatch.setattr("builtins.open", recording_open)
+    resolve_mod.emit(paths="Epic/Game.exe\nSteam/Game.exe")
+    assert calls[0]["newline"] == "\n"
+
+
 def test_emit_prints_when_not_under_actions(resolve_mod, capsys, monkeypatch):
     monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
     resolve_mod.emit(ok="false")

@@ -85,6 +85,7 @@ jobs:
           git checkout -B "$BRANCH"
           git add -- games.json
           while IFS= read -r exe_path; do
+            exe_path=${exe_path%$'\r'}
             [ -n "$exe_path" ] && git add -- "$exe_path"
           done <<< "$EXE_PATHS"
           git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
@@ -96,6 +97,7 @@ jobs:
             printf '| | |\n|---|---|\n'
             printf '| Game | %s |\n' "$NAME"
             while IFS= read -r exe_path; do
+              exe_path=${exe_path%$'\r'}
               [ -n "$exe_path" ] && printf "| File | \`%s\` |\n" "$exe_path"
             done <<< "$EXE_PATHS"
             printf '\n'

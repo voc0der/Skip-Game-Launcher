@@ -190,6 +190,7 @@ def test_game_request_builds_and_stages_every_resolved_store():
     assert "-Store $store" in build["run"]
     assert 'done <<< "$EXE_PATHS"' in publish["run"]
     assert 'git add -- "$exe_path"' in publish["run"]
+    assert "exe_path=${exe_path%$'\\r'}" in publish["run"]
 
 
 def test_build_workflow_verifies_before_committing():
