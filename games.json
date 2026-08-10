@@ -721,6 +721,13 @@
     }
   },
   {
+    "name": "Monster Hunter Wilds",
+    "out": "MonsterHunterWilds.exe",
+    "stores": {
+      "steam": "2246340"
+    }
+  },
+  {
     "name": "NARAKA: BLADEPOINT",
     "out": "NARAKABLADEPOINT.exe",
     "stores": {
