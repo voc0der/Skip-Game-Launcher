@@ -108,6 +108,7 @@
 | PICO PARK 2 | [Steam](Steam/PICOPARK2.exe) | — | — | — |
 | Portal | [Steam](Steam/Portal.exe) | — | — | — |
 | Portal 2 | [Steam](Steam/Portal2.exe) | — | — | — |
+| Project Zomboid | [Steam](Steam/ProjectZomboid.exe) | — | — | — |
 | PUBG: BATTLEGROUNDS | [Steam](Steam/PUBGBATTLEGROUNDS.exe) | [Epic](Epic/PUBGBATTLEGROUNDS.exe) | — | — |
 | R.E.P.O. | [Steam](Steam/REPO.exe) | — | — | — |
 | Red Dead Redemption 2 | [Steam](Steam/RedDeadRedemption2.exe) | [Epic](Epic/RedDeadRedemption2.exe) | — | — |
