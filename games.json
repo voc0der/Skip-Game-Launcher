@@ -260,6 +260,13 @@
     }
   },
   {
+    "name": "Geometry Dash",
+    "out": "GeometryDash.exe",
+    "stores": {
+      "steam": "322170"
+    }
+  },
+  {
     "name": "Ghost of Tsushima DIRECTOR'S CUT",
     "out": "GhostOfTsushimaDIRECTORSCUT.exe",
     "stores": {
