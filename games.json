@@ -370,6 +370,13 @@
     }
   },
   {
+    "name": "Neverwinter Nights: Enhanced Edition",
+    "out": "NeverwinterNightsEnhancedEdition.exe",
+    "stores": {
+      "steam": "704450"
+    }
+  },
+  {
     "name": "Overwatch",
     "out": "Overwatch.exe",
     "stores": {
