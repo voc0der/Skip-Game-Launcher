@@ -31,6 +31,11 @@ jobs:
       ISSUE: ${{ github.event.issue.number }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Issue events retain the default-branch SHA from when the label was
+          # applied. A queued request must start from master as it exists now.
+          ref: master
+          fetch-depth: 0
 
       - name: Resolve the request
         id: resolve
@@ -93,7 +98,7 @@ jobs:
             [ -n "$exe_path" ] && git add -- "$exe_path"
           done <<< "$EXE_PATHS"
           git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
-          git push --force origin "$BRANCH"
+          SOURCE_COMMIT=$(git rev-parse HEAD)
 
           # Built out here rather than inline so the markdown keeps column 0.
           {
@@ -111,17 +116,60 @@ jobs:
             printf 'Closes #%s\n' "$ISSUE"
           } > pr-body.md
 
-          # Only an *open* PR can be updated; `gh pr view` would also return a
-          # merged one, and editing that fails the job.
+          # Build each attempt on the latest master. If another game request
+          # merges between fetch and merge, repeat instead of abandoning this
+          # issue with a conflicted PR. The entry is merged semantically so a
+          # textual games.json conflict cannot discard either request.
           URL=$(gh pr list --head "$BRANCH" --state open --json url -q '.[0].url')
-          if [ -n "$URL" ]; then
-            gh pr edit "$BRANCH" --title "Add ${NAME}" --body-file pr-body.md
-          else
-            URL=$(gh pr create --base master --head "$BRANCH" \
-                               --title "Add ${NAME}" --body-file pr-body.md)
-          fi
+          MERGED=false
+          for attempt in $(seq 1 30); do
+            git fetch origin master
+            git checkout -B "$BRANCH" origin/master
+
+            while IFS= read -r exe_path; do
+              exe_path=${exe_path%$'\r'}
+              [ -n "$exe_path" ] && git checkout "$SOURCE_COMMIT" -- "$exe_path"
+            done <<< "$EXE_PATHS"
+            printf '%s' "$ENTRY" | python scripts/merge_entry.py
+            python scripts/index.py
+
+            git add -- games.json GAMES.md
+            while IFS= read -r exe_path; do
+              exe_path=${exe_path%$'\r'}
+              [ -n "$exe_path" ] && git add -- "$exe_path"
+            done <<< "$EXE_PATHS"
+
+            if git diff --cached --quiet; then
+              MERGED=already
+              break
+            fi
+            git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
+            git push --force origin "$BRANCH"
+
+            if [ -n "$URL" ]; then
+              gh pr edit "$BRANCH" --title "Add ${NAME}" --body-file pr-body.md
+            else
+              URL=$(gh pr create --base master --head "$BRANCH" \
+                                 --title "Add ${NAME}" --body-file pr-body.md)
+            fi
+            if gh pr merge "$URL" --merge; then
+              MERGED=true
+              break
+            fi
+            echo "::warning::merge race on attempt $attempt; rebuilding on latest master"
+          done
           rm -f pr-body.md
 
-          gh pr merge "$URL" --merge
+          if [ "$MERGED" = false ]; then
+            echo "::error::could not merge after 30 attempts"
+            exit 1
+          fi
+          if [ "$MERGED" = already ] && [ -n "$URL" ]; then
+            gh pr close "$URL" --comment "This launcher is already present on master."
+          fi
           gh issue close "$ISSUE" --reason completed
-          gh issue comment "$ISSUE" --body "Built and merged ${URL}."
+          if [ "$MERGED" = already ]; then
+            gh issue comment "$ISSUE" --body "Launcher was already present on master."
+          else
+            gh issue comment "$ISSUE" --body "Built and merged ${URL}."
+          fi

@@ -180,6 +180,21 @@ def test_game_request_merges_generated_pr():
     assert script.index("gh pr merge") < script.index("gh issue close")
 
 
+def test_game_request_recovers_from_parallel_merge_races():
+    doc = yaml.safe_load((REPO / ".github" / "workflows" / "game-request.yml").read_text())
+    steps = doc["jobs"]["fulfil"]["steps"]
+    checkout = next(step for step in steps if step.get("uses", "").startswith("actions/checkout@"))
+    publish = next(step for step in steps if step.get("name") == "Open and merge the PR")
+    script = publish["run"]
+    assert checkout["with"]["ref"] == "master"
+    assert checkout["with"]["fetch-depth"] == 0
+    assert "for attempt in $(seq 1 30)" in script
+    assert "git fetch origin master" in script
+    assert 'git checkout -B "$BRANCH" origin/master' in script
+    assert "python scripts/merge_entry.py" in script
+    assert 'if gh pr merge "$URL" --merge' in script
+
+
 def test_game_request_builds_and_stages_every_resolved_store():
     doc = yaml.safe_load((REPO / ".github" / "workflows" / "game-request.yml").read_text())
     steps = doc["jobs"]["fulfil"]["steps"]
