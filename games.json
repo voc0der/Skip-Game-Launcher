@@ -728,6 +728,13 @@
     }
   },
   {
+    "name": "No Man's Sky",
+    "out": "NoMansSky.exe",
+    "stores": {
+      "steam": "275850"
+    }
+  },
+  {
     "name": "Overwatch",
     "out": "Overwatch.exe",
     "stores": {
