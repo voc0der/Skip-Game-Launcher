@@ -886,6 +886,13 @@
     }
   },
   {
+    "name": "Warcraft Rumble",
+    "out": "WarcraftRumble.exe",
+    "stores": {
+      "battlenet": "GRY"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
