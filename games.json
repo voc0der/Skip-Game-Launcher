@@ -1042,6 +1042,13 @@
     }
   },
   {
+    "name": "Schedule I",
+    "out": "ScheduleI.exe",
+    "stores": {
+      "steam": "3164500"
+    }
+  },
+  {
     "name": "Sea of Thieves",
     "out": "SeaOfThieves.exe",
     "stores": {
