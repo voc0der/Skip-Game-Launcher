@@ -836,6 +836,13 @@
     }
   },
   {
+    "name": "Team Fortress 2",
+    "out": "TeamFortress2.exe",
+    "stores": {
+      "steam": "440"
+    }
+  },
+  {
     "name": "Terraria",
     "out": "Terraria.exe",
     "stores": {
