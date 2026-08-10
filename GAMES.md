@@ -6,6 +6,7 @@
 
 | Game | Steam | Epic | Battle.net | Ubisoft |
 |---|:---:|:---:|:---:|:---:|
+| 7 Days to Die | [Steam](Steam/7DaysToDie.exe) | — | — | — |
 | Apex Legendsâ„¢ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
 | ARC Raiders | [Steam](Steam/ARCRaiders.exe) | [Epic](Epic/ARCRaiders.exe) | — | — |
 | ARK: Survival Ascended | [Steam](Steam/ARKSurvivalAscended.exe) | [Epic](Epic/ARKSurvivalAscended.exe) | — | — |

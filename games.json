@@ -1,5 +1,12 @@
 [
   {
+    "name": "7 Days to Die",
+    "out": "7DaysToDie.exe",
+    "stores": {
+      "steam": "251570"
+    }
+  },
+  {
     "name": "Apex Legendsâ„¢",
     "out": "ApexLegendsTM.exe",
     "stores": {
