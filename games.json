@@ -432,7 +432,8 @@
     "name": "Overwatch",
     "out": "Overwatch.exe",
     "stores": {
-      "battlenet": "Pro"
+      "battlenet": "Pro",
+      "steam": "2357570"
     }
   },
   {
