@@ -76,6 +76,7 @@
 | Doom: The Dark Ages | [Steam](Steam/DoomTheDarkAges.exe) | — | [Battle.net](BattleNet/DoomTheDarkAges.exe) | — |
 | Dota 2 | [Steam](Steam/Dota2.exe) | — | — | — |
 | Dying Light 2 Stay Human: Reloaded Edition | [Steam](Steam/DyingLight2StayHumanReloadedEdition.exe) | [Epic](Epic/DyingLight2StayHumanReloadedEdition.exe) | — | — |
+| Dying Light: The Beast | [Steam](Steam/DyingLightTheBeast.exe) | [Epic](Epic/DyingLightTheBeast.exe) | — | — |
 | EA SPORTS FCâ„¢ 26 | [Steam](Steam/EASPORTSFCTM26.exe) | [Epic](Epic/EASPORTSFCTM26.exe) | — | — |
 | eFootball | [Steam](Steam/eFootball.exe) | — | — | — |
 | ELDEN RING | [Steam](Steam/ELDENRING.exe) | — | — | — |
