@@ -116,6 +116,7 @@
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |
 | War Thunder | [Steam](Steam/WarThunder.exe) | — | — | — |
 | Warcraft II: Battle.net Edition | — | — | [Battle.net](BattleNet/WarcraftIIBattleNetEdition.exe) | — |
+| Warcraft II: Remastered | — | — | [Battle.net](BattleNet/WarcraftIIRemastered.exe) | — |
 | Warcraft III | — | — | [Battle.net](BattleNet/WarcraftIII.exe) | — |
 | Warcraft III: Reign of Chaos | — | — | [Battle.net](BattleNet/WarcraftIIIReignOfChaos.exe) | — |
 | Warcraft III: The Frozen Throne | — | — | [Battle.net](BattleNet/WarcraftIIITheFrozenThrone.exe) | — |
