@@ -114,6 +114,7 @@
 | PUBG: BATTLEGROUNDS | [Steam](Steam/PUBGBATTLEGROUNDS.exe) | [Epic](Epic/PUBGBATTLEGROUNDS.exe) | — | — |
 | R.E.P.O. | [Steam](Steam/REPO.exe) | — | — | — |
 | Red Dead Redemption 2 | [Steam](Steam/RedDeadRedemption2.exe) | [Epic](Epic/RedDeadRedemption2.exe) | — | — |
+| Resident Evil 4 | [Steam](Steam/ResidentEvil4.exe) | — | — | — |
 | Riders Republic | [Steam](Steam/RidersRepublic.exe) | [Epic](Epic/RidersRepublic.exe) | — | [Ubisoft](Ubisoft/RidersRepublic.exe) |
 | Rise of the Tomb Raider | [Steam](Steam/RiseOfTheTombRaider.exe) | [Epic](Epic/RiseOfTheTombRaider.exe) | — | — |
 | Rocket League | [Steam](Steam/RocketLeague.exe) | [Epic](Epic/RocketLeague.exe) | — | — |
