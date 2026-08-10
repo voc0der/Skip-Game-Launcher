@@ -173,6 +173,14 @@
     }
   },
   {
+    "name": "Call of Duty: Modern Warfare III",
+    "out": "CallOfDutyModernWarfareIII.exe",
+    "stores": {
+      "battlenet": "PNTA",
+      "steam": "3595270"
+    }
+  },
+  {
     "name": "Civilization IV",
     "out": "Civilization_IV.exe",
     "stores": {
