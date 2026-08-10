@@ -1039,5 +1039,13 @@
     "stores": {
       "battlenet": "WoW"
     }
+  },
+  {
+    "name": "Wuthering Waves",
+    "out": "WutheringWaves.exe",
+    "stores": {
+      "epic": "a5faf668dbaf499c8dc2917bf1c346e5",
+      "steam": "3513350"
+    }
   }
 ]
