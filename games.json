@@ -185,6 +185,13 @@
     }
   },
   {
+    "name": "Black Desert",
+    "out": "BlackDesert.exe",
+    "stores": {
+      "steam": "582660"
+    }
+  },
+  {
     "name": "Black Mesa",
     "out": "BlackMesa.exe",
     "stores": {
