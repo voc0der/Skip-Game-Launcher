@@ -169,6 +169,15 @@ jobs:
           if [ "$MERGED" = already ] && [ -n "$URL" ]; then
             gh pr close "$URL" --comment "This launcher is already present on master."
           fi
+
+          # The repository deletes head branches on merge, but that only fires
+          # for merges a person performs; a PR the Actions token merges through
+          # the API has to tidy up after itself or every request leaves a branch
+          # behind forever. Deleted here rather than with `gh pr merge
+          # --delete-branch` so a cleanup hiccup can't fail the merge command
+          # and send the retry loop round to push the branch straight back.
+          git push origin --delete "$BRANCH" || true
+
           gh issue close "$ISSUE" --reason completed
           if [ "$MERGED" = already ]; then
             gh issue comment "$ISSUE" --body "Launcher was already present on master."
