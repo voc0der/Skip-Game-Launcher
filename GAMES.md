@@ -16,6 +16,7 @@
 | Assassin's Creed Mirage | [Steam](Steam/AssassinsCreedMirage.exe) | [Epic](Epic/AssassinsCreedMirage.exe) | — | [Ubisoft](Ubisoft/AssassinsCreedMirage.exe) |
 | Assassin's Creed Revelations | [Steam](Steam/AssassinsCreedRevelations.exe) | — | — | [Ubisoft](Ubisoft/AssassinsCreedRevelations.exe) |
 | Assassin's Creed Unity | [Steam](Steam/AssassinsCreedUnity.exe) | [Epic](Epic/AssassinsCreedUnity.exe) | — | [Ubisoft](Ubisoft/AssassinsCreedUnity.exe) |
+| Assassin's Creed Valhalla | [Steam](Steam/AssassinsCreedValhalla.exe) | [Epic](Epic/AssassinsCreedValhalla.exe) | — | — |
 | Avowed | [Steam](Steam/Avowed.exe) | — | [Battle.net](BattleNet/Avowed.exe) | — |
 | Baldur's Gate 3 | [Steam](Steam/BaldursGate3.exe) | — | — | — |
 | Batman Arkham Asylum GOTY Edition | [Steam](Steam/BatmanArkhamAslyum.exe) | [Epic](Epic/BatmanArkhamAslyum.exe) | — | — |

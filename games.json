@@ -84,6 +84,14 @@
     }
   },
   {
+    "name": "Assassin's Creed Valhalla",
+    "out": "AssassinsCreedValhalla.exe",
+    "stores": {
+      "epic": "965ccf8b2eba4f9381ef43183c08e205",
+      "steam": "2208920"
+    }
+  },
+  {
     "name": "Avowed",
     "out": "Avowed.exe",
     "stores": {
