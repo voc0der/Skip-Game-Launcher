@@ -297,6 +297,13 @@
     }
   },
   {
+    "name": "Crusader Kings III",
+    "out": "CrusaderKingsIII.exe",
+    "stores": {
+      "steam": "1158310"
+    }
+  },
+  {
     "name": "Crysis",
     "out": "Crysis.exe",
     "stores": {
