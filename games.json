@@ -876,6 +876,14 @@
     }
   },
   {
+    "name": "Once Human",
+    "out": "OnceHuman.exe",
+    "stores": {
+      "epic": "8c28826b510b40d0bd967b6fa011917e",
+      "steam": "2139460"
+    }
+  },
+  {
     "name": "Overwatch",
     "out": "Overwatch.exe",
     "stores": {
