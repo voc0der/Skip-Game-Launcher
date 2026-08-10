@@ -101,6 +101,7 @@
 | Hogwarts Legacy | [Steam](Steam/HogwartsLegacy.exe) | [Epic](Epic/HogwartsLegacy.exe) | — | — |
 | Honkai: Star Rail | — | [Epic](Epic/HonkaiStarRail.exe) | — | — |
 | Horizon Zero Dawnâ„¢ Complete Edition | [Steam](Steam/HorizonZeroDawnCompleteEdition.exe) | [Epic](Epic/HorizonZeroDawnCompleteEdition.exe) | — | — |
+| Hunt: Showdown 1896 | [Steam](Steam/HuntShowdown1896.exe) | — | — | — |
 | It Takes Two | [Steam](Steam/ItTakesTwo.exe) | [Epic](Epic/ItTakesTwo.exe) | — | — |
 | Just Cause 3 | [Steam](Steam/JustCause3.exe) | — | — | — |
 | Left 4 Dead | [Steam](Steam/Left4Dead.exe) | — | — | — |
