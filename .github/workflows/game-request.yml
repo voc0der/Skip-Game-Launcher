@@ -56,6 +56,11 @@ jobs:
           COMMENT: ${{ steps.resolve.outputs.comment }}
         run: gh issue comment "$ISSUE" --body "$COMMENT"
 
+      - name: Update the game index
+        if: steps.resolve.outputs.ok == 'true'
+        shell: bash
+        run: python scripts/index.py
+
       - name: Build the launcher
         if: steps.resolve.outputs.ok == 'true'
         shell: pwsh
@@ -82,7 +87,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B "$BRANCH"
-          git add -- games.json
+          git add -- games.json GAMES.md
           while IFS= read -r exe_path; do
             exe_path=${exe_path%$'\r'}
             [ -n "$exe_path" ] && git add -- "$exe_path"

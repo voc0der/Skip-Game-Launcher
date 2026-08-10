@@ -185,12 +185,15 @@ def test_game_request_builds_and_stages_every_resolved_store():
     steps = doc["jobs"]["fulfil"]["steps"]
     build = next(step for step in steps if step.get("name") == "Build the launcher")
     publish = next(step for step in steps if step.get("name") == "Open and merge the PR")
+    index = next(step for step in steps if step.get("name") == "Update the game index")
+    assert "python scripts/index.py" in index["run"]
     assert "ConvertFrom-Json $env:STORES" in build["run"]
     assert "foreach ($store in $stores)" in build["run"]
     assert "-Store $store" in build["run"]
     assert "$LASTEXITCODE" not in build["run"], "PowerShell scripts do not set LASTEXITCODE"
     assert 'done <<< "$EXE_PATHS"' in publish["run"]
     assert 'git add -- "$exe_path"' in publish["run"]
+    assert "git add -- games.json GAMES.md" in publish["run"]
     assert "exe_path=${exe_path%$'\\r'}" in publish["run"]
 
 

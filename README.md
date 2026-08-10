@@ -20,6 +20,9 @@ A game sold on more than one store gets one executable per store, so grab the
 one matching where you actually own it — `Steam/Metro2033Redux.exe` and
 `Epic/Metro2033Redux.exe` are different files.
 
+See the generated **[game and storefront index](GAMES.md)** for every available
+launcher and direct download links.
+
 ## Requesting a game
 
 Open a [game request](../../issues/new?template=game-request.yml). Once a
