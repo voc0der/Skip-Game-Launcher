@@ -540,6 +540,13 @@
     }
   },
   {
+    "name": "Garry's Mod",
+    "out": "GarrysMod.exe",
+    "stores": {
+      "steam": "4000"
+    }
+  },
+  {
     "name": "Genshin Impact",
     "out": "GenshinImpact.exe",
     "stores": {
