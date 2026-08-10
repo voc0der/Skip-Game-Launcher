@@ -639,6 +639,13 @@
     }
   },
   {
+    "name": "Lethal Company",
+    "out": "LethalCompany.exe",
+    "stores": {
+      "steam": "1966720"
+    }
+  },
+  {
     "name": "Limbus Company",
     "out": "LimbusCompany.exe",
     "stores": {

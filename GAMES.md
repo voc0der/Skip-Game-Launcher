@@ -91,6 +91,7 @@
 | Just Cause 3 | [Steam](Steam/JustCause3.exe) | — | — | — |
 | Left 4 Dead | [Steam](Steam/Left4Dead.exe) | — | — | — |
 | Left 4 Dead 2 | [Steam](Steam/Left4Dead2.exe) | — | — | — |
+| Lethal Company | [Steam](Steam/LethalCompany.exe) | — | — | — |
 | Limbus Company | [Steam](Steam/LimbusCompany.exe) | — | — | — |
 | Marvel Rivals | [Steam](Steam/MarvelRivals.exe) | [Epic](Epic/MarvelRivals.exe) | — | — |
 | Mass Effect™ Legendary Edition | [Steam](Steam/MassEffectTMLegendaryEdition.exe) | [Epic](Epic/MassEffectTMLegendaryEdition.exe) | — | — |
