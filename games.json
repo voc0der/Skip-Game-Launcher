@@ -943,6 +943,13 @@
     }
   },
   {
+    "name": "Street Fighter 6",
+    "out": "StreetFighter6.exe",
+    "stores": {
+      "steam": "1364780"
+    }
+  },
+  {
     "name": "Streets of Rage 4",
     "out": "StreetsOfRage4.exe",
     "stores": {

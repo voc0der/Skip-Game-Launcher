@@ -132,6 +132,7 @@
 | StarCraft II | — | — | [Battle.net](BattleNet/StarCraft2.exe) | — |
 | Stardew Valley | [Steam](Steam/StardewValley.exe) | — | — | — |
 | Starfield | [Steam](Steam/Starfield.exe) | — | — | — |
+| Street Fighter 6 | [Steam](Steam/StreetFighter6.exe) | — | — | — |
 | Streets of Rage 4 | [Steam](Steam/StreetsOfRage4.exe) | — | — | — |
 | Subnautica | [Steam](Steam/Subnautica.exe) | [Epic](Epic/Subnautica.exe) | — | — |
 | Team Fortress 2 | [Steam](Steam/TeamFortress2.exe) | — | — | — |
