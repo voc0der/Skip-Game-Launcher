@@ -543,6 +543,14 @@
     }
   },
   {
+    "name": "The Elder Scrolls V: Skyrim Special Edition",
+    "out": "TheElderScrollsVSkyrimSpecialEdition.exe",
+    "stores": {
+      "epic": "ac82db5035584c7f8a2c548d98c86b2c",
+      "steam": "489830"
+    }
+  },
+  {
     "name": "The Talos Principle",
     "out": "TheTalosPrinciple.exe",
     "stores": {
