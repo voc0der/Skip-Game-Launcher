@@ -116,6 +116,7 @@
 | Lies of P | [Steam](Steam/LiesOfP.exe) | [Epic](Epic/LiesOfP.exe) | — | — |
 | Limbus Company | [Steam](Steam/LimbusCompany.exe) | — | — | — |
 | Marvel Rivals | [Steam](Steam/MarvelRivals.exe) | [Epic](Epic/MarvelRivals.exe) | — | — |
+| Marvel's Spider-Man 2 | [Steam](Steam/MarvelsSpiderMan2.exe) | [Epic](Epic/MarvelsSpiderMan2.exe) | — | — |
 | Mass Effect™ Legendary Edition | [Steam](Steam/MassEffectTMLegendaryEdition.exe) | [Epic](Epic/MassEffectTMLegendaryEdition.exe) | — | — |
 | Metro 2033 Last Light Redux | [Steam](Steam/Metro2033LastLightRedux.exe) | [Epic](Epic/Metro2033LastLightRedux.exe) | — | — |
 | Metro 2033 Redux | [Steam](Steam/Metro2033Redux.exe) | [Epic](Epic/Metro2033Redux.exe) | — | — |
