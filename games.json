@@ -782,6 +782,13 @@
     }
   },
   {
+    "name": "Warcraft: Orcs & Humans",
+    "out": "WarcraftOrcsHumans.exe",
+    "stores": {
+      "battlenet": "W1"
+    }
+  },
+  {
     "name": "War Thunder",
     "out": "WarThunder.exe",
     "stores": {
