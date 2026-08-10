@@ -93,6 +93,7 @@
 | The Witcher 2: Assassins of Kings | [Steam](Steam/Witcher2.exe) | — | — | — |
 | The Witcher 3: Wild Hunt | [Steam](Steam/Witcher3.exe) | [Epic](Epic/Witcher3.exe) | — | — |
 | Tom Clancy's Ghost Recon Breakpoint | [Steam](Steam/TCGhostReconBreakpoint.exe) | [Epic](Epic/TCGhostReconBreakpoint.exe) | — | [Ubisoft](Ubisoft/TCGhostReconBreakpoint.exe) |
+| Tom Clancy's Rainbow Six Siege | [Steam](Steam/TomClancysRainbowSixSiege.exe) | — | — | [Ubisoft](Ubisoft/TomClancysRainbowSixSiege.exe) |
 | Tomb Raider | [Steam](Steam/TombRaider.exe) | [Epic](Epic/TombRaider.exe) | — | — |
 | Tomb Raider Underworld | [Steam](Steam/TombRaiderUnderworld.exe) | — | — | — |
 | Tools Up! | [Steam](Steam/ToolsUp.exe) | [Epic](Epic/ToolsUp.exe) | — | — |
