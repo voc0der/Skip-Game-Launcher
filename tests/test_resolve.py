@@ -639,6 +639,71 @@ def test_resolve_all_enriches_existing_game_when_seed_store_exists(
     assert plan["out"] == "Portal2.exe"
 
 
+def test_resolve_all_will_not_add_a_store_that_overwrites_an_existing_launcher(
+    resolve_mod, form, games, monkeypatch
+):
+    """battlenet and battlenetuid both build into BattleNet/<out>, so adding the
+    second one to an entry would name one file twice and break the build."""
+    games.append(
+        {
+            "name": "World of Warcraft Classic",
+            "out": "WoWClassic.exe",
+            "stores": {"battlenetuid": "wow_classic"},
+        }
+    )
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda store, name: ("WoWC", "exact") if store == "battlenet" else None,
+    )
+    fields = resolve_mod.parse_issue_form(
+        form(name="World of Warcraft Classic", store="Battle.net")
+    )
+    with pytest.raises(resolve_mod.Rejected, match="same file"):
+        resolve_mod.resolve_all(fields, games)
+
+
+def test_resolve_all_skips_a_discovered_store_that_would_overwrite(
+    resolve_mod, form, games, monkeypatch
+):
+    """An opportunistic extra store loses to the launcher already on the entry,
+    rather than failing the whole request."""
+    games.append(
+        {
+            "name": "World of Warcraft Classic",
+            "out": "WoWClassic.exe",
+            "stores": {"battlenetuid": "wow_classic"},
+        }
+    )
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda store, name: {"steam": ("77", "exact"), "battlenet": ("WoWC", "exact")}.get(store),
+    )
+    plan = resolve_mod.resolve_all(
+        resolve_mod.parse_issue_form(
+            form(name="World of Warcraft Classic", store="Steam")
+        ),
+        games,
+    )
+    assert plan["ids"] == {"steam": "77"}
+
+
+def test_a_pr_only_store_cannot_be_requested(resolve_mod, form, games):
+    """There is no catalogue behind a Battle.net uid, so a request can never
+    confirm one; say so instead of asking for an ID that will be refused."""
+    fields = resolve_mod.parse_issue_form(form(name="X", store="battlenetuid", app_id="wowt"))
+    with pytest.raises(resolve_mod.Rejected, match="can't be requested"):
+        resolve_mod.resolve_all(fields, games)
+
+
+def test_unknown_store_message_lists_only_requestable_stores(resolve_mod, form, games):
+    with pytest.raises(resolve_mod.Rejected) as exc:
+        resolve_mod.resolve_all(resolve_mod.parse_issue_form(form(store="GOG")), games)
+    assert "Battle.net (game version)" not in str(exc.value)
+    assert "Battle.net" in str(exc.value)
+
+
 def test_apply_all_adds_every_resolved_store(resolve_mod, games):
     plan = {
         "name": "Fresh Game",

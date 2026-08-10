@@ -160,8 +160,11 @@ function Get-BuildTarget {
 
     $targets = @($targets)
 
+    # Two entries on one filename, or one entry naming two stores that share a
+    # folder ('battlenet' and 'battlenetuid' both build into BattleNet/): either
+    # way the second package would overwrite the first.
     $dupes = $targets | Group-Object Path | Where-Object Count -gt 1
-    if ($dupes) { throw "two games want the same output path: $($dupes.Name -join ', ')" }
+    if ($dupes) { throw "two launchers want the same output path: $($dupes.Name -join ', ')" }
 
     return $targets
 }
