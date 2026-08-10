@@ -36,7 +36,7 @@ def test_resolve_knows_the_same_stores_it_can_map(resolve_mod):
     assert set(resolve_mod.STORES) == set(resolve_mod.STORE_DIRS)
 
 
-@pytest.mark.parametrize("store", ["steam", "battlenet", "epic", "ubisoft"])
+@pytest.mark.parametrize("store", ["steam", "battlenet", "battlenetuid", "epic", "ubisoft"])
 def test_launch_command_templates_match_the_powershell_builder(resolve_mod, store):
     """resolve.py only formats these for the issue comment, but a drifted
     template means the comment advertises a command the build never produces."""
@@ -47,10 +47,15 @@ def test_launch_command_templates_match_the_powershell_builder(resolve_mod, stor
         assert suffix in PSM1, f"{store}: suffix {suffix!r} not found in Launcher.psm1"
 
 
-@pytest.mark.parametrize("store", ["steam", "battlenet", "epic", "ubisoft"])
+@pytest.mark.parametrize("store", ["steam", "battlenet", "battlenetuid", "epic", "ubisoft"])
 def test_verifier_recognises_what_the_builder_emits(resolve_mod, verify_mod, tmp_path, store):
     """The end of the loop: anything built must read back as canonical."""
-    app_id = "620" if store in ("steam", "ubisoft") else "Petunia"
+    app_id = {
+        "steam": "620",
+        "ubisoft": "620",
+        # uids are lowercase; "Petunia" would not survive the dialect.
+        "battlenetuid": "wow_classic_era",
+    }.get(store, "Petunia")
     exe = tmp_path / "x.exe"
     exe.write_bytes(fake_exe(resolve_mod.launch_command(store, app_id)))
 

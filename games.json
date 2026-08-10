@@ -1545,6 +1545,41 @@
     }
   },
   {
+    "name": "World of Warcraft Classic",
+    "out": "WoWClassic.exe",
+    "stores": {
+      "battlenetuid": "wow_classic"
+    }
+  },
+  {
+    "name": "World of Warcraft Burning Crusade Anniversary",
+    "out": "WoWClassicAnniversary.exe",
+    "stores": {
+      "battlenetuid": "wow_classic_anniversary"
+    }
+  },
+  {
+    "name": "World of Warcraft Classic Era",
+    "out": "WoWClassicEra.exe",
+    "stores": {
+      "battlenetuid": "wow_classic_era"
+    }
+  },
+  {
+    "name": "World of Warcraft Titan Reforged Classic",
+    "out": "WoWClassicTitan.exe",
+    "stores": {
+      "battlenetuid": "wow_classic_titan"
+    }
+  },
+  {
+    "name": "World of Warcraft Public Test Realm",
+    "out": "WoWPTR.exe",
+    "stores": {
+      "battlenetuid": "wowt"
+    }
+  },
+  {
     "name": "Wuthering Waves",
     "out": "WutheringWaves.exe",
     "stores": {

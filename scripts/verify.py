@@ -26,6 +26,7 @@ import sys
 STORE_DIRS = {
     "steam": "Steam",
     "battlenet": "BattleNet",
+    "battlenetuid": "BattleNet",
     "epic": "Epic",
     "ubisoft": "Ubisoft",
 }
@@ -37,6 +38,9 @@ DIALECTS = [
     (re.compile(rb"steamapps\\common\\[^\x00]+"), "steam", "legacy: direct path to game binary"),
     (re.compile(rb"uplay://launch/(\d+)"), "ubisoft", "canonical"),
     (re.compile(rb"com\.epicgames\.launcher://apps/([A-Za-z0-9_]+)"), "epic", "canonical"),
+    # Must precede the `launch` dialect only for readability - the two cannot
+    # both match, since `launch ` requires the space that `launch_uid` fills.
+    (re.compile(rb'--exec="launch_uid ([a-z0-9_]+)"'), "battlenetuid", "canonical"),
     (re.compile(rb'--exec="launch (\w+)"'), "battlenet", "canonical"),
 ]
 

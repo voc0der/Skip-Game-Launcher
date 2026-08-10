@@ -38,6 +38,7 @@ from html.parser import HTMLParser
 STORES = {
     "steam": "Steam",
     "battlenet": "Battle.net",
+    "battlenetuid": "Battle.net (game version)",
     "epic": "Epic Games",
     "ubisoft": "Ubisoft Connect",
 }
@@ -45,6 +46,10 @@ STORES = {
 STORE_DIRS = {
     "steam": "Steam",
     "battlenet": "BattleNet",
+    # Same folder as `battlenet` - these are Battle.net games, they just need a
+    # different launch verb. Entries never collide because a game version is its
+    # own manifest entry with its own `out`.
+    "battlenetuid": "BattleNet",
     "epic": "Epic",
     "ubisoft": "Ubisoft",
 }
@@ -57,6 +62,7 @@ ID_PATTERNS = {
     "steam": re.compile(r"\d+"),
     "ubisoft": re.compile(r"\d+"),
     "battlenet": re.compile(r"[A-Za-z0-9_]+"),   # Pro, D3, S2, WoW, VIPR
+    "battlenetuid": re.compile(r"[a-z0-9_]+"),   # wow_classic_era, wowt
     "epic": re.compile(r"[A-Za-z0-9_]+"),        # Petunia, Speedwell, Calluna
 }
 
@@ -64,6 +70,7 @@ ID_DESCRIPTIONS = {
     "steam": "numeric",
     "ubisoft": "numeric",
     "battlenet": "letters, digits and underscores only",
+    "battlenetuid": "lowercase letters, digits and underscores only",
     "epic": "letters, digits and underscores only",
 }
 
@@ -457,6 +464,11 @@ def discover_store_id(store: str, name: str) -> tuple[str, str] | None:
             return None
     if store == "battlenet":
         return resolve_battlenet_id(name)
+    if store == "battlenetuid":
+        # Game versions (WoW Classic, Classic Era, PTR) are not products in any
+        # catalogue - they only exist as uids inside an installed client, so
+        # there is nothing to search. These are added by hand in a PR.
+        return None
     raise AssertionError(f"unknown store {store}")
 
 
@@ -491,6 +503,7 @@ def launch_command(store: str, app_id: str) -> str:
         "ubisoft": f"explorer uplay://launch/{app_id}/0",
         "epic": f'explorer "com.epicgames.launcher://apps/{app_id}?action=launch&silent=true"',
         "battlenet": f'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch {app_id}""',
+        "battlenetuid": f'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch_uid {app_id}""',
     }[store]
 
 

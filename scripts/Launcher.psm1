@@ -7,10 +7,11 @@ tested without building anything.
 Set-StrictMode -Version Latest
 
 $script:StoreDirs = [ordered]@{
-    steam     = 'Steam'
-    battlenet = 'BattleNet'
-    epic      = 'Epic'
-    ubisoft   = 'Ubisoft'
+    steam        = 'Steam'
+    battlenet    = 'BattleNet'
+    battlenetuid = 'BattleNet'
+    epic         = 'Epic'
+    ubisoft      = 'Ubisoft'
 }
 
 function Get-StoreDirectory {
@@ -49,6 +50,11 @@ function Get-LaunchCommand {
         'ubisoft'   { "explorer uplay://launch/$Id/0" }
         'epic'      { 'explorer "com.epicgames.launcher://apps/' + $Id + '?action=launch&silent=true"' }
         'battlenet' { 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch ' + $Id + '""' }
+        # `launch` takes a product code and only addresses top-level products.
+        # `launch_uid` takes a uid and is the only form that reaches a specific
+        # game version. It selects the version rather than starting it - see
+        # CONTRIBUTING.md - so these land on the client with Play ready.
+        'battlenetuid' { 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch_uid ' + $Id + '""' }
         default     { throw "unknown store '$Store'" }
     }
 }

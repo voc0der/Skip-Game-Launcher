@@ -13,7 +13,13 @@ import re
 import pytest
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-STORE_DIRS = {"steam": "Steam", "battlenet": "BattleNet", "epic": "Epic", "ubisoft": "Ubisoft"}
+STORE_DIRS = {
+    "steam": "Steam",
+    "battlenet": "BattleNet",
+    "battlenetuid": "BattleNet",
+    "epic": "Epic",
+    "ubisoft": "Ubisoft",
+}
 SAFE_FILENAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\.exe")
 WINDOWS_DEVICE_NAME = re.compile(
     r"(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)", re.IGNORECASE
