@@ -89,13 +89,18 @@ function Build-Launcher {
         # iexpress is a GUI-subsystem binary, so it returns immediately unless waited on.
         $p = Start-Process -FilePath $IExpress -ArgumentList '/N', '/Q', '/M', "`"$sedPath`"" `
                            -Wait -PassThru -NoNewWindow
-        if ($p.ExitCode -ne 0) {
+        # The hosted runner's GUI process can report 1 even after creating the
+        # package. The artifact is the authoritative postcondition, and CI reads
+        # its launch command back out before committing it.
+        if (-not (Test-Path $targetPath)) {
             Write-Host '--- IExpress directive that failed ---'
             Get-Content $sedPath | Write-Host
             Write-Host '--- end directive ---'
-            throw "iexpress exited $($p.ExitCode) building $($Target.Path)"
+            throw "iexpress exited $($p.ExitCode) and produced no $($Target.Path)"
         }
-        if (-not (Test-Path $targetPath)) { throw "iexpress reported success but produced no $targetPath" }
+        if ($p.ExitCode -ne 0) {
+            Write-Warning "iexpress exited $($p.ExitCode) after producing $($Target.Path)"
+        }
 
         $size = (Get-Item $targetPath).Length
         Write-Host ("  {0,-12} {1,-42} {2:N0} bytes  {3}" -f (Get-StoreDirectory $Target.Store), $Target.Out, $size, $launch)
