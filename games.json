@@ -75,6 +75,15 @@
     }
   },
   {
+    "name": "Assassin's Creed Shadows",
+    "out": "AssassinsCreedShadows.exe",
+    "stores": {
+      "epic": "a1a86c2450de45989bda712385f66c9d",
+      "steam": "3159330",
+      "ubisoft": "8006"
+    }
+  },
+  {
     "name": "Assassin's Creed Unity",
     "out": "AssassinsCreedUnity.exe",
     "stores": {
