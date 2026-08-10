@@ -532,6 +532,14 @@
     }
   },
   {
+    "name": "Dying Light: The Beast",
+    "out": "DyingLightTheBeast.exe",
+    "stores": {
+      "epic": "32eba9473a5642ac947f33b7130094b1",
+      "steam": "3008130"
+    }
+  },
+  {
     "name": "EA SPORTS FCâ„¢ 26",
     "out": "EASPORTSFCTM26.exe",
     "stores": {
