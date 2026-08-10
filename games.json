@@ -941,6 +941,13 @@
     }
   },
   {
+    "name": "VRChat",
+    "out": "VRChat.exe",
+    "stores": {
+      "steam": "438100"
+    }
+  },
+  {
     "name": "Warcraft II: Battle.net Edition",
     "out": "WarcraftIIBattleNetEdition.exe",
     "stores": {
