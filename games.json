@@ -151,6 +151,14 @@
     }
   },
   {
+    "name": "Call of Duty: Modern Warfare II",
+    "out": "CallOfDutyModernWarfareII.exe",
+    "stores": {
+      "battlenet": "AUKS",
+      "steam": "3595230"
+    }
+  },
+  {
     "name": "Civilization IV",
     "out": "Civilization_IV.exe",
     "stores": {
