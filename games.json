@@ -1,5 +1,13 @@
 [
   {
+    "name": "Apex Legendsâ„¢",
+    "out": "ApexLegendsTM.exe",
+    "stores": {
+      "epic": "makalu",
+      "steam": "1172470"
+    }
+  },
+  {
     "name": "ARC Raiders",
     "out": "ARCRaiders.exe",
     "stores": {
