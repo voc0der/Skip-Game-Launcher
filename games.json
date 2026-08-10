@@ -777,6 +777,14 @@
     }
   },
   {
+    "name": "The Outer Worlds 2",
+    "out": "TheOuterWorlds2.exe",
+    "stores": {
+      "battlenet": "ARK",
+      "steam": "1449110"
+    }
+  },
+  {
     "name": "The Talos Principle",
     "out": "TheTalosPrinciple.exe",
     "stores": {
