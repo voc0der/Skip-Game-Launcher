@@ -24,6 +24,7 @@
 | Batman Arkham Origins | [Steam](Steam/BatmanArkhamOrigins.exe) | — | — | — |
 | Batman Arkham Origins Blackgate | [Steam](Steam/BatmanArkhamOriginsBlackgate.exe) | — | — | — |
 | Battlefieldâ„¢ 6 | [Steam](Steam/BattlefieldTM6.exe) | [Epic](Epic/BattlefieldTM6.exe) | — | — |
+| BeamNG.drive | [Steam](Steam/BeamNGDrive.exe) | [Epic](Epic/BeamNGDrive.exe) | — | — |
 | BioShockâ„¢ Remastered | [Steam](Steam/BioShockTMRemastered.exe) | — | — | — |
 | Black Mesa | [Steam](Steam/BlackMesa.exe) | — | — | — |
 | Blizzard Arcade Collection | — | — | [Battle.net](BattleNet/BlizzardArcadeCollection.exe) | — |

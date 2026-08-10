@@ -145,6 +145,14 @@
     }
   },
   {
+    "name": "BeamNG.drive",
+    "out": "BeamNGDrive.exe",
+    "stores": {
+      "epic": "e4d63b53afcb43f79ae7f5aea61db917",
+      "steam": "284160"
+    }
+  },
+  {
     "name": "BioShockâ„¢ Remastered",
     "out": "BioShockTMRemastered.exe",
     "stores": {
