@@ -866,13 +866,6 @@
     }
   },
   {
-    "name": "Warcraft III",
-    "out": "WarcraftIII.exe",
-    "stores": {
-      "battlenet": "W3"
-    }
-  },
-  {
     "name": "Warcraft III: Reign of Chaos",
     "out": "WarcraftIIIReignOfChaos.exe",
     "stores": {
