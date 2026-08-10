@@ -28,6 +28,13 @@
     }
   },
   {
+    "name": "Assassin's Creed Mirage",
+    "out": "AssassinsCreedMirage.exe",
+    "stores": {
+      "steam": "3035570"
+    }
+  },
+  {
     "name": "Assassin's Creed Revelations",
     "out": "AssassinsCreedRevelations.exe",
     "stores": {
