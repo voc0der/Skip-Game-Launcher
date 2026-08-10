@@ -681,6 +681,24 @@ def _validate_store_id(store: str, app_id: str) -> None:
         )
 
 
+def _validate_supplied_id(store: str, name: str, supplied_id: str) -> str:
+    """Require a requester-supplied ID to agree with an independent lookup."""
+    match = discover_store_id(store, name)
+    if match is None:
+        raise Rejected(
+            f"Couldn't independently verify {STORES[store]} ID `{supplied_id}` against "
+            f"an exact catalogue match for **{name}**. The supplied ID will not be trusted."
+        )
+    expected_id, lookup_note = match
+    _validate_store_id(store, expected_id)
+    if supplied_id != expected_id:
+        raise Rejected(
+            f"The exact {STORES[store]} catalogue match for **{name}** uses ID "
+            f"`{expected_id}`, not the supplied ID `{supplied_id}`."
+        )
+    return f"request ID independently confirmed by {lookup_note}"
+
+
 def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
     """Resolve the request seed, then discover every other supported store."""
     name, out, requested_store, existing = _request_identity(fields, games)
@@ -697,6 +715,7 @@ def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
         else:
             seed_id, seed_note = given_id, "using the ID from the request"
         _validate_store_id(requested_store, seed_id)
+        seed_note = _validate_supplied_id(requested_store, name, seed_id)
         if requested_store in current and current[requested_store] != seed_id:
             raise Rejected(
                 f"**{name}** already has {STORES[requested_store]} ID "
@@ -708,7 +727,7 @@ def resolve_all(fields: dict[str, str], games: list[dict]) -> dict:
         if seed is None:
             raise Rejected(
                 f"Couldn't find one exact {STORES[requested_store]} catalogue match for "
-                f"**{name}**. Correct the store title or supply that store's ID as the seed."
+                f"**{name}**. Correct the store title and retry."
             )
         found[requested_store] = seed
 

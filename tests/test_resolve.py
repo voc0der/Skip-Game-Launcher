@@ -561,6 +561,7 @@ def test_apply_is_case_insensitive_on_filename(resolve_mod, games):
 
 def test_resolve_all_uses_selected_store_only_as_seed(resolve_mod, form, games, monkeypatch):
     discovered = {
+        "steam": ("123", "Steam exact match"),
         "battlenet": ("Fresh", "Battle.net exact match"),
         "epic": ("Artifact", "Epic exact match"),
         "ubisoft": ("987", "Ubisoft exact match"),
@@ -580,6 +581,46 @@ def test_resolve_all_uses_selected_store_only_as_seed(resolve_mod, form, games, 
         "steam": "123",
         "ubisoft": "987",
     }
+
+
+@pytest.mark.parametrize(
+    "store,supplied,expected",
+    [
+        ("Steam", "548431", "548430"),
+        ("Epic Games", "WrongArtifact", "CorrectArtifact"),
+        ("Battle.net", "WrongCode", "Fen"),
+        ("Ubisoft Connect", "6101", "6100"),
+    ],
+)
+def test_resolve_all_rejects_supplied_id_that_does_not_match_title(
+    resolve_mod, form, games, monkeypatch, store, supplied, expected
+):
+    requested = next(
+        key for key, label in resolve_mod.STORES.items() if label == store
+    )
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda candidate, name: (expected, "exact catalogue match")
+        if candidate == requested
+        else None,
+    )
+    fields = resolve_mod.parse_issue_form(
+        form(name="Deep Rock Galactic", store=store, app_id=supplied)
+    )
+    with pytest.raises(resolve_mod.Rejected, match=f"`{expected}`.*`{supplied}`"):
+        resolve_mod.resolve_all(fields, games)
+
+
+def test_resolve_all_rejects_supplied_id_when_catalogue_cannot_confirm_it(
+    resolve_mod, form, games, monkeypatch
+):
+    monkeypatch.setattr(resolve_mod, "discover_store_id", lambda store, name: None)
+    fields = resolve_mod.parse_issue_form(
+        form(name="Deep Rock Galactic", store="Steam", app_id="548430")
+    )
+    with pytest.raises(resolve_mod.Rejected, match="will not be trusted"):
+        resolve_mod.resolve_all(fields, games)
 
 
 def test_resolve_all_enriches_existing_game_when_seed_store_exists(

@@ -36,6 +36,9 @@ Ubisoft are all searched automatically. If the game already exists, approving
 another request fills every missing exact store match rather than creating a
 duplicate entry.
 
+An ID supplied on the request is treated as an assertion, not an override. CI
+independently resolves the store title and rejects the request if the IDs differ.
+
 ## Source Information
 
 Every launcher is generated from [`games.json`](games.json) by

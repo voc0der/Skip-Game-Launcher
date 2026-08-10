@@ -42,9 +42,9 @@ body:
     attributes:
       label: App ID / product code
       description: |
-        Optional override for the selected seed store. Normally CI resolves it
-        from the title, then searches Steam, Epic, Battle.net and Ubisoft
-        automatically. Steam and Ubisoft use numeric IDs; Epic uses an internal
+        Optional known ID for the selected seed store. CI independently resolves
+        the title and requires this value to match; it cannot override the
+        catalogue. Steam and Ubisoft use numeric IDs; Epic uses an internal
         app/artifact name; Battle.net uses a short product code.
       placeholder: "620"
 
