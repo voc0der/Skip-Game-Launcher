@@ -161,6 +161,7 @@
 | Tomb Raider Underworld | [Steam](Steam/TombRaiderUnderworld.exe) | — | — | — |
 | Tony Hawk's Pro Skater 3 + 4 | — | — | [Battle.net](BattleNet/TonyHawksProSkater34.exe) | — |
 | Tools Up! | [Steam](Steam/ToolsUp.exe) | [Epic](Epic/ToolsUp.exe) | — | — |
+| Total War: WARHAMMER III | [Steam](Steam/TotalWarWARHAMMERIII.exe) | [Epic](Epic/TotalWarWARHAMMERIII.exe) | — | — |
 | Tron: Evolution | [Steam](Steam/TronEvolution.exe) | — | — | — |
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |
 | VRChat | [Steam](Steam/VRChat.exe) | — | — | — |
