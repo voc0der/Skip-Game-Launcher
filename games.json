@@ -761,6 +761,13 @@
     }
   },
   {
+    "name": "Warcraft II: Battle.net Edition",
+    "out": "WarcraftIIBattleNetEdition.exe",
+    "stores": {
+      "battlenet": "W2"
+    }
+  },
+  {
     "name": "Warcraft III",
     "out": "WarcraftIII.exe",
     "stores": {
