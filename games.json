@@ -819,6 +819,13 @@
     }
   },
   {
+    "name": "Warcraft II: Remastered",
+    "out": "WarcraftIIRemastered.exe",
+    "stores": {
+      "battlenet": "W2R"
+    }
+  },
+  {
     "name": "Warcraft: Orcs & Humans",
     "out": "WarcraftOrcsHumans.exe",
     "stores": {
