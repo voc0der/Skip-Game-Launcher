@@ -399,6 +399,14 @@
     }
   },
   {
+    "name": "Marvel Rivals",
+    "out": "MarvelRivals.exe",
+    "stores": {
+      "epic": "575efd0b5dd54429b035ffc8fe2d36d0",
+      "steam": "2767030"
+    }
+  },
+  {
     "name": "Mass Effect™ Legendary Edition",
     "out": "MassEffectTMLegendaryEdition.exe",
     "stores": {
