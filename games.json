@@ -576,6 +576,13 @@
     }
   },
   {
+    "name": "Fallout 76",
+    "out": "Fallout76.exe",
+    "stores": {
+      "steam": "1151340"
+    }
+  },
+  {
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {

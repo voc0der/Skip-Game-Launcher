@@ -82,6 +82,7 @@
 | Euro Truck Simulator 2 | [Steam](Steam/EuroTruckSimulator2.exe) | — | — | — |
 | Factorio | [Steam](Steam/Factorio.exe) | — | — | — |
 | Fallout 4 | [Steam](Steam/Fallout4.exe) | [Epic](Epic/Fallout4.exe) | — | — |
+| Fallout 76 | [Steam](Steam/Fallout76.exe) | — | — | — |
 | Far Cry 5 | [Steam](Steam/FarCry5.exe) | [Epic](Epic/FarCry5.exe) | — | [Ubisoft](Ubisoft/FarCry5.exe) |
 | Farming Simulator 25 | [Steam](Steam/FarmingSimulator25.exe) | [Epic](Epic/FarmingSimulator25.exe) | — | — |
 | FINAL FANTASY XIV Online | [Steam](Steam/FINALFANTASYXIVOnline.exe) | — | — | — |
