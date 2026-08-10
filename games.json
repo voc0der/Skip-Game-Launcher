@@ -420,6 +420,14 @@
     }
   },
   {
+    "name": "Red Dead Redemption 2",
+    "out": "RedDeadRedemption2.exe",
+    "stores": {
+      "epic": "Heather",
+      "steam": "1174180"
+    }
+  },
+  {
     "name": "Riders Republic",
     "out": "RidersRepublic.exe",
     "stores": {
