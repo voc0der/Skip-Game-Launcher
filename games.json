@@ -282,6 +282,13 @@
     }
   },
   {
+    "name": "Cities: Skylines II",
+    "out": "CitiesSkylinesII.exe",
+    "stores": {
+      "steam": "949230"
+    }
+  },
+  {
     "name": "Civilization IV",
     "out": "Civilization_IV.exe",
     "stores": {
