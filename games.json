@@ -588,6 +588,13 @@
     }
   },
   {
+    "name": "Honkai: Star Rail",
+    "out": "HonkaiStarRail.exe",
+    "stores": {
+      "epic": "86ae9acccf8443e18fca6950e0181288"
+    }
+  },
+  {
     "name": "Horizon Zero Dawnâ„¢ Complete Edition",
     "out": "HorizonZeroDawnCompleteEdition.exe",
     "stores": {
