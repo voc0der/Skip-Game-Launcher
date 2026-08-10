@@ -340,6 +340,14 @@
     }
   },
   {
+    "name": "Mass Effect™ Legendary Edition",
+    "out": "MassEffectTMLegendaryEdition.exe",
+    "stores": {
+      "epic": "heptagon",
+      "steam": "1328670"
+    }
+  },
+  {
     "name": "Metro 2033 Last Light Redux",
     "out": "Metro2033LastLightRedux.exe",
     "stores": {
