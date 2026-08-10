@@ -162,6 +162,22 @@ def test_actions_are_version_pinned(workflow):
     assert not unpinned, f"{path.name} has floating action refs: {unpinned}"
 
 
+def test_ci_generated_commit_subjects_are_conventional(workflow):
+    path, doc = workflow
+    pattern = re.compile(
+        r"(?:build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)"
+        r"(?:\([a-z0-9-]+\))?!?: [a-z].+"
+    )
+    subjects = [
+        match.group(1)
+        for _, _, step in _steps(doc)
+        for match in re.finditer(r'git commit -m "([^"]+)"', step.get("run", ""))
+    ]
+    assert all(pattern.fullmatch(subject) for subject in subjects), (
+        f"{path.name} has non-conventional CI commit subjects: {subjects}"
+    )
+
+
 def test_game_request_is_gated_on_a_label():
     doc = yaml.safe_load((REPO / ".github" / "workflows" / "game-request.yml").read_text())
     job = doc["jobs"]["fulfil"]
@@ -178,6 +194,7 @@ def test_game_request_merges_generated_pr():
     assert 'gh issue close "$ISSUE" --reason completed' in script
     assert script.index("gh pr create") < script.index("gh pr merge")
     assert script.index("gh pr merge") < script.index("gh issue close")
+    assert '--title "feat(catalog): add ${NAME} launchers"' in script
 
 
 def test_game_request_recovers_from_parallel_merge_races():
@@ -192,7 +209,8 @@ def test_game_request_recovers_from_parallel_merge_races():
     assert "git fetch origin master" in script
     assert 'git checkout -B "$BRANCH" origin/master' in script
     assert "python scripts/merge_entry.py" in script
-    assert 'if gh pr merge "$URL" --merge' in script
+    assert 'if gh pr merge "$URL" --squash' in script
+    assert '--subject "feat(catalog): add ${NAME} launchers"' in script
 
 
 def test_game_request_builds_and_stages_every_resolved_store():

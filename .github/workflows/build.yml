@@ -71,7 +71,7 @@ jobs:
             echo "no executable changes to commit"
             exit 0
           fi
-          git commit -m "Build launchers: ${NAMES}"
+          git commit -m "build(launchers): generate ${NAMES}"
           # Pushing with GITHUB_TOKEN does not retrigger workflows, so this
           # cannot loop back into itself.
           git push

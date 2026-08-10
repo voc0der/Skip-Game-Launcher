@@ -97,7 +97,7 @@ jobs:
             exe_path=${exe_path%$'\r'}
             [ -n "$exe_path" ] && git add -- "$exe_path"
           done <<< "$EXE_PATHS"
-          git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
+          git commit -m "feat(catalog): add ${NAME} launchers" -m "Requested in #${ISSUE}."
           SOURCE_COMMIT=$(git rev-parse HEAD)
 
           # Built out here rather than inline so the markdown keeps column 0.
@@ -143,16 +143,18 @@ jobs:
               MERGED=already
               break
             fi
-            git commit -m "Add ${NAME} launchers" -m "Requested in #${ISSUE}."
+            git commit -m "feat(catalog): add ${NAME} launchers" -m "Requested in #${ISSUE}."
             git push --force origin "$BRANCH"
 
             if [ -n "$URL" ]; then
-              gh pr edit "$BRANCH" --title "Add ${NAME}" --body-file pr-body.md
+              gh pr edit "$BRANCH" --title "feat(catalog): add ${NAME} launchers" --body-file pr-body.md
             else
               URL=$(gh pr create --base master --head "$BRANCH" \
-                                 --title "Add ${NAME}" --body-file pr-body.md)
+                                 --title "feat(catalog): add ${NAME} launchers" \
+                                 --body-file pr-body.md)
             fi
-            if gh pr merge "$URL" --merge; then
+            if gh pr merge "$URL" --squash \
+                 --subject "feat(catalog): add ${NAME} launchers"; then
               MERGED=true
               break
             fi
