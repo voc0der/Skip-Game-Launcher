@@ -750,6 +750,14 @@
     }
   },
   {
+    "name": "Path of Exile 2",
+    "out": "PathOfExile2.exe",
+    "stores": {
+      "epic": "57d39134358849b1b765ee649ea6a6e9",
+      "steam": "2694490"
+    }
+  },
+  {
     "name": "PICO PARK",
     "out": "PICOPARK.exe",
     "stores": {
