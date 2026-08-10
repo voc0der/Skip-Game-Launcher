@@ -766,6 +766,14 @@
     }
   },
   {
+    "name": "Mount & Blade II: Bannerlord",
+    "out": "MountBladeIIBannerlord.exe",
+    "stores": {
+      "epic": "Chickadee",
+      "steam": "261550"
+    }
+  },
+  {
     "name": "NARAKA: BLADEPOINT",
     "out": "NARAKABLADEPOINT.exe",
     "stores": {
