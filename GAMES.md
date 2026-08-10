@@ -6,6 +6,7 @@
 
 | Game | Steam | Epic | Battle.net | Ubisoft |
 |---|:---:|:---:|:---:|:---:|
+| Apex Legendsâ„¢ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
 | ARC Raiders | [Steam](Steam/ARCRaiders.exe) | [Epic](Epic/ARCRaiders.exe) | — | — |
 | Assassin's Creed | [Steam](Steam/AssassinsCreed.exe) | — | — | [Ubisoft](Ubisoft/AssassinsCreed.exe) |
 | Assassin's Creed Black Flag Resynced | [Steam](Steam/AssassinsCreedBlackFlagResynced.exe) | [Epic](Epic/AssassinsCreedBlackFlagResynced.exe) | — | [Ubisoft](Ubisoft/AssassinsCreedBlackFlagResynced.exe) |
