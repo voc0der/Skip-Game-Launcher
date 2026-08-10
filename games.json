@@ -534,6 +534,13 @@
     }
   },
   {
+    "name": "Slay the Spire 2",
+    "out": "SlayTheSpire2.exe",
+    "stores": {
+      "steam": "2868840"
+    }
+  },
+  {
     "name": "Split Fiction",
     "out": "SplitFiction.exe",
     "stores": {

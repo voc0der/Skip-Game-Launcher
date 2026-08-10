@@ -77,6 +77,7 @@
 | Rocket League | [Steam](Steam/RocketLeague.exe) | [Epic](Epic/RocketLeague.exe) | — | — |
 | Shadow of the Tomb Raider | [Steam](Steam/ShadowOfTheTombRaider.exe) | [Epic](Epic/ShadowOfTheTombRaider.exe) | — | — |
 | Skyrim SKSE | [Steam](Steam/Skyrim_SKSE.exe) | — | — | — |
+| Slay the Spire 2 | [Steam](Steam/SlayTheSpire2.exe) | — | — | — |
 | Split Fiction | [Steam](Steam/SplitFiction.exe) | [Epic](Epic/SplitFiction.exe) | — | — |
 | Star Wars Jedi Fallen Order | [Steam](Steam/StarWarsJediFallenOrder.exe) | [Epic](Epic/StarWarsJediFallenOrder.exe) | — | — |
 | StarCraft II | — | — | [Battle.net](BattleNet/StarCraft2.exe) | — |
