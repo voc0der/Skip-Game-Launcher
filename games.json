@@ -277,6 +277,13 @@
     }
   },
   {
+    "name": "Diablo",
+    "out": "Diablo.exe",
+    "stores": {
+      "battlenet": "D1"
+    }
+  },
+  {
     "name": "Diablo III",
     "out": "Diablo3.exe",
     "stores": {
