@@ -448,6 +448,13 @@
     }
   },
   {
+    "name": "The Elder Scrolls IV: Oblivion Remastered",
+    "out": "TheElderScrollsIVOblivionRemastered.exe",
+    "stores": {
+      "steam": "2623190"
+    }
+  },
+  {
     "name": "The Talos Principle",
     "out": "TheTalosPrinciple.exe",
     "stores": {
