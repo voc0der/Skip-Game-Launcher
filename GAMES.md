@@ -31,6 +31,7 @@
 | Call of Duty: Modern Warfare 2 Campaign Remastered | — | — | [Battle.net](BattleNet/CallOfDutyModernWarfare2CampaignRemastered.exe) | — |
 | Call of Duty: Modern Warfare II | [Steam](Steam/CallOfDutyModernWarfareII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareII.exe) | — |
 | Call of Duty: Modern Warfare III | [Steam](Steam/CallOfDutyModernWarfareIII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareIII.exe) | — |
+| Call of Duty: Vanguard | [Steam](Steam/CallOfDutyVanguard.exe) | — | [Battle.net](BattleNet/CallOfDutyVanguard.exe) | — |
 | Civilization IV | [Steam](Steam/Civilization_IV.exe) | — | — | — |
 | Civilization V | [Steam](Steam/Civilization_V.exe) | — | — | — |
 | Civilization VI | [Steam](Steam/Civilization_VI.exe) | [Epic](Epic/Civilization_VI.exe) | — | — |

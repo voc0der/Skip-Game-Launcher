@@ -189,6 +189,14 @@
     }
   },
   {
+    "name": "Call of Duty: Vanguard",
+    "out": "CallOfDutyVanguard.exe",
+    "stores": {
+      "battlenet": "FORE",
+      "steam": "1985820"
+    }
+  },
+  {
     "name": "Civilization IV",
     "out": "Civilization_IV.exe",
     "stores": {
