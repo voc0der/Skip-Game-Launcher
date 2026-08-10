@@ -380,6 +380,13 @@
     }
   },
   {
+    "name": "Streets of Rage 4",
+    "out": "StreetsOfRage4.exe",
+    "stores": {
+      "steam": "985890"
+    }
+  },
+  {
     "name": "Tom Clancy's Ghost Recon Breakpoint",
     "out": "TCGhostReconBreakpoint.exe",
     "stores": {
