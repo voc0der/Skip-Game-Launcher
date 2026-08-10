@@ -773,6 +773,13 @@
     }
   },
   {
+    "name": "Phasmophobia",
+    "out": "Phasmophobia.exe",
+    "stores": {
+      "steam": "739630"
+    }
+  },
+  {
     "name": "PICO PARK",
     "out": "PICOPARK.exe",
     "stores": {
