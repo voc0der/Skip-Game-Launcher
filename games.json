@@ -151,6 +151,13 @@
     }
   },
   {
+    "name": "Call of Duty: Modern Warfare 2 Campaign Remastered",
+    "out": "CallOfDutyModernWarfare2CampaignRemastered.exe",
+    "stores": {
+      "battlenet": "LAZR"
+    }
+  },
+  {
     "name": "Call of Duty: Modern Warfare II",
     "out": "CallOfDutyModernWarfareII.exe",
     "stores": {
