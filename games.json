@@ -772,6 +772,14 @@
     }
   },
   {
+    "name": "Lies of P",
+    "out": "LiesOfP.exe",
+    "stores": {
+      "epic": "414c01a544a84928be40c1e86e0fd169",
+      "steam": "1627720"
+    }
+  },
+  {
     "name": "Limbus Company",
     "out": "LimbusCompany.exe",
     "stores": {
