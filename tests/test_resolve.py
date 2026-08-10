@@ -216,6 +216,19 @@ def test_epic_passes_through_explicit_codename(resolve_mod, form, games):
     assert plan["id"] == "Wren"
 
 
+@pytest.mark.parametrize("app_id", ["nonagon", "592c359fb0e0413fb46dee2d24448eb4"])
+def test_epic_passes_through_modern_artifact_ids(resolve_mod, form, games, app_id):
+    """Epic now uses lowercase and opaque IDs as well as title-cased codenames."""
+    with urlopen_raises(AssertionError("must not hit the network")):
+        plan = resolve_mod.resolve(
+            resolve_mod.parse_issue_form(
+                form(name="Fresh Game", store="Epic Games", app_id=app_id)
+            ),
+            games,
+        )
+    assert plan["id"] == app_id
+
+
 def test_epic_network_failure_is_rejected(resolve_mod, form, games):
     with urlopen_raises(NOT_FOUND):
         with pytest.raises(resolve_mod.Rejected, match="Couldn't read the Epic store page"):

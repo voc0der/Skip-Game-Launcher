@@ -45,7 +45,7 @@ body:
         - **Steam** — optional. The number from the store URL or [SteamDB](https://steamdb.info), e.g. `620`
         - **Epic** — optional, but usually needed. Paste the store page URL and we'll try
           to resolve it; if that fails you'll be asked for the launcher app name — an
-          internal codename like `Petunia`, found in
+          internal value like `Petunia`, `nonagon`, or a 32-character artifact ID, found in
           `C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests\*.item` under `AppName`.
           It is **not** the slug in the store URL.
         - **Battle.net** — required. The short product code, e.g. `Pro`, `D3`, `S2`, `WoW`

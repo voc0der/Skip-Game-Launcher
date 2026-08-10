@@ -3,7 +3,8 @@
     "name": "Assassin's Creed",
     "out": "AssassinsCreed.exe",
     "stores": {
-      "steam": "15100"
+      "steam": "15100",
+      "ubisoft": "82"
     }
   },
   {
@@ -17,21 +18,25 @@
     "name": "Assassin's Creed Brotherhood",
     "out": "AssassinsCreedBrotherhood.exe",
     "stores": {
-      "steam": "48190"
+      "steam": "48190",
+      "ubisoft": "26"
     }
   },
   {
     "name": "Assassin's Creed II",
     "out": "AssassinsCreedII.exe",
     "stores": {
-      "steam": "33230"
+      "epic": "d0ae8ca1b5c8421ca6ab892353d3204d",
+      "steam": "33230",
+      "ubisoft": "4"
     }
   },
   {
     "name": "Assassin's Creed III",
     "out": "AssassinsCreedIII.exe",
     "stores": {
-      "steam": "208480"
+      "steam": "208480",
+      "ubisoft": "54"
     }
   },
   {
@@ -45,20 +50,24 @@
     "name": "Assassin's Creed Revelations",
     "out": "AssassinsCreedRevelations.exe",
     "stores": {
-      "steam": "201870"
+      "steam": "201870",
+      "ubisoft": "40"
     }
   },
   {
     "name": "Assassin's Creed Unity",
     "out": "AssassinsCreedUnity.exe",
     "stores": {
-      "steam": "289650"
+      "epic": "Amberjack",
+      "steam": "289650",
+      "ubisoft": "720"
     }
   },
   {
     "name": "Batman Arkham Asylum GOTY Edition",
     "out": "BatmanArkhamAslyum.exe",
     "stores": {
+      "epic": "Godwit",
       "steam": "35140"
     }
   },
@@ -66,6 +75,7 @@
     "name": "Batman Arkham City GOTY",
     "out": "BatmanArkhamCity.exe",
     "stores": {
+      "epic": "Egret",
       "steam": "200260"
     }
   },
@@ -73,6 +83,7 @@
     "name": "Batman Arkham Knight",
     "out": "BatmanArkhamKnight.exe",
     "stores": {
+      "epic": "Cowbird",
       "steam": "208650"
     }
   },
@@ -115,6 +126,7 @@
     "name": "Civilization VI",
     "out": "Civilization_VI.exe",
     "stores": {
+      "epic": "Kinglet",
       "steam": "289070"
     }
   },
@@ -129,6 +141,7 @@
     "name": "Control",
     "out": "Control.exe",
     "stores": {
+      "epic": "Calluna",
       "steam": "870780"
     }
   },
@@ -157,6 +170,7 @@
     "name": "Cyberpunk 2077",
     "out": "Cyberpunk2077.exe",
     "stores": {
+      "epic": "Ginger",
       "steam": "1091500"
     }
   },
@@ -171,7 +185,8 @@
     "name": "Destiny 2",
     "out": "Destiny2.exe",
     "stores": {
-      "battlenet": "DST2"
+      "epic": "592c359fb0e0413fb46dee2d24448eb4",
+      "steam": "1085660"
     }
   },
   {
@@ -199,6 +214,7 @@
     "name": "Doom Eternal",
     "out": "DoomEternal.exe",
     "stores": {
+      "epic": "Brant",
       "steam": "782330"
     }
   },
@@ -206,13 +222,16 @@
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {
-      "steam": "552520"
+      "epic": "Coriander",
+      "steam": "552520",
+      "ubisoft": "1803"
     }
   },
   {
     "name": "Grand Theft Auto V",
     "out": "GrandTheftAutoV.exe",
     "stores": {
+      "epic": "9d2d0eb64d5c44529cece33fe2a46482",
       "steam": "271590"
     }
   },
@@ -262,6 +281,7 @@
     "name": "It Takes Two",
     "out": "ItTakesTwo.exe",
     "stores": {
+      "epic": "nonagon",
       "steam": "1426210"
     }
   },
@@ -348,13 +368,16 @@
     "name": "Riders Republic",
     "out": "RidersRepublic.exe",
     "stores": {
-      "steam": "2290180"
+      "epic": "a3b3f00856694467a96b5cb6fd86ede4",
+      "steam": "2290180",
+      "ubisoft": "5487"
     }
   },
   {
     "name": "Rise of the Tomb Raider",
     "out": "RiseOfTheTombRaider.exe",
     "stores": {
+      "epic": "f7cc1c999ac146f39b356f53e3489514",
       "steam": "391220"
     }
   },
@@ -362,6 +385,7 @@
     "name": "Rocket League",
     "out": "RocketLeague.exe",
     "stores": {
+      "epic": "Sugar",
       "steam": "252950"
     }
   },
@@ -369,6 +393,7 @@
     "name": "Shadow of the Tomb Raider",
     "out": "ShadowOfTheTombRaider.exe",
     "stores": {
+      "epic": "890d9cf396d04922a1559333df419fed",
       "steam": "750920"
     }
   },
@@ -397,6 +422,7 @@
     "name": "Star Wars Jedi Fallen Order",
     "out": "StarWarsJediFallenOrder.exe",
     "stores": {
+      "epic": "Shoebill",
       "steam": "1172380"
     }
   },
@@ -411,13 +437,16 @@
     "name": "Tom Clancy's Ghost Recon Breakpoint",
     "out": "TCGhostReconBreakpoint.exe",
     "stores": {
-      "steam": "2231380"
+      "epic": "Saffron",
+      "steam": "2231380",
+      "ubisoft": "11903"
     }
   },
   {
     "name": "The Talos Principle",
     "out": "TheTalosPrinciple.exe",
     "stores": {
+      "epic": "Bustard",
       "steam": "257510"
     }
   },
@@ -425,6 +454,7 @@
     "name": "Tomb Raider",
     "out": "TombRaider.exe",
     "stores": {
+      "epic": "d6264d56f5ba434e91d4b0a0b056c83a",
       "steam": "203160"
     }
   },
@@ -439,6 +469,7 @@
     "name": "Tools Up!",
     "out": "ToolsUp.exe",
     "stores": {
+      "epic": "7935231c3c9c44699727e42d9071e4d2",
       "steam": "1004490"
     }
   },
@@ -467,6 +498,7 @@
     "name": "The Witcher 3: Wild Hunt",
     "out": "Witcher3.exe",
     "stores": {
+      "epic": "725a22e15ed74735bb0d6a19f3cc82d0",
       "steam": "292030"
     }
   },

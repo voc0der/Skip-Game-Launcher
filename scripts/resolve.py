@@ -183,9 +183,11 @@ def epic_app_name(slug: str) -> str | None:
 def resolve_epic_id(name: str, given: str) -> tuple[str, str]:
     """Return (appName, note). `given` may be a slug, a store URL, or empty."""
     if given:
-        # A capitalised codename like "Petunia" is already what we want; a
-        # lowercase-hyphenated string or a URL is a slug we still have to resolve.
-        looks_like_slug = "/" in given or re.fullmatch(r"[a-z0-9][a-z0-9-]*", given)
+        # App names are not always pretty codenames: current records can use a
+        # lowercase word ("nonagon") or an opaque 32-character artifact ID.
+        # Treat only URLs and unmistakably hyphenated product slugs as values
+        # that still need resolving.
+        looks_like_slug = "/" in given or "-" in given
         if not looks_like_slug:
             return given, "using the app name from the request"
         # Store links commonly carry locale/affiliate query parameters. Those

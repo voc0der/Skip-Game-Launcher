@@ -27,10 +27,11 @@ maintainer applies the **approved** label, CI resolves the store ID, builds the
 launcher, then opens and immediately merges a PR. The merge closes the request.
 
 Steam titles are looked up from the name automatically. Epic is attempted too,
-but the string its launch URI needs is an internal codename — `Petunia` serves
-`metro-2033-redux` — and Epic publishes it for only some products, so Epic
-requests often have to carry it. Battle.net and Ubisoft have no public
-catalogue at all and always need the ID. The form explains where to find each.
+but the string its launch URI needs is an internal artifact ID — sometimes a
+codename such as `Petunia`, sometimes an opaque hash — and Epic publishes it for
+only some products, so Epic requests often have to carry it. Battle.net and
+Ubisoft have no public catalogue at all and always need the ID. The form
+explains where to find each.
 
 Already have the game here on Steam and want the Epic build too? Request it
 again with the other store; that adds a second executable rather than a
@@ -107,7 +108,7 @@ Invoke-Pester tests/Launcher.Tests.ps1    # launch commands, .sed generation (Wi
 
 The Python suite needs `pytest` and `pyyaml` and runs anywhere. The Pester
 suite covers everything up to the IExpress call; the call itself is exercised
-end to end by the `Verify` workflow, which rebuilds all 67 launchers and reads
+end to end by the `Verify` workflow, which rebuilds every launcher and reads
 the commands back out of the results.
 
 `scripts/verify.py` reads the launch command back out of each executable and
