@@ -1289,6 +1289,14 @@
     }
   },
   {
+    "name": "The Elder Scrolls Online",
+    "out": "TheElderScrollsOnline.exe",
+    "stores": {
+      "epic": "4d0ff75b922447649057c237c0bd1545",
+      "steam": "306130"
+    }
+  },
+  {
     "name": "The Elder Scrolls V: Skyrim Special Edition",
     "out": "TheElderScrollsVSkyrimSpecialEdition.exe",
     "stores": {
