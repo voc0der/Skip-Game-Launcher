@@ -193,6 +193,13 @@
     }
   },
   {
+    "name": "Deep Rock Galactic",
+    "out": "DeepRockGalactic.exe",
+    "stores": {
+      "steam": "548430"
+    }
+  },
+  {
     "name": "Destiny 2",
     "out": "Destiny2.exe",
     "stores": {
