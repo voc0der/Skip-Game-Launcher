@@ -84,6 +84,14 @@
     }
   },
   {
+    "name": "Avowed",
+    "out": "Avowed.exe",
+    "stores": {
+      "battlenet": "AQUA",
+      "steam": "2457220"
+    }
+  },
+  {
     "name": "Baldur's Gate 3",
     "out": "BaldursGate3.exe",
     "stores": {
