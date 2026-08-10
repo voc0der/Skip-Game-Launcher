@@ -552,6 +552,13 @@
     }
   },
   {
+    "name": "Hearts of Iron IV",
+    "out": "HeartsOfIronIV.exe",
+    "stores": {
+      "steam": "394360"
+    }
+  },
+  {
     "name": "Hellblade Senua's Sacrifice",
     "out": "HellbladeSenuasSacrifice.exe",
     "stores": {
