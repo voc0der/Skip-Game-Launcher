@@ -686,6 +686,13 @@
     }
   },
   {
+    "name": "Sea of Thieves",
+    "out": "SeaOfThieves.exe",
+    "stores": {
+      "battlenet": "SCOR"
+    }
+  },
+  {
     "name": "Shadow of the Tomb Raider",
     "out": "ShadowOfTheTombRaider.exe",
     "stores": {
