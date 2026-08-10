@@ -1011,6 +1011,13 @@
     }
   },
   {
+    "name": "The Sims 4",
+    "out": "TheSims4.exe",
+    "stores": {
+      "steam": "1222670"
+    }
+  },
+  {
     "name": "The Talos Principle",
     "out": "TheTalosPrinciple.exe",
     "stores": {
