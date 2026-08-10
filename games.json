@@ -511,6 +511,14 @@
     }
   },
   {
+    "name": "Farming Simulator 25",
+    "out": "FarmingSimulator25.exe",
+    "stores": {
+      "epic": "53a95f209c1141b1be19b1a6d8c3ef5c",
+      "steam": "2300320"
+    }
+  },
+  {
     "name": "FINAL FANTASY XIV Online",
     "out": "FINALFANTASYXIVOnline.exe",
     "stores": {
