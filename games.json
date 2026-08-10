@@ -113,6 +113,13 @@
     }
   },
   {
+    "name": "BioShockâ„¢ Remastered",
+    "out": "BioShockTMRemastered.exe",
+    "stores": {
+      "steam": "409710"
+    }
+  },
+  {
     "name": "Black Mesa",
     "out": "BlackMesa.exe",
     "stores": {
