@@ -7,6 +7,13 @@
     }
   },
   {
+    "name": "Age of Empires II: Definitive Edition",
+    "out": "AgeOfEmpiresIIDefinitiveEdition.exe",
+    "stores": {
+      "steam": "813780"
+    }
+  },
+  {
     "name": "Apex Legendsâ„¢",
     "out": "ApexLegendsTM.exe",
     "stores": {

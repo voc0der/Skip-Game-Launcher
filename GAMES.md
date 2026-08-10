@@ -7,6 +7,7 @@
 | Game | Steam | Epic | Battle.net | Ubisoft |
 |---|:---:|:---:|:---:|:---:|
 | 7 Days to Die | [Steam](Steam/7DaysToDie.exe) | — | — | — |
+| Age of Empires II: Definitive Edition | [Steam](Steam/AgeOfEmpiresIIDefinitiveEdition.exe) | — | — | — |
 | Apex Legendsâ„¢ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
 | ARC Raiders | [Steam](Steam/ARCRaiders.exe) | [Epic](Epic/ARCRaiders.exe) | — | — |
 | Arena Breakout: Infinite | [Steam](Steam/ArenaBreakoutInfinite.exe) | [Epic](Epic/ArenaBreakoutInfinite.exe) | — | — |
