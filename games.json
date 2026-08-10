@@ -158,6 +158,14 @@
     }
   },
   {
+    "name": "Call of Duty: Modern Warfare",
+    "out": "CallOfDutyModernWarfare.exe",
+    "stores": {
+      "battlenet": "ODIN",
+      "steam": "2000950"
+    }
+  },
+  {
     "name": "Call of Duty: Modern Warfare 2 Campaign Remastered",
     "out": "CallOfDutyModernWarfare2CampaignRemastered.exe",
     "stores": {
