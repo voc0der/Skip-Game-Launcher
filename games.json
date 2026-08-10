@@ -1422,6 +1422,14 @@
     }
   },
   {
+    "name": "Where Winds Meet",
+    "out": "WhereWindsMeet.exe",
+    "stores": {
+      "epic": "a7d28f0e0935490b9d6f92dda1a7a75b",
+      "steam": "3564740"
+    }
+  },
+  {
     "name": "Windrose",
     "out": "Windrose.exe",
     "stores": {
