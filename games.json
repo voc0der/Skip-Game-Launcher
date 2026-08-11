@@ -14,6 +14,14 @@
     }
   },
   {
+    "name": "Albion Online",
+    "out": "AlbionOnline.exe",
+    "stores": {
+      "epic": "f088388ef3f545179243e7d104c5deaf",
+      "steam": "761890"
+    }
+  },
+  {
     "name": "Among Us",
     "out": "AmongUs.exe",
     "stores": {
