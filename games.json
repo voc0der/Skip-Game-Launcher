@@ -778,6 +778,14 @@
     }
   },
   {
+    "name": "Fallout: New Vegas",
+    "out": "FalloutNewVegas.exe",
+    "stores": {
+      "epic": "5daeb974a22a435988892319b3a4f476",
+      "steam": "22380"
+    }
+  },
+  {
     "name": "Far Cry 5",
     "out": "FarCry5.exe",
     "stores": {
