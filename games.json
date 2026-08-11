@@ -478,6 +478,14 @@
     }
   },
   {
+    "name": "Dead Cells",
+    "out": "DeadCells.exe",
+    "stores": {
+      "epic": "ca0e1d19d3b640b39d8d20e966067872",
+      "steam": "588650"
+    }
+  },
+  {
     "name": "Deep Rock Galactic",
     "out": "DeepRockGalactic.exe",
     "stores": {
