@@ -780,6 +780,14 @@
     }
   },
   {
+    "name": "God of War",
+    "out": "GodOfWar.exe",
+    "stores": {
+      "epic": "91bfb663fe7a4b9698ba08bd80549b34",
+      "steam": "1593500"
+    }
+  },
+  {
     "name": "God of War RagnarÃ¶k",
     "out": "GodOfWarRagnarok.exe",
     "stores": {
