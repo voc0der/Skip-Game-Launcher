@@ -1437,6 +1437,13 @@
     }
   },
   {
+    "name": "The Isle",
+    "out": "TheIsle.exe",
+    "stores": {
+      "steam": "376210"
+    }
+  },
+  {
     "name": "The Outer Worlds 2",
     "out": "TheOuterWorlds2.exe",
     "stores": {
