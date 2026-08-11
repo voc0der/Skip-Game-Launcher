@@ -1522,6 +1522,13 @@
     }
   },
   {
+    "name": "The Forest",
+    "out": "TheForest.exe",
+    "stores": {
+      "steam": "242760"
+    }
+  },
+  {
     "name": "The Isle",
     "out": "TheIsle.exe",
     "stores": {
