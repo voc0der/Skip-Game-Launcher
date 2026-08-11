@@ -149,6 +149,7 @@
 | Lies of P | [Steam](Steam/LiesOfP.exe) | [Epic](Epic/LiesOfP.exe) | — | — |
 | Limbus Company | [Steam](Steam/LimbusCompany.exe) | — | — | — |
 | Magic: The Gathering Arena | [Steam](Steam/MagicTheGatheringArena.exe) | [Epic](Epic/MagicTheGatheringArena.exe) | — | — |
+| Manor Lords | [Steam](Steam/ManorLords.exe) | [Epic](Epic/ManorLords.exe) | — | — |
 | Marvel Rivals | [Steam](Steam/MarvelRivals.exe) | [Epic](Epic/MarvelRivals.exe) | — | — |
 | Marvel's Spider-Man 2 | [Steam](Steam/MarvelsSpiderMan2.exe) | [Epic](Epic/MarvelsSpiderMan2.exe) | — | — |
 | Mass Effect™ Legendary Edition | [Steam](Steam/MassEffectTMLegendaryEdition.exe) | [Epic](Epic/MassEffectTMLegendaryEdition.exe) | — | — |
