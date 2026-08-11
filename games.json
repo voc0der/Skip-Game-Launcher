@@ -1731,6 +1731,13 @@
     }
   },
   {
+    "name": "Warhammer 40,000: Darktide",
+    "out": "Warhammer40000Darktide.exe",
+    "stores": {
+      "steam": "1361210"
+    }
+  },
+  {
     "name": "Warhammer 40,000: Space Marine 2",
     "out": "Warhammer40000SpaceMarine2.exe",
     "stores": {
