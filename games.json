@@ -927,6 +927,13 @@
     }
   },
   {
+    "name": "Hollow Knight: Silksong",
+    "out": "HollowKnightSilksong.exe",
+    "stores": {
+      "steam": "1030300"
+    }
+  },
+  {
     "name": "Honkai: Star Rail",
     "out": "HonkaiStarRail.exe",
     "stores": {
