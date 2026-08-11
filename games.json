@@ -177,6 +177,13 @@
     }
   },
   {
+    "name": "Assetto Corsa",
+    "out": "AssettoCorsa.exe",
+    "stores": {
+      "steam": "244210"
+    }
+  },
+  {
     "name": "Avowed",
     "out": "Avowed.exe",
     "stores": {
