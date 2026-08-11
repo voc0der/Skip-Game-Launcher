@@ -389,6 +389,14 @@
     }
   },
   {
+    "name": "Cities: Skylines",
+    "out": "CitiesSkylines.exe",
+    "stores": {
+      "epic": "bcbc03d8812a44c18f41cf7d5f849265",
+      "steam": "255710"
+    }
+  },
+  {
     "name": "Cities: Skylines II",
     "out": "CitiesSkylinesII.exe",
     "stores": {
