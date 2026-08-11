@@ -117,6 +117,7 @@
 | Ghost of Tsushima DIRECTOR'S CUT | [Steam](Steam/GhostOfTsushimaDIRECTORSCUT.exe) | [Epic](Epic/GhostOfTsushimaDIRECTORSCUT.exe) | — | — |
 | God of War | [Steam](Steam/GodOfWar.exe) | [Epic](Epic/GodOfWar.exe) | — | — |
 | God of War RagnarÃ¶k | [Steam](Steam/GodOfWarRagnarok.exe) | [Epic](Epic/GodOfWarRagnarok.exe) | — | — |
+| Granblue Fantasy: Relink | [Steam](Steam/GranblueFantasyRelink.exe) | — | — | — |
 | Grand Theft Auto V | [Steam](Steam/GrandTheftAutoV.exe) | [Epic](Epic/GrandTheftAutoV.exe) | — | — |
 | Grand Theft Auto V Enhanced | [Steam](Steam/GrandTheftAutoVEnhanced.exe) | [Epic](Epic/GrandTheftAutoVEnhanced.exe) | — | — |
 | Grim Dawn | [Steam](Steam/GrimDawn.exe) | — | — | — |

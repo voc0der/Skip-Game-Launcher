@@ -841,6 +841,13 @@
     }
   },
   {
+    "name": "Granblue Fantasy: Relink",
+    "out": "GranblueFantasyRelink.exe",
+    "stores": {
+      "steam": "881020"
+    }
+  },
+  {
     "name": "Grand Theft Auto V",
     "out": "GrandTheftAutoV.exe",
     "stores": {
