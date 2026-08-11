@@ -1403,6 +1403,13 @@
     }
   },
   {
+    "name": "Slay the Spire",
+    "out": "SlayTheSpire.exe",
+    "stores": {
+      "steam": "646570"
+    }
+  },
+  {
     "name": "Slay the Spire 2",
     "out": "SlayTheSpire2.exe",
     "stores": {

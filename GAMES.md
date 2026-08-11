@@ -194,6 +194,7 @@
 | Shadow of the Tomb Raider | [Steam](Steam/ShadowOfTheTombRaider.exe) | [Epic](Epic/ShadowOfTheTombRaider.exe) | — | — |
 | Sid Meier's Civilization VII | [Steam](Steam/SidMeiersCivilizationVII.exe) | [Epic](Epic/SidMeiersCivilizationVII.exe) | — | — |
 | Skyrim SKSE | [Steam](Steam/Skyrim_SKSE.exe) | — | — | — |
+| Slay the Spire | [Steam](Steam/SlayTheSpire.exe) | — | — | — |
 | Slay the Spire 2 | [Steam](Steam/SlayTheSpire2.exe) | — | — | — |
 | Split Fiction | [Steam](Steam/SplitFiction.exe) | [Epic](Epic/SplitFiction.exe) | — | — |
 | Squad | [Steam](Steam/Squad.exe) | [Epic](Epic/Squad.exe) | — | — |
