@@ -29,6 +29,13 @@
     }
   },
   {
+    "name": "American Truck Simulator",
+    "out": "AmericanTruckSimulator.exe",
+    "stores": {
+      "steam": "270880"
+    }
+  },
+  {
     "name": "Among Us",
     "out": "AmongUs.exe",
     "stores": {
