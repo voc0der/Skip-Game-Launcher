@@ -1628,6 +1628,13 @@
     }
   },
   {
+    "name": "TEKKEN 8",
+    "out": "TEKKEN8.exe",
+    "stores": {
+      "steam": "1778820"
+    }
+  },
+  {
     "name": "Terraria",
     "out": "Terraria.exe",
     "stores": {
