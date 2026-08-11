@@ -699,6 +699,14 @@
     }
   },
   {
+    "name": "FINAL FANTASY VII REMAKE INTERGRADE",
+    "out": "FINALFANTASYVIIREMAKEINTERGRADE.exe",
+    "stores": {
+      "epic": "b25ba0f04dc9434f8a04a062719e7aa7",
+      "steam": "1462040"
+    }
+  },
+  {
     "name": "FINAL FANTASY XIV Online",
     "out": "FINALFANTASYXIVOnline.exe",
     "stores": {
