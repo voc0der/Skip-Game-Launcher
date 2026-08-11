@@ -455,6 +455,14 @@
     }
   },
   {
+    "name": "Dark and Darker",
+    "out": "DarkAndDarker.exe",
+    "stores": {
+      "epic": "273854fd9c764c42a8e0f5c59aef343a",
+      "steam": "2016590"
+    }
+  },
+  {
     "name": "DayZ",
     "out": "DayZ.exe",
     "stores": {
