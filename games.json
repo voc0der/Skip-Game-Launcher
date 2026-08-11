@@ -1156,6 +1156,13 @@
     }
   },
   {
+    "name": "Persona 5 Royal",
+    "out": "Persona5Royal.exe",
+    "stores": {
+      "steam": "1687950"
+    }
+  },
+  {
     "name": "Phasmophobia",
     "out": "Phasmophobia.exe",
     "stores": {
