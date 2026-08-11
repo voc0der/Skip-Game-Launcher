@@ -478,6 +478,13 @@
     }
   },
   {
+    "name": "DARK SOULS II: Scholar of the First Sin",
+    "out": "DARKSOULSIIScholarOfTheFirstSin.exe",
+    "stores": {
+      "steam": "335300"
+    }
+  },
+  {
     "name": "DayZ",
     "out": "DayZ.exe",
     "stores": {
