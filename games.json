@@ -83,6 +83,13 @@
     }
   },
   {
+    "name": "Arma 3",
+    "out": "Arma3.exe",
+    "stores": {
+      "steam": "107410"
+    }
+  },
+  {
     "name": "Arma Reforger",
     "out": "ArmaReforger.exe",
     "stores": {
