@@ -14,6 +14,14 @@
     }
   },
   {
+    "name": "Among Us",
+    "out": "AmongUs.exe",
+    "stores": {
+      "epic": "963137e4c29d4c79a81323b8fab03a40",
+      "steam": "945360"
+    }
+  },
+  {
     "name": "Apex Legendsâ„¢",
     "out": "ApexLegendsTM.exe",
     "stores": {
