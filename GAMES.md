@@ -69,6 +69,7 @@
 | Crysis Warhead | [Steam](Steam/CrysisWarhead.exe) | — | — | — |
 | Cyberpunk 2077 | [Steam](Steam/Cyberpunk2077.exe) | [Epic](Epic/Cyberpunk2077.exe) | — | — |
 | Dark and Darker | [Steam](Steam/DarkAndDarker.exe) | [Epic](Epic/DarkAndDarker.exe) | — | — |
+| DARK SOULS II: Scholar of the First Sin | [Steam](Steam/DARKSOULSIIScholarOfTheFirstSin.exe) | — | — | — |
 | DayZ | [Steam](Steam/DayZ.exe) | — | — | — |
 | Dead by Daylight | [Steam](Steam/DeadByDaylight.exe) | [Epic](Epic/DeadByDaylight.exe) | — | — |
 | Dead Cells | [Steam](Steam/DeadCells.exe) | [Epic](Epic/DeadCells.exe) | — | — |
