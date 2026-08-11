@@ -1314,6 +1314,14 @@
     }
   },
   {
+    "name": "Risk of Rain 2",
+    "out": "RiskOfRain2.exe",
+    "stores": {
+      "epic": "4b3dcc5723454a47a9112d8fe8fd5f5c",
+      "steam": "632360"
+    }
+  },
+  {
     "name": "Rocket League",
     "out": "RocketLeague.exe",
     "stores": {
