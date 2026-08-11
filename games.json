@@ -44,7 +44,7 @@
     }
   },
   {
-    "name": "Apex Legendsâ„¢",
+    "name": "Apex Legends™",
     "out": "ApexLegendsTM.exe",
     "stores": {
       "epic": "makalu",
@@ -259,7 +259,7 @@
     }
   },
   {
-    "name": "Battlefieldâ„¢ 6",
+    "name": "Battlefield™ 6",
     "out": "BattlefieldTM6.exe",
     "stores": {
       "epic": "Glacier",
@@ -275,7 +275,7 @@
     }
   },
   {
-    "name": "BioShockâ„¢ Remastered",
+    "name": "BioShock™ Remastered",
     "out": "BioShockTMRemastered.exe",
     "stores": {
       "steam": "409710"
@@ -328,7 +328,7 @@
     }
   },
   {
-    "name": "Call of DutyÂ®",
+    "name": "Call of Duty®",
     "out": "CallOfDuty.exe",
     "stores": {
       "steam": "1938090"
@@ -714,7 +714,7 @@
     }
   },
   {
-    "name": "EA SPORTS FCâ„¢ 26",
+    "name": "EA SPORTS FC™ 26",
     "out": "EASPORTSFCTM26.exe",
     "stores": {
       "epic": "Monkey",
@@ -899,7 +899,7 @@
     }
   },
   {
-    "name": "God of War RagnarÃ¶k",
+    "name": "God of War Ragnarök",
     "out": "GodOfWarRagnarok.exe",
     "stores": {
       "epic": "456afef39a4c4cbbb6b17e92201443d7",
@@ -1023,7 +1023,7 @@
     }
   },
   {
-    "name": "HELLDIVERSâ„¢ 2",
+    "name": "HELLDIVERS™ 2",
     "out": "HELLDIVERSTM2.exe",
     "stores": {
       "steam": "553850"
@@ -1075,7 +1075,7 @@
     }
   },
   {
-    "name": "Horizon Zero Dawnâ„¢ Complete Edition",
+    "name": "Horizon Zero Dawn™ Complete Edition",
     "out": "HorizonZeroDawnCompleteEdition.exe",
     "stores": {
       "epic": "Grunion",
@@ -1565,7 +1565,7 @@
     }
   },
   {
-    "name": "Sekiroâ„¢: Shadows Die Twice - GOTY Edition",
+    "name": "Sekiro™: Shadows Die Twice - GOTY Edition",
     "out": "SekiroTMShadowsDieTwiceGOTYEdition.exe",
     "stores": {
       "steam": "814380"

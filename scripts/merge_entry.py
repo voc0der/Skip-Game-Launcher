@@ -76,7 +76,10 @@ def main() -> int:
     parser.add_argument("--manifest", default="games.json")
     args = parser.parse_args()
 
-    entry = json.load(sys.stdin)
+    # Decode explicitly rather than trusting sys.stdin's text wrapper: the
+    # workflow pipes this in on a Windows runner, where the wrapper defaults to
+    # the ANSI code page and silently turns a UTF-8 "™" into "â„¢".
+    entry = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     path = pathlib.Path(args.manifest)
     games = json.loads(path.read_text(encoding="utf-8"))
     changed = merge_entry(games, entry)
