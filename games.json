@@ -1220,6 +1220,14 @@
     }
   },
   {
+    "name": "Oxygen Not Included",
+    "out": "OxygenNotIncluded.exe",
+    "stores": {
+      "epic": "Lotus",
+      "steam": "457140"
+    }
+  },
+  {
     "name": "Palworld",
     "out": "Palworld.exe",
     "stores": {

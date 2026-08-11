@@ -168,6 +168,7 @@
 | No Man's Sky | [Steam](Steam/NoMansSky.exe) | — | — | — |
 | Once Human | [Steam](Steam/OnceHuman.exe) | [Epic](Epic/OnceHuman.exe) | — | — |
 | Overwatch | [Steam](Steam/Overwatch.exe) | — | [Battle.net](BattleNet/Overwatch.exe) | — |
+| Oxygen Not Included | [Steam](Steam/OxygenNotIncluded.exe) | [Epic](Epic/OxygenNotIncluded.exe) | — | — |
 | Palworld | [Steam](Steam/Palworld.exe) | — | — | — |
 | Path of Exile | [Steam](Steam/PathOfExile.exe) | [Epic](Epic/PathOfExile.exe) | — | — |
 | Path of Exile 2 | [Steam](Steam/PathOfExile2.exe) | [Epic](Epic/PathOfExile2.exe) | — | — |
