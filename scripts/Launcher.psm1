@@ -36,9 +36,19 @@ function Get-LaunchCommand {
     .SYNOPSIS
         The command IExpress runs to hand off to the store's launcher.
     .DESCRIPTION
-        These strings are load-bearing and the quoting is fiddly - the
-        Battle.net form in particular relies on cmd's "strip the outer pair"
-        behaviour, so the doubled quotes are deliberate.
+        These strings are load-bearing and the quoting is fiddly. IExpress
+        strips the outermost pair of quotes, but only when the value starts with
+        one - `explorer "com.epicgames..."` keeps both, while a bare
+        `"C:\...exe" --exec="..."` comes back out of the package as
+        `C:\...exe" --exec="...`, which launches nothing. The doubled quotes on
+        the Battle.net forms exist to survive that, and are not cmd's doing.
+
+        Nothing here may shell through cmd unless it has to. IExpress hides the
+        window of the process it starts, and explorer.exe and Battle.net.exe are
+        both GUI-subsystem binaries with no console to begin with - which is why
+        ShowInstallProgramWindow=0 appears to work for them. cmd.exe is console
+        subsystem and allocates one anyway, so a cmd hop is a visible window on
+        every launch.
     #>
     param(
         [Parameter(Mandatory)][string]$Store,
@@ -49,11 +59,18 @@ function Get-LaunchCommand {
         'steam'     { "explorer steam://rungameid/$Id" }
         'ubisoft'   { "explorer uplay://launch/$Id/0" }
         'epic'      { 'explorer "com.epicgames.launcher://apps/' + $Id + '?action=launch&silent=true"' }
-        'battlenet' { 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch ' + $Id + '""' }
+        # Invoked directly rather than through cmd: the argv Battle.net receives
+        # is identical either way, so the cmd hop only ever bought a console
+        # window. Verified against Diablo II: Resurrected (`OSI`).
+        # The doubled quotes are what survive IExpress, not what cmd needs - see
+        # the note above - so they stay even though cmd is gone.
+        'battlenet' { '""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch ' + $Id + '""' }
         # `launch` takes a product code and only addresses top-level products.
         # `launch_uid` takes a uid and is the only form that reaches a specific
         # game version. It selects the version rather than starting it - see
         # CONTRIBUTING.md - so these land on the client with Play ready.
+        # Left on the cmd form: the direct invocation above has not been tried
+        # against `launch_uid`, and these five are the only entries using it.
         'battlenetuid' { 'cmd /s /c ""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch_uid ' + $Id + '""' }
         default     { throw "unknown store '$Store'" }
     }
