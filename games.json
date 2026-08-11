@@ -758,6 +758,13 @@
     }
   },
   {
+    "name": "Grounded 2",
+    "out": "Grounded2.exe",
+    "stores": {
+      "steam": "2661300"
+    }
+  },
+  {
     "name": "Half Life 2",
     "out": "HalfLife2.exe",
     "stores": {
