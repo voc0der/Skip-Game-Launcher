@@ -1183,6 +1183,13 @@
     }
   },
   {
+    "name": "Need for Speed Heat",
+    "out": "NeedForSpeedHeat.exe",
+    "stores": {
+      "steam": "1222680"
+    }
+  },
+  {
     "name": "Need for Speed Hot Pursuit",
     "out": "NeedForSpeedHotPursuit.exe",
     "stores": {
