@@ -610,6 +610,13 @@
     }
   },
   {
+    "name": "Europa Universalis IV",
+    "out": "EuropaUniversalisIV.exe",
+    "stores": {
+      "steam": "236850"
+    }
+  },
+  {
     "name": "Euro Truck Simulator 2",
     "out": "EuroTruckSimulator2.exe",
     "stores": {
