@@ -153,6 +153,7 @@
 | Path of Exile 2 | [Steam](Steam/PathOfExile2.exe) | [Epic](Epic/PathOfExile2.exe) | — | — |
 | PAYDAY 2 | [Steam](Steam/PAYDAY2.exe) | [Epic](Epic/PAYDAY2.exe) | — | — |
 | PEAK | [Steam](Steam/PEAK.exe) | — | — | — |
+| Persona 3 Reload | [Steam](Steam/Persona3Reload.exe) | — | — | — |
 | Phasmophobia | [Steam](Steam/Phasmophobia.exe) | — | — | — |
 | PICO PARK | [Steam](Steam/PICOPARK.exe) | — | — | — |
 | PICO PARK 2 | [Steam](Steam/PICOPARK2.exe) | — | — | — |
