@@ -164,6 +164,7 @@
 | Metaphor: ReFantazio | [Steam](Steam/MetaphorReFantazio.exe) | — | — | — |
 | Metro 2033 Last Light Redux | [Steam](Steam/Metro2033LastLightRedux.exe) | [Epic](Epic/Metro2033LastLightRedux.exe) | — | — |
 | Metro 2033 Redux | [Steam](Steam/Metro2033Redux.exe) | [Epic](Epic/Metro2033Redux.exe) | — | — |
+| Microsoft Flight Simulator 2024 | [Steam](Steam/MicrosoftFlightSimulator2024.exe) | — | — | — |
 | Middle-earth: Shadow of Mordor | [Steam](Steam/MiddleEarthShadowOfMordor.exe) | — | — | — |
 | Monster Hunter Rise | [Steam](Steam/MonsterHunterRise.exe) | — | — | — |
 | Monster Hunter Wilds | [Steam](Steam/MonsterHunterWilds.exe) | — | — | — |
