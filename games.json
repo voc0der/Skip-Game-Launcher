@@ -827,6 +827,14 @@
     }
   },
   {
+    "name": "Kingdom Come: Deliverance II",
+    "out": "KingdomComeDeliveranceII.exe",
+    "stores": {
+      "epic": "278984b84235407d922da634b9d7d247",
+      "steam": "1771300"
+    }
+  },
+  {
     "name": "Left 4 Dead",
     "out": "Left4Dead.exe",
     "stores": {
