@@ -765,6 +765,13 @@
     }
   },
   {
+    "name": "Grim Dawn",
+    "out": "GrimDawn.exe",
+    "stores": {
+      "steam": "219990"
+    }
+  },
+  {
     "name": "Grounded 2",
     "out": "Grounded2.exe",
     "stores": {
