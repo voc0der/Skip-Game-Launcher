@@ -912,6 +912,13 @@
     }
   },
   {
+    "name": "Hollow Knight",
+    "out": "HollowKnight.exe",
+    "stores": {
+      "steam": "367520"
+    }
+  },
+  {
     "name": "Honkai: Star Rail",
     "out": "HonkaiStarRail.exe",
     "stores": {
