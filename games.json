@@ -1090,6 +1090,13 @@
     }
   },
   {
+    "name": "Persona 3 Reload",
+    "out": "Persona3Reload.exe",
+    "stores": {
+      "steam": "2161700"
+    }
+  },
+  {
     "name": "Phasmophobia",
     "out": "Phasmophobia.exe",
     "stores": {
