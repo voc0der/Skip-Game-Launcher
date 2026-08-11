@@ -1475,6 +1475,13 @@
     }
   },
   {
+    "name": "Unturned",
+    "out": "Unturned.exe",
+    "stores": {
+      "steam": "304930"
+    }
+  },
+  {
     "name": "Valheim",
     "out": "Valheim.exe",
     "stores": {
