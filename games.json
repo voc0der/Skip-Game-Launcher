@@ -1221,6 +1221,13 @@
     }
   },
   {
+    "name": "Resident Evil 2",
+    "out": "ResidentEvil2.exe",
+    "stores": {
+      "steam": "883710"
+    }
+  },
+  {
     "name": "Resident Evil 4",
     "out": "ResidentEvil4.exe",
     "stores": {
