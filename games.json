@@ -1689,6 +1689,14 @@
     }
   },
   {
+    "name": "Tiny Tina's Wonderlands",
+    "out": "TinyTinasWonderlands.exe",
+    "stores": {
+      "epic": "eb6ddfb245f647e2bb6902f52f38a535",
+      "steam": "1286680"
+    }
+  },
+  {
     "name": "Tomb Raider",
     "out": "TombRaider.exe",
     "stores": {
