@@ -14,6 +14,13 @@
     }
   },
   {
+    "name": "Age of Empires IV: Anniversary Edition",
+    "out": "AgeOfEmpiresIVAnniversaryEdition.exe",
+    "stores": {
+      "steam": "1466860"
+    }
+  },
+  {
     "name": "Albion Online",
     "out": "AlbionOnline.exe",
     "stores": {
