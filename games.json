@@ -289,6 +289,14 @@
     }
   },
   {
+    "name": "Borderlands 2",
+    "out": "Borderlands2.exe",
+    "stores": {
+      "epic": "Dodo",
+      "steam": "49520"
+    }
+  },
+  {
     "name": "Brawlhalla",
     "out": "Brawlhalla.exe",
     "stores": {
