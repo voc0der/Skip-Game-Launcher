@@ -1182,6 +1182,13 @@
     }
   },
   {
+    "name": "Microsoft Flight Simulator 2024",
+    "out": "MicrosoftFlightSimulator2024.exe",
+    "stores": {
+      "steam": "2537590"
+    }
+  },
+  {
     "name": "Middle-earth: Shadow of Mordor",
     "out": "MiddleEarthShadowOfMordor.exe",
     "stores": {
