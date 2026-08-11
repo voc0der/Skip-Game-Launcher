@@ -98,6 +98,7 @@
 | Fallout 76 | [Steam](Steam/Fallout76.exe) | — | — | — |
 | Far Cry 5 | [Steam](Steam/FarCry5.exe) | [Epic](Epic/FarCry5.exe) | — | [Ubisoft](Ubisoft/FarCry5.exe) |
 | Farming Simulator 25 | [Steam](Steam/FarmingSimulator25.exe) | [Epic](Epic/FarmingSimulator25.exe) | — | — |
+| FINAL FANTASY VII REMAKE INTERGRADE | [Steam](Steam/FINALFANTASYVIIREMAKEINTERGRADE.exe) | [Epic](Epic/FINALFANTASYVIIREMAKEINTERGRADE.exe) | — | — |
 | FINAL FANTASY XIV Online | [Steam](Steam/FINALFANTASYXIVOnline.exe) | — | — | — |
 | Football Manager 26 | [Steam](Steam/FootballManager26.exe) | [Epic](Epic/FootballManager26.exe) | — | — |
 | Fortnite | — | [Epic](Epic/Fortnite.exe) | — | — |
