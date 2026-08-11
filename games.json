@@ -683,6 +683,13 @@
     }
   },
   {
+    "name": "Dragon's Dogma 2",
+    "out": "DragonsDogma2.exe",
+    "stores": {
+      "steam": "2054970"
+    }
+  },
+  {
     "name": "Dying Light 2 Stay Human: Reloaded Edition",
     "out": "DyingLight2StayHumanReloadedEdition.exe",
     "stores": {
