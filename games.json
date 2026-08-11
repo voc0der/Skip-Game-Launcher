@@ -1090,6 +1090,13 @@
     }
   },
   {
+    "name": "Lost Ark",
+    "out": "LostArk.exe",
+    "stores": {
+      "steam": "1599340"
+    }
+  },
+  {
     "name": "Magic: The Gathering Arena",
     "out": "MagicTheGatheringArena.exe",
     "stores": {
