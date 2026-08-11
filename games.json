@@ -1642,6 +1642,13 @@
     }
   },
   {
+    "name": "Yu-Gi-Oh! Master Duel",
+    "out": "YuGiOhMasterDuel.exe",
+    "stores": {
+      "steam": "1449850"
+    }
+  },
+  {
     "name": "Zenless Zone Zero",
     "out": "ZenlessZoneZero.exe",
     "stores": {
