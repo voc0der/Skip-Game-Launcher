@@ -69,6 +69,13 @@
     }
   },
   {
+    "name": "Arma Reforger",
+    "out": "ArmaReforger.exe",
+    "stores": {
+      "steam": "1874880"
+    }
+  },
+  {
     "name": "Assassin's Creed",
     "out": "AssassinsCreed.exe",
     "stores": {
