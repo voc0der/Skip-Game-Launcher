@@ -896,6 +896,14 @@
     }
   },
   {
+    "name": "Hell Let Loose",
+    "out": "HellLetLoose.exe",
+    "stores": {
+      "epic": "3e02273b543f4ff0a1c24d3b534a9ac3",
+      "steam": "686810"
+    }
+  },
+  {
     "name": "Hogwarts Legacy",
     "out": "HogwartsLegacy.exe",
     "stores": {
