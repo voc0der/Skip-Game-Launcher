@@ -216,6 +216,7 @@
 | The Forest | [Steam](Steam/TheForest.exe) | — | — | — |
 | The Isle | [Steam](Steam/TheIsle.exe) | — | — | — |
 | The Last of Us Part I | [Steam](Steam/TheLastOfUsPartI.exe) | [Epic](Epic/TheLastOfUsPartI.exe) | — | — |
+| The Last of Us Part II Remastered | [Steam](Steam/TheLastOfUsPartIIRemastered.exe) | [Epic](Epic/TheLastOfUsPartIIRemastered.exe) | — | — |
 | The Outer Worlds 2 | [Steam](Steam/TheOuterWorlds2.exe) | — | [Battle.net](BattleNet/TheOuterWorlds2.exe) | — |
 | The Outlast Trials | [Steam](Steam/TheOutlastTrials.exe) | [Epic](Epic/TheOutlastTrials.exe) | — | — |
 | The Sims 4 | [Steam](Steam/TheSims4.exe) | — | — | — |

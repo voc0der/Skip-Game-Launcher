@@ -1582,6 +1582,14 @@
     }
   },
   {
+    "name": "The Last of Us Part II Remastered",
+    "out": "TheLastOfUsPartIIRemastered.exe",
+    "stores": {
+      "epic": "831cd8c0c25b4615ade419ecb4f50e42",
+      "steam": "2531310"
+    }
+  },
+  {
     "name": "The Outer Worlds 2",
     "out": "TheOuterWorlds2.exe",
     "stores": {
