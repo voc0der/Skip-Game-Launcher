@@ -151,6 +151,7 @@
 | Lethal Company | [Steam](Steam/LethalCompany.exe) | — | — | — |
 | Lies of P | [Steam](Steam/LiesOfP.exe) | [Epic](Epic/LiesOfP.exe) | — | — |
 | Limbus Company | [Steam](Steam/LimbusCompany.exe) | — | — | — |
+| Lost Ark | [Steam](Steam/LostArk.exe) | — | — | — |
 | Magic: The Gathering Arena | [Steam](Steam/MagicTheGatheringArena.exe) | [Epic](Epic/MagicTheGatheringArena.exe) | — | — |
 | Manor Lords | [Steam](Steam/ManorLords.exe) | [Epic](Epic/ManorLords.exe) | — | — |
 | Marvel Rivals | [Steam](Steam/MarvelRivals.exe) | [Epic](Epic/MarvelRivals.exe) | — | — |
