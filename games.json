@@ -1077,6 +1077,14 @@
     }
   },
   {
+    "name": "Manor Lords",
+    "out": "ManorLords.exe",
+    "stores": {
+      "epic": "8a5e1dedaa0e4f4e8b2ac2c00e849111",
+      "steam": "1363080"
+    }
+  },
+  {
     "name": "Marvel Rivals",
     "out": "MarvelRivals.exe",
     "stores": {
