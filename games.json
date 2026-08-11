@@ -469,6 +469,13 @@
     }
   },
   {
+    "name": "Cuphead",
+    "out": "Cuphead.exe",
+    "stores": {
+      "steam": "268910"
+    }
+  },
+  {
     "name": "Cyberpunk 2077",
     "out": "Cyberpunk2077.exe",
     "stores": {
