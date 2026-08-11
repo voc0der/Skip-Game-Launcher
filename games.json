@@ -1853,6 +1853,14 @@
     }
   },
   {
+    "name": "Warhammer 40,000: Rogue Trader",
+    "out": "Warhammer40000RogueTrader.exe",
+    "stores": {
+      "epic": "bd9a502222954e3c9db5050dae41426c",
+      "steam": "2186680"
+    }
+  },
+  {
     "name": "Warhammer 40,000: Space Marine 2",
     "out": "Warhammer40000SpaceMarine2.exe",
     "stores": {
