@@ -192,6 +192,14 @@
     }
   },
   {
+    "name": "Balatro",
+    "out": "Balatro.exe",
+    "stores": {
+      "epic": "0e66f423d20646b49440cfbb451bccca",
+      "steam": "2379780"
+    }
+  },
+  {
     "name": "Baldur's Gate 3",
     "out": "BaldursGate3.exe",
     "stores": {
