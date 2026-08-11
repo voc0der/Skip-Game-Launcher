@@ -43,6 +43,7 @@
 | Black Desert | [Steam](Steam/BlackDesert.exe) | — | — | — |
 | Black Mesa | [Steam](Steam/BlackMesa.exe) | — | — | — |
 | Blizzard Arcade Collection | — | — | [Battle.net](BattleNet/BlizzardArcadeCollection.exe) | — |
+| Borderlands 2 | [Steam](Steam/Borderlands2.exe) | [Epic](Epic/Borderlands2.exe) | — | — |
 | Brawlhalla | [Steam](Steam/Brawlhalla.exe) | [Epic](Epic/Brawlhalla.exe) | — | [Ubisoft](Ubisoft/Brawlhalla.exe) |
 | Call of Duty: Black Ops 4 | — | — | [Battle.net](BattleNet/CoDBlackOps4.exe) | — |
 | Call of Duty: Black Ops Cold War | [Steam](Steam/CallOfDutyBlackOpsColdWar.exe) | — | [Battle.net](BattleNet/CallOfDutyBlackOpsColdWar.exe) | — |
