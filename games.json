@@ -1565,6 +1565,13 @@
     }
   },
   {
+    "name": "Sekiroâ„¢: Shadows Die Twice - GOTY Edition",
+    "out": "SekiroTMShadowsDieTwiceGOTYEdition.exe",
+    "stores": {
+      "steam": "814380"
+    }
+  },
+  {
     "name": "Shadow of the Tomb Raider",
     "out": "ShadowOfTheTombRaider.exe",
     "stores": {
