@@ -1417,6 +1417,13 @@
     }
   },
   {
+    "name": "Sons of the Forest",
+    "out": "SonsOfTheForest.exe",
+    "stores": {
+      "steam": "1326470"
+    }
+  },
+  {
     "name": "Split Fiction",
     "out": "SplitFiction.exe",
     "stores": {

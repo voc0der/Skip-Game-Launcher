@@ -196,6 +196,7 @@
 | Skyrim SKSE | [Steam](Steam/Skyrim_SKSE.exe) | — | — | — |
 | Slay the Spire | [Steam](Steam/SlayTheSpire.exe) | — | — | — |
 | Slay the Spire 2 | [Steam](Steam/SlayTheSpire2.exe) | — | — | — |
+| Sons of the Forest | [Steam](Steam/SonsOfTheForest.exe) | — | — | — |
 | Split Fiction | [Steam](Steam/SplitFiction.exe) | [Epic](Epic/SplitFiction.exe) | — | — |
 | Squad | [Steam](Steam/Squad.exe) | [Epic](Epic/Squad.exe) | — | — |
 | Star Wars Jedi Fallen Order | [Steam](Steam/StarWarsJediFallenOrder.exe) | [Epic](Epic/StarWarsJediFallenOrder.exe) | — | — |
