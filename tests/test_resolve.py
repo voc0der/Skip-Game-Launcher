@@ -3,12 +3,14 @@ from __future__ import annotations
 
 import json
 import re
+import urllib.parse
 
 import pytest
 from helpers import (
     NOT_FOUND,
     epic_product,
     fake_urlopen,
+    steam_catalogue,
     steam_results,
     urlopen_raises,
 )
@@ -95,6 +97,32 @@ def test_steam_ambiguous_is_rejected_with_candidates(resolve_mod, form, games):
         with pytest.raises(resolve_mod.Rejected) as exc:
             resolve_mod.resolve(resolve_mod.parse_issue_form(form(name="Metro")), games)
     assert "412020" in str(exc.value) and "Mini Metro" in str(exc.value)
+
+
+def test_steam_query_drops_standalone_dash(resolve_mod):
+    """Steam reads a bare "-" as NOT, so an exact title self-excludes (#448)."""
+    seen = []
+    with fake_urlopen(lambda url: seen.append(url) or steam_results((814380, "S"))):
+        resolve_mod.steam_search("Sekiro™: Shadows Die Twice - GOTY Edition")
+    assert "+-+" not in seen[0]
+    assert "GOTY" in seen[0]
+
+
+@pytest.mark.parametrize("dash", ["-", "–", "—"])
+def test_steam_resolves_title_containing_dash(resolve_mod, form, games, dash):
+    """The catalogue title CI is told to use must not defeat the lookup (#380, #448)."""
+    title = f"Sekiro™: Shadows Die Twice {dash} GOTY Edition"
+    with fake_urlopen(steam_catalogue((814380, "Sekiro™: Shadows Die Twice - GOTY Edition"))):
+        plan = resolve_mod.resolve(resolve_mod.parse_issue_form(form(name=title)), games)
+    assert plan["id"] == "814380"
+
+
+def test_steam_keeps_hyphens_inside_words(resolve_mod):
+    """Only the separator token is noise; "Spider-Man" must stay intact."""
+    seen = []
+    with fake_urlopen(lambda url: seen.append(url) or steam_results((1817070, "S"))):
+        resolve_mod.steam_search("Marvel's Spider-Man Remastered")
+    assert "Spider-Man" in urllib.parse.unquote_plus(seen[0])
 
 
 def test_steam_no_results_is_rejected(resolve_mod, form, games):
@@ -621,6 +649,24 @@ def test_resolve_all_rejects_supplied_id_when_catalogue_cannot_confirm_it(
     )
     with pytest.raises(resolve_mod.Rejected, match="will not be trusted"):
         resolve_mod.resolve_all(fields, games)
+
+
+def test_resolve_all_confirms_supplied_id_for_title_containing_dash(
+    resolve_mod, form, games, monkeypatch
+):
+    """#448: the exact title's " - " made Steam return nothing, so a correct ID
+    looked unverifiable. Only Steam is live here; the real lookup must confirm."""
+    title = "Sekiro™: Shadows Die Twice - GOTY Edition"
+    real = resolve_mod.discover_store_id
+    monkeypatch.setattr(
+        resolve_mod,
+        "discover_store_id",
+        lambda store, name: real(store, name) if store == "steam" else None,
+    )
+    fields = resolve_mod.parse_issue_form(form(name=title, store="Steam", app_id="814380"))
+    with fake_urlopen(steam_catalogue((814380, title))):
+        plan = resolve_mod.resolve_all(fields, games)
+    assert plan["ids"]["steam"] == "814380"
 
 
 def test_resolve_all_enriches_existing_game_when_seed_store_exists(

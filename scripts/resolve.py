@@ -147,6 +147,11 @@ def parse_issue_form(body: str) -> dict[str, str]:
 
 
 def steam_search(term: str) -> list[dict]:
+    # Steam's storesearch reads a standalone "-" as NOT, so an exact catalogue
+    # title like "Sekiro™: Shadows Die Twice - GOTY Edition" excludes itself and
+    # comes back empty. Drop the separator from the query only; callers still
+    # match against the untouched title.
+    term = re.sub(r"\s+[-–—]\s+", " ", term)
     url = SEARCH_URL + "?" + urllib.parse.urlencode(
         {"term": term, "l": "english", "cc": "US"}
     )
