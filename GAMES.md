@@ -181,6 +181,7 @@
 | Riders Republic | [Steam](Steam/RidersRepublic.exe) | [Epic](Epic/RidersRepublic.exe) | — | [Ubisoft](Ubisoft/RidersRepublic.exe) |
 | RimWorld | [Steam](Steam/RimWorld.exe) | [Epic](Epic/RimWorld.exe) | — | — |
 | Rise of the Tomb Raider | [Steam](Steam/RiseOfTheTombRaider.exe) | [Epic](Epic/RiseOfTheTombRaider.exe) | — | — |
+| Risk of Rain 2 | [Steam](Steam/RiskOfRain2.exe) | [Epic](Epic/RiskOfRain2.exe) | — | — |
 | Rocket League | [Steam](Steam/RocketLeague.exe) | [Epic](Epic/RocketLeague.exe) | — | — |
 | Rust | [Steam](Steam/Rust.exe) | — | — | — |
 | Satisfactory | [Steam](Steam/Satisfactory.exe) | [Epic](Epic/Satisfactory.exe) | — | — |
