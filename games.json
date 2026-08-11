@@ -967,6 +967,14 @@
     }
   },
   {
+    "name": "Magic: The Gathering Arena",
+    "out": "MagicTheGatheringArena.exe",
+    "stores": {
+      "epic": "stargazer",
+      "steam": "2141910"
+    }
+  },
+  {
     "name": "Marvel Rivals",
     "out": "MarvelRivals.exe",
     "stores": {
