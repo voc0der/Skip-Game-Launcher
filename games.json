@@ -1735,6 +1735,14 @@
     }
   },
   {
+    "name": "Vampire Survivors",
+    "out": "VampireSurvivors.exe",
+    "stores": {
+      "epic": "1136763135c0482cbbb4b2d45e978156",
+      "steam": "1794680"
+    }
+  },
+  {
     "name": "VRChat",
     "out": "VRChat.exe",
     "stores": {

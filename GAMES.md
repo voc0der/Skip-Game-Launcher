@@ -239,6 +239,7 @@
 | Tron: Evolution | [Steam](Steam/TronEvolution.exe) | — | — | — |
 | Unturned | [Steam](Steam/Unturned.exe) | — | — | — |
 | Valheim | [Steam](Steam/Valheim.exe) | — | — | — |
+| Vampire Survivors | [Steam](Steam/VampireSurvivors.exe) | [Epic](Epic/VampireSurvivors.exe) | — | — |
 | VRChat | [Steam](Steam/VRChat.exe) | — | — | — |
 | War Thunder | [Steam](Steam/WarThunder.exe) | — | — | — |
 | Warcraft II: Battle.net Edition | — | — | [Battle.net](BattleNet/WarcraftIIBattleNetEdition.exe) | — |
