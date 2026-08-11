@@ -12,7 +12,7 @@
 | Albion Online | [Steam](Steam/AlbionOnline.exe) | [Epic](Epic/AlbionOnline.exe) | — | — |
 | American Truck Simulator | [Steam](Steam/AmericanTruckSimulator.exe) | — | — | — |
 | Among Us | [Steam](Steam/AmongUs.exe) | [Epic](Epic/AmongUs.exe) | — | — |
-| Apex Legendsâ„¢ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
+| Apex Legends™ | [Steam](Steam/ApexLegendsTM.exe) | [Epic](Epic/ApexLegendsTM.exe) | — | — |
 | ARC Raiders | [Steam](Steam/ARCRaiders.exe) | [Epic](Epic/ARCRaiders.exe) | — | — |
 | Arena Breakout: Infinite | [Steam](Steam/ArenaBreakoutInfinite.exe) | [Epic](Epic/ArenaBreakoutInfinite.exe) | — | — |
 | ARK: Survival Ascended | [Steam](Steam/ARKSurvivalAscended.exe) | [Epic](Epic/ARKSurvivalAscended.exe) | — | — |
@@ -39,9 +39,9 @@
 | Batman Arkham Knight | [Steam](Steam/BatmanArkhamKnight.exe) | [Epic](Epic/BatmanArkhamKnight.exe) | — | — |
 | Batman Arkham Origins | [Steam](Steam/BatmanArkhamOrigins.exe) | — | — | — |
 | Batman Arkham Origins Blackgate | [Steam](Steam/BatmanArkhamOriginsBlackgate.exe) | — | — | — |
-| Battlefieldâ„¢ 6 | [Steam](Steam/BattlefieldTM6.exe) | [Epic](Epic/BattlefieldTM6.exe) | — | — |
+| Battlefield™ 6 | [Steam](Steam/BattlefieldTM6.exe) | [Epic](Epic/BattlefieldTM6.exe) | — | — |
 | BeamNG.drive | [Steam](Steam/BeamNGDrive.exe) | [Epic](Epic/BeamNGDrive.exe) | — | — |
-| BioShockâ„¢ Remastered | [Steam](Steam/BioShockTMRemastered.exe) | — | — | — |
+| BioShock™ Remastered | [Steam](Steam/BioShockTMRemastered.exe) | — | — | — |
 | Black Desert | [Steam](Steam/BlackDesert.exe) | — | — | — |
 | Black Mesa | [Steam](Steam/BlackMesa.exe) | — | — | — |
 | Blizzard Arcade Collection | — | — | [Battle.net](BattleNet/BlizzardArcadeCollection.exe) | — |
@@ -56,7 +56,7 @@
 | Call of Duty: Modern Warfare II | [Steam](Steam/CallOfDutyModernWarfareII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareII.exe) | — |
 | Call of Duty: Modern Warfare III | [Steam](Steam/CallOfDutyModernWarfareIII.exe) | — | [Battle.net](BattleNet/CallOfDutyModernWarfareIII.exe) | — |
 | Call of Duty: Vanguard | [Steam](Steam/CallOfDutyVanguard.exe) | — | [Battle.net](BattleNet/CallOfDutyVanguard.exe) | — |
-| Call of DutyÂ® | [Steam](Steam/CallOfDuty.exe) | — | — | — |
+| Call of Duty® | [Steam](Steam/CallOfDuty.exe) | — | — | — |
 | Cities: Skylines | [Steam](Steam/CitiesSkylines.exe) | [Epic](Epic/CitiesSkylines.exe) | — | — |
 | Cities: Skylines II | [Steam](Steam/CitiesSkylinesII.exe) | — | — | — |
 | Civilization IV | [Steam](Steam/Civilization_IV.exe) | — | — | — |
@@ -100,7 +100,7 @@
 | Dragon's Dogma 2 | [Steam](Steam/DragonsDogma2.exe) | — | — | — |
 | Dying Light 2 Stay Human: Reloaded Edition | [Steam](Steam/DyingLight2StayHumanReloadedEdition.exe) | [Epic](Epic/DyingLight2StayHumanReloadedEdition.exe) | — | — |
 | Dying Light: The Beast | [Steam](Steam/DyingLightTheBeast.exe) | [Epic](Epic/DyingLightTheBeast.exe) | — | — |
-| EA SPORTS FCâ„¢ 26 | [Steam](Steam/EASPORTSFCTM26.exe) | [Epic](Epic/EASPORTSFCTM26.exe) | — | — |
+| EA SPORTS FC™ 26 | [Steam](Steam/EASPORTSFCTM26.exe) | [Epic](Epic/EASPORTSFCTM26.exe) | — | — |
 | eFootball | [Steam](Steam/eFootball.exe) | — | — | — |
 | ELDEN RING | [Steam](Steam/ELDENRING.exe) | — | — | — |
 | ELDEN RING NIGHTREIGN | [Steam](Steam/ELDENRINGNIGHTREIGN.exe) | — | — | — |
@@ -125,7 +125,7 @@
 | Geometry Dash | [Steam](Steam/GeometryDash.exe) | — | — | — |
 | Ghost of Tsushima DIRECTOR'S CUT | [Steam](Steam/GhostOfTsushimaDIRECTORSCUT.exe) | [Epic](Epic/GhostOfTsushimaDIRECTORSCUT.exe) | — | — |
 | God of War | [Steam](Steam/GodOfWar.exe) | [Epic](Epic/GodOfWar.exe) | — | — |
-| God of War RagnarÃ¶k | [Steam](Steam/GodOfWarRagnarok.exe) | [Epic](Epic/GodOfWarRagnarok.exe) | — | — |
+| God of War Ragnarök | [Steam](Steam/GodOfWarRagnarok.exe) | [Epic](Epic/GodOfWarRagnarok.exe) | — | — |
 | Granblue Fantasy: Relink | [Steam](Steam/GranblueFantasyRelink.exe) | — | — | — |
 | Grand Theft Auto V | [Steam](Steam/GrandTheftAutoV.exe) | [Epic](Epic/GrandTheftAutoV.exe) | — | — |
 | Grand Theft Auto V Enhanced | [Steam](Steam/GrandTheftAutoVEnhanced.exe) | [Epic](Epic/GrandTheftAutoVEnhanced.exe) | — | — |
@@ -143,14 +143,14 @@
 | Hearts of Iron IV | [Steam](Steam/HeartsOfIronIV.exe) | — | — | — |
 | Hell Let Loose | [Steam](Steam/HellLetLoose.exe) | [Epic](Epic/HellLetLoose.exe) | — | — |
 | Hellblade Senua's Sacrifice | [Steam](Steam/HellbladeSenuasSacrifice.exe) | — | — | — |
-| HELLDIVERSâ„¢ 2 | [Steam](Steam/HELLDIVERSTM2.exe) | — | — | — |
+| HELLDIVERS™ 2 | [Steam](Steam/HELLDIVERSTM2.exe) | — | — | — |
 | Heroes of the Storm | — | — | [Battle.net](BattleNet/HoTS.exe) | — |
 | Hogwarts Legacy | [Steam](Steam/HogwartsLegacy.exe) | [Epic](Epic/HogwartsLegacy.exe) | — | — |
 | Hollow Knight | [Steam](Steam/HollowKnight.exe) | — | — | — |
 | Hollow Knight: Silksong | [Steam](Steam/HollowKnightSilksong.exe) | — | — | — |
 | Honkai: Star Rail | — | [Epic](Epic/HonkaiStarRail.exe) | — | — |
 | Horizon Forbidden West Complete Edition | [Steam](Steam/HorizonForbiddenWestCompleteEdition.exe) | [Epic](Epic/HorizonForbiddenWestCompleteEdition.exe) | — | — |
-| Horizon Zero Dawnâ„¢ Complete Edition | [Steam](Steam/HorizonZeroDawnCompleteEdition.exe) | [Epic](Epic/HorizonZeroDawnCompleteEdition.exe) | — | — |
+| Horizon Zero Dawn™ Complete Edition | [Steam](Steam/HorizonZeroDawnCompleteEdition.exe) | [Epic](Epic/HorizonZeroDawnCompleteEdition.exe) | — | — |
 | Hunt: Showdown 1896 | [Steam](Steam/HuntShowdown1896.exe) | — | — | — |
 | Icarus | [Steam](Steam/Icarus.exe) | — | — | — |
 | It Takes Two | [Steam](Steam/ItTakesTwo.exe) | [Epic](Epic/ItTakesTwo.exe) | — | — |
@@ -216,7 +216,7 @@
 | Scrap Mechanic | [Steam](Steam/ScrapMechanic.exe) | — | — | — |
 | SCUM | [Steam](Steam/SCUM.exe) | — | — | — |
 | Sea of Thieves | — | — | [Battle.net](BattleNet/SeaOfThieves.exe) | — |
-| Sekiroâ„¢: Shadows Die Twice - GOTY Edition | [Steam](Steam/SekiroTMShadowsDieTwiceGOTYEdition.exe) | — | — | — |
+| Sekiro™: Shadows Die Twice - GOTY Edition | [Steam](Steam/SekiroTMShadowsDieTwiceGOTYEdition.exe) | — | — | — |
 | Shadow of the Tomb Raider | [Steam](Steam/ShadowOfTheTombRaider.exe) | [Epic](Epic/ShadowOfTheTombRaider.exe) | — | — |
 | Sid Meier's Civilization VII | [Steam](Steam/SidMeiersCivilizationVII.exe) | [Epic](Epic/SidMeiersCivilizationVII.exe) | — | — |
 | Skyrim SKSE | [Steam](Steam/Skyrim_SKSE.exe) | — | — | — |
