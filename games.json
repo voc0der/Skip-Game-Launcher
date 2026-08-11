@@ -1411,6 +1411,14 @@
     }
   },
   {
+    "name": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+    "out": "STALKER2HeartOfChornobyl.exe",
+    "stores": {
+      "epic": "c04ba25a0e674b1ab3ea79e50c24a722",
+      "steam": "1643320"
+    }
+  },
+  {
     "name": "StarCraft",
     "out": "StarCraft.exe",
     "stores": {
