@@ -70,6 +70,7 @@
 | Deep Rock Galactic | [Steam](Steam/DeepRockGalactic.exe) | — | — | — |
 | Delta Force | [Steam](Steam/DeltaForce.exe) | [Epic](Epic/DeltaForce.exe) | — | — |
 | Destiny 2 | [Steam](Steam/Destiny2.exe) | [Epic](Epic/Destiny2.exe) | — | — |
+| Detroit: Become Human | [Steam](Steam/DetroitBecomeHuman.exe) | [Epic](Epic/DetroitBecomeHuman.exe) | — | — |
 | Diablo | — | — | [Battle.net](BattleNet/Diablo.exe) | — |
 | Diablo II | — | — | [Battle.net](BattleNet/DiabloII.exe) | — |
 | Diablo II: Lord of Destruction | — | — | [Battle.net](BattleNet/DiabloIILordOfDestruction.exe) | — |

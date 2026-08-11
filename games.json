@@ -493,6 +493,14 @@
     }
   },
   {
+    "name": "Detroit: Become Human",
+    "out": "DetroitBecomeHuman.exe",
+    "stores": {
+      "epic": "Columbine",
+      "steam": "1222140"
+    }
+  },
+  {
     "name": "Diablo",
     "out": "Diablo.exe",
     "stores": {
