@@ -122,6 +122,7 @@
 | Honkai: Star Rail | — | [Epic](Epic/HonkaiStarRail.exe) | — | — |
 | Horizon Zero Dawnâ„¢ Complete Edition | [Steam](Steam/HorizonZeroDawnCompleteEdition.exe) | [Epic](Epic/HorizonZeroDawnCompleteEdition.exe) | — | — |
 | Hunt: Showdown 1896 | [Steam](Steam/HuntShowdown1896.exe) | — | — | — |
+| Icarus | [Steam](Steam/Icarus.exe) | — | — | — |
 | It Takes Two | [Steam](Steam/ItTakesTwo.exe) | [Epic](Epic/ItTakesTwo.exe) | — | — |
 | Just Cause 3 | [Steam](Steam/JustCause3.exe) | — | — | — |
 | Kingdom Come: Deliverance II | [Steam](Steam/KingdomComeDeliveranceII.exe) | [Epic](Epic/KingdomComeDeliveranceII.exe) | — | — |
