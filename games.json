@@ -595,6 +595,13 @@
     }
   },
   {
+    "name": "Enshrouded",
+    "out": "Enshrouded.exe",
+    "stores": {
+      "steam": "1203620"
+    }
+  },
+  {
     "name": "Euro Truck Simulator 2",
     "out": "EuroTruckSimulator2.exe",
     "stores": {

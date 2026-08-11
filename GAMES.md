@@ -84,6 +84,7 @@
 | eFootball | [Steam](Steam/eFootball.exe) | — | — | — |
 | ELDEN RING | [Steam](Steam/ELDENRING.exe) | — | — | — |
 | ELDEN RING NIGHTREIGN | [Steam](Steam/ELDENRINGNIGHTREIGN.exe) | — | — | — |
+| Enshrouded | [Steam](Steam/Enshrouded.exe) | — | — | — |
 | Euro Truck Simulator 2 | [Steam](Steam/EuroTruckSimulator2.exe) | — | — | — |
 | Factorio | [Steam](Steam/Factorio.exe) | — | — | — |
 | Fallout 4 | [Steam](Steam/Fallout4.exe) | [Epic](Epic/Fallout4.exe) | — | — |
