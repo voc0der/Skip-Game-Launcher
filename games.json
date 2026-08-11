@@ -1160,6 +1160,13 @@
     }
   },
   {
+    "name": "Monster Hunter Rise",
+    "out": "MonsterHunterRise.exe",
+    "stores": {
+      "steam": "1446780"
+    }
+  },
+  {
     "name": "Monster Hunter Wilds",
     "out": "MonsterHunterWilds.exe",
     "stores": {
