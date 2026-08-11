@@ -164,6 +164,7 @@
 | Mount & Blade II: Bannerlord | [Steam](Steam/MountBladeIIBannerlord.exe) | [Epic](Epic/MountBladeIIBannerlord.exe) | — | — |
 | NARAKA: BLADEPOINT | [Steam](Steam/NARAKABLADEPOINT.exe) | [Epic](Epic/NARAKABLADEPOINT.exe) | — | — |
 | NBA 2K26 | [Steam](Steam/NBA2K26.exe) | — | — | — |
+| Need for Speed Heat | [Steam](Steam/NeedForSpeedHeat.exe) | — | — | — |
 | Need for Speed Hot Pursuit | [Steam](Steam/NeedForSpeedHotPursuit.exe) | — | — | — |
 | Neverwinter Nights 2 | [Steam](Steam/NeverwinterNights2.exe) | — | — | — |
 | Neverwinter Nights: Enhanced Edition | [Steam](Steam/NeverwinterNightsEnhancedEdition.exe) | — | — | — |
