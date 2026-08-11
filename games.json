@@ -311,6 +311,14 @@
     }
   },
   {
+    "name": "Borderlands 3",
+    "out": "Borderlands3.exe",
+    "stores": {
+      "epic": "Catnip",
+      "steam": "397540"
+    }
+  },
+  {
     "name": "Brawlhalla",
     "out": "Brawlhalla.exe",
     "stores": {
