@@ -1179,6 +1179,14 @@
     }
   },
   {
+    "name": "Sid Meier's Civilization VII",
+    "out": "SidMeiersCivilizationVII.exe",
+    "stores": {
+      "epic": "3f0b68b4d67e4b128030024dae4e3c77",
+      "steam": "1295660"
+    }
+  },
+  {
     "name": "Skyrim SKSE",
     "out": "Skyrim_SKSE.exe",
     "stores": {
