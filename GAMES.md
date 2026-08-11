@@ -201,6 +201,7 @@
 | The Elder Scrolls V: Skyrim Special Edition | [Steam](Steam/TheElderScrollsVSkyrimSpecialEdition.exe) | [Epic](Epic/TheElderScrollsVSkyrimSpecialEdition.exe) | — | — |
 | THE FINALS | [Steam](Steam/THEFINALS.exe) | — | — | — |
 | The Isle | [Steam](Steam/TheIsle.exe) | — | — | — |
+| The Last of Us Part I | [Steam](Steam/TheLastOfUsPartI.exe) | [Epic](Epic/TheLastOfUsPartI.exe) | — | — |
 | The Outer Worlds 2 | [Steam](Steam/TheOuterWorlds2.exe) | — | [Battle.net](BattleNet/TheOuterWorlds2.exe) | — |
 | The Sims 4 | [Steam](Steam/TheSims4.exe) | — | — | — |
 | The Talos Principle | [Steam](Steam/TheTalosPrinciple.exe) | [Epic](Epic/TheTalosPrinciple.exe) | — | — |

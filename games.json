@@ -1467,6 +1467,14 @@
     }
   },
   {
+    "name": "The Last of Us Part I",
+    "out": "TheLastOfUsPartI.exe",
+    "stores": {
+      "epic": "7e988ba04889404197fdf06c994326ed",
+      "steam": "1888930"
+    }
+  },
+  {
     "name": "The Outer Worlds 2",
     "out": "TheOuterWorlds2.exe",
     "stores": {
