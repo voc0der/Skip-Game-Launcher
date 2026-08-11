@@ -1181,6 +1181,13 @@
     }
   },
   {
+    "name": "Scrap Mechanic",
+    "out": "ScrapMechanic.exe",
+    "stores": {
+      "steam": "387990"
+    }
+  },
+  {
     "name": "Sea of Thieves",
     "out": "SeaOfThieves.exe",
     "stores": {
