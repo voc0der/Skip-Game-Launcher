@@ -826,6 +826,14 @@
     }
   },
   {
+    "name": "Hades",
+    "out": "Hades.exe",
+    "stores": {
+      "epic": "Min",
+      "steam": "1145360"
+    }
+  },
+  {
     "name": "Half Life 2",
     "out": "HalfLife2.exe",
     "stores": {
