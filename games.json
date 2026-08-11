@@ -764,6 +764,14 @@
     }
   },
   {
+    "name": "God of War RagnarÃ¶k",
+    "out": "GodOfWarRagnarok.exe",
+    "stores": {
+      "epic": "456afef39a4c4cbbb6b17e92201443d7",
+      "steam": "2322010"
+    }
+  },
+  {
     "name": "Grand Theft Auto V",
     "out": "GrandTheftAutoV.exe",
     "stores": {
