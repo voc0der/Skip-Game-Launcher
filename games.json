@@ -1371,6 +1371,14 @@
     }
   },
   {
+    "name": "STAR WARS Jedi: Survivor",
+    "out": "STARWARSJediSurvivor.exe",
+    "stores": {
+      "epic": "aves",
+      "steam": "1774580"
+    }
+  },
+  {
     "name": "Stellaris",
     "out": "Stellaris.exe",
     "stores": {
