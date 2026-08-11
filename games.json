@@ -244,6 +244,15 @@
     }
   },
   {
+    "name": "Brawlhalla",
+    "out": "Brawlhalla.exe",
+    "stores": {
+      "epic": "c051e0b1433d4308baa920c08ba1a8eb",
+      "steam": "291550",
+      "ubisoft": "16382"
+    }
+  },
+  {
     "name": "Call of DutyÂ®",
     "out": "CallOfDuty.exe",
     "stores": {
