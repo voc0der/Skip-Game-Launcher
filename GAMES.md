@@ -186,6 +186,7 @@
 | Satisfactory | [Steam](Steam/Satisfactory.exe) | [Epic](Epic/Satisfactory.exe) | — | — |
 | Schedule I | [Steam](Steam/ScheduleI.exe) | — | — | — |
 | Scrap Mechanic | [Steam](Steam/ScrapMechanic.exe) | — | — | — |
+| SCUM | [Steam](Steam/SCUM.exe) | — | — | — |
 | Sea of Thieves | — | — | [Battle.net](BattleNet/SeaOfThieves.exe) | — |
 | Shadow of the Tomb Raider | [Steam](Steam/ShadowOfTheTombRaider.exe) | [Epic](Epic/ShadowOfTheTombRaider.exe) | — | — |
 | Sid Meier's Civilization VII | [Steam](Steam/SidMeiersCivilizationVII.exe) | [Epic](Epic/SidMeiersCivilizationVII.exe) | — | — |

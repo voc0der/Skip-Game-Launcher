@@ -1351,6 +1351,13 @@
     }
   },
   {
+    "name": "SCUM",
+    "out": "SCUM.exe",
+    "stores": {
+      "steam": "513710"
+    }
+  },
+  {
     "name": "Sea of Thieves",
     "out": "SeaOfThieves.exe",
     "stores": {
