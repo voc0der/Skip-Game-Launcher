@@ -343,6 +343,13 @@
     }
   },
   {
+    "name": "Call of Duty: Black Ops III",
+    "out": "CallOfDutyBlackOpsIII.exe",
+    "stores": {
+      "steam": "311210"
+    }
+  },
+  {
     "name": "Call of Duty: Modern Warfare",
     "out": "CallOfDutyModernWarfare.exe",
     "stores": {
