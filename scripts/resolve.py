@@ -512,7 +512,7 @@ def launch_command(store: str, app_id: str) -> str:
         "steam": f"explorer steam://rungameid/{app_id}",
         "ubisoft": f"explorer uplay://launch/{app_id}/0",
         "epic": f'explorer "com.epicgames.launcher://apps/{app_id}?action=launch&silent=true"',
-        "battlenet": f'"C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch {app_id}"',
+        "battlenet": f'""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch {app_id}""',
         "battlenetuid": f'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch_uid {app_id}""',
     }[store]
 

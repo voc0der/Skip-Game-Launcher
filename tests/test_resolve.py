@@ -772,9 +772,10 @@ def test_apply_all_adds_every_resolved_store(resolve_mod, games):
         ("epic", "Petunia",
          'explorer "com.epicgames.launcher://apps/Petunia?action=launch&silent=true"'),
         # No cmd hop: cmd.exe is console subsystem and shows a window that
-        # IExpress's ShowInstallProgramWindow=0 does not suppress.
+        # IExpress's ShowInstallProgramWindow=0 does not suppress. The doubled
+        # quotes stay - IExpress strips the outer pair on the way in.
         ("battlenet", "Pro",
-         '"C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch Pro"'),
+         '""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch Pro""'),
         ("battlenetuid", "wow_classic_era",
          'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe"'
          ' --exec="launch_uid wow_classic_era""'),

@@ -47,12 +47,13 @@ Describe 'Get-LaunchCommand' {
             Should -BeExactly 'explorer "com.epicgames.launcher://apps/Petunia?action=launch&silent=true"'
     }
 
-    It 'builds the Battle.net form without a cmd hop' {
+    It 'builds the Battle.net form without a cmd hop, doubled quotes intact' {
         # cmd.exe is console subsystem, so it shows a window that IExpress's
         # ShowInstallProgramWindow=0 does not suppress. Battle.net.exe is GUI
-        # subsystem and receives the same argv when invoked directly.
+        # subsystem and receives the same argv when invoked directly. The
+        # doubling survives IExpress stripping the outer pair.
         Get-LaunchCommand -Store battlenet -Id 'Pro' |
-            Should -BeExactly '"C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro"'
+            Should -BeExactly '""C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch Pro""'
     }
 
     It 'does not shell the Battle.net form through cmd' {
