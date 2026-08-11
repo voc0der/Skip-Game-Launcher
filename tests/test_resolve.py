@@ -771,8 +771,13 @@ def test_apply_all_adds_every_resolved_store(resolve_mod, games):
         ("ubisoft", "3539", "explorer uplay://launch/3539/0"),
         ("epic", "Petunia",
          'explorer "com.epicgames.launcher://apps/Petunia?action=launch&silent=true"'),
+        # No cmd hop: cmd.exe is console subsystem and shows a window that
+        # IExpress's ShowInstallProgramWindow=0 does not suppress.
         ("battlenet", "Pro",
-         'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch Pro""'),
+         '"C:\\Program Files (x86)\\Battle.net\\Battle.net.exe" --exec="launch Pro"'),
+        ("battlenetuid", "wow_classic_era",
+         'cmd /s /c ""C:\\Program Files (x86)\\Battle.net\\Battle.net.exe"'
+         ' --exec="launch_uid wow_classic_era""'),
     ],
 )
 def test_launch_command_matches_the_hand_built_form(resolve_mod, store, app_id, expected):
