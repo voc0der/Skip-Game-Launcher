@@ -1277,6 +1277,13 @@
     }
   },
   {
+    "name": "Stellaris",
+    "out": "Stellaris.exe",
+    "stores": {
+      "steam": "281990"
+    }
+  },
+  {
     "name": "Street Fighter 6",
     "out": "StreetFighter6.exe",
     "stores": {
