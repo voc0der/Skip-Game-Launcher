@@ -1574,6 +1574,14 @@
     }
   },
   {
+    "name": "The Outlast Trials",
+    "out": "TheOutlastTrials.exe",
+    "stores": {
+      "epic": "a56b983521bd46cfa79969a5a7c9d0c8",
+      "steam": "1304930"
+    }
+  },
+  {
     "name": "The Sims 4",
     "out": "TheSims4.exe",
     "stores": {
