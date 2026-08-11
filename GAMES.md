@@ -124,6 +124,7 @@
 | Heroes of the Storm | — | — | [Battle.net](BattleNet/HoTS.exe) | — |
 | Hogwarts Legacy | [Steam](Steam/HogwartsLegacy.exe) | [Epic](Epic/HogwartsLegacy.exe) | — | — |
 | Honkai: Star Rail | — | [Epic](Epic/HonkaiStarRail.exe) | — | — |
+| Horizon Forbidden West Complete Edition | [Steam](Steam/HorizonForbiddenWestCompleteEdition.exe) | [Epic](Epic/HorizonForbiddenWestCompleteEdition.exe) | — | — |
 | Horizon Zero Dawnâ„¢ Complete Edition | [Steam](Steam/HorizonZeroDawnCompleteEdition.exe) | [Epic](Epic/HorizonZeroDawnCompleteEdition.exe) | — | — |
 | Hunt: Showdown 1896 | [Steam](Steam/HuntShowdown1896.exe) | — | — | — |
 | Icarus | [Steam](Steam/Icarus.exe) | — | — | — |

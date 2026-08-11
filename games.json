@@ -879,6 +879,14 @@
     }
   },
   {
+    "name": "Horizon Forbidden West Complete Edition",
+    "out": "HorizonForbiddenWestCompleteEdition.exe",
+    "stores": {
+      "epic": "2efe99166b8847e9bcd80c571b05e1b6",
+      "steam": "2420110"
+    }
+  },
+  {
     "name": "Horizon Zero Dawnâ„¢ Complete Edition",
     "out": "HorizonZeroDawnCompleteEdition.exe",
     "stores": {
