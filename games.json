@@ -552,6 +552,13 @@
     }
   },
   {
+    "name": "DELTARUNE",
+    "out": "DELTARUNE.exe",
+    "stores": {
+      "steam": "1671210"
+    }
+  },
+  {
     "name": "Destiny 2",
     "out": "Destiny2.exe",
     "stores": {
