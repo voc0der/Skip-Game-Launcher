@@ -872,6 +872,13 @@
     }
   },
   {
+    "name": "Icarus",
+    "out": "Icarus.exe",
+    "stores": {
+      "steam": "1149460"
+    }
+  },
+  {
     "name": "It Takes Two",
     "out": "ItTakesTwo.exe",
     "stores": {
