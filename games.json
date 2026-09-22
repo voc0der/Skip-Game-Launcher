@@ -810,6 +810,14 @@
     }
   },
   {
+    "name": "Far Cry 6",
+    "out": "FarCry6.exe",
+    "stores": {
+      "steam": "2369390",
+      "ubisoft": "5266"
+    }
+  },
+  {
     "name": "Farming Simulator 25",
     "out": "FarmingSimulator25.exe",
     "stores": {
